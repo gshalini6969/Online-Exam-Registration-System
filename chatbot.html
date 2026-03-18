@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Chatbot</title>
+</head>
+<body>
+
+<h2>Chatbot 🤖</h2>
+
+<input type="text" id="userInput" placeholder="Type a message...">
+<button onclick="chat()">Send</button>
+
+<p><strong>You:</strong> <span id="userText"></span></p>
+<p><strong>Bot:</strong> <span id="botText"></span></p>
+
+<script>
+function chat() {
+    let input = document.getElementById("userInput").value;
+    document.getElementById("userText").innerText = input;
+
+    let response = "";
+
+    if (input.toLowerCase() === "hi") {
+        response = "Hello!";
+    } 
+    else if (input.toLowerCase() === "how are you") {
+        response = "I'm fine 😊";
+    } 
+    else if (input.toLowerCase() === "bye") {
+        response = "Goodbye!";
+    } 
+    else {
+        response = "I don't understand 😅";
+    }
+
+    document.getElementById("botText").innerText = response;
+}
+</script>
+
+</body>
+</html>
