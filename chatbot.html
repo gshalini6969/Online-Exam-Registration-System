@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ExamBot</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: sans-serif; background:#c8ddd0; color:#1a2e22; display:flex; flex-direction:column; height:100vh; }
+
+  header { background:#dff0e3; border-bottom:1px solid #b5d4bc; padding:14px 20px; display:flex; align-items:center; gap:10px; }
+  header .dot { width:10px; height:10px; background:#4caf7d; border-radius:50%; }
+  header h1 { font-size:16px; color:#4caf7d; font-weight:700; }
+
+  #chat { flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:12px; }
+
+  .msg { max-width:75%; padding:10px 14px; border-radius:12px; font-size:14px; line-height:1.6; }
+  .bot { background:#b5d4bc; border:1px solid #eaf7ed; border-top-left-radius:3px; align-self:flex-start; color:#1a2e22; }
+  .user { background:#4caf7d; border:none; border-top-right-radius:3px; align-self:flex-end; color:#fff; }
+
+  #inputRow { display:flex; gap:8px; padding:14px; background:#dff0e3; border-top:1px solid #b5d4bc; }
+  #inputRow input { flex:1; background:#f8fdf9; border:1px solid #b5d4bc; border-radius:8px; padding:10px 14px; color:#1a2e22; font-size:14px; outline:none; }
+  #inputRow input:focus { border-color:#4caf7d; box-shadow: 0 0 0 3px rgba(76,175,125,0.15); }
+  #inputRow button { background:#4caf7d; color:#fff; border:none; border-radius:8px; padding:10px 18px; font-weight:700; cursor:pointer; font-size:14px; }
+  #inputRow button:hover { background:#3d9e6c; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="dot"></div>
+  <h1>🎓 ExamBot — Exam Registration Assistant</h1>
+</header>
+
+<div id="chat">
+  <div class="msg bot">👋 Hi! I'm <b>ExamBot</b>. Ask me about exam registration, subjects, fees, deadlines, or documents!</div>
+</div>
+
+<div id="inputRow">
+  <input id="inp" type="text" placeholder="Type your question..." onkeydown="if(event.key==='Enter') send()"/>
+  <button onclick="send()">Send</button>
+</div>
+
+<script>
+const responses = {
+  register:  "To register: 1) Login to student portal → 2) Go to Exam Registration → 3) Select subjects → 4) Pay fee → 5) Download hall ticket.",
+  subjects:  "Available subjects: CS401 - Data Structures, CS402 - DBMS, CS403 - OS, CS404 - Networks, CS405 - Software Engg, MA401 - Maths IV.",
+  payment:   "Accepted payments: UPI (GPay/PhonePe), Net Banking, Debit/Credit cards. Fee: ₹500/subject. Receipt is auto-generated.",
+  deadline:  "Deadlines: Registration open Mar 15 | Last date Mar 31 | Late fine (₹200) till Apr 5 | Hall ticket Apr 10 | Exams from Apr 20.",
+  cancel:    "Cancellation allowed before last date only. Refund in 7 working days. Go to My Registrations → Select subject → Cancel.",
+  status:    "Check status: Login → My Registrations. Status shows: Pending / Confirmed / Cancelled. Confirmation email is also sent.",
+  document:  "Required: Student ID, Enrollment Number, Fee clearance receipt, 75% attendance, passport photo (upload).",
+  default:   "I can help with: registration steps, subjects, fee payment, deadlines, cancellation, status check, or required documents. What do you need?"
+};
+
+function getReply(q) {
+  q = q.toLowerCase();
+  if (q.match(/register|registration/)) return responses.register;
+  if (q.match(/subject|course/))        return responses.subjects;
+  if (q.match(/pay|fee|payment/))       return responses.payment;
+  if (q.match(/deadline|date|when/))    return responses.deadline;
+  if (q.match(/cancel/))                return responses.cancel;
+  if (q.match(/status|check/))          return responses.status;
+  if (q.match(/document|need|require/)) return responses.document;
+  return responses.default;
+}
+
+function send() {
+  const inp = document.getElementById('inp');
+  const chat = document.getElementById('chat');
+  const text = inp.value.trim();
+  if (!text) return;
+
+  chat.innerHTML += `<div class="msg user">${text}</div>`;
+  inp.value = '';
+
+  setTimeout(() => {
+    chat.innerHTML += `<div class="msg bot">${getReply(text)}</div>`;
+    chat.scrollTop = chat.scrollHeight;
+  }, 400);
+
+  chat.scrollTop = chat.scrollHeight;
+}
+</script>
+</body>
+</html>

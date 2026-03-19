@@ -1,506 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Online Exam Registration System</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Online Exam Registration System</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#b8ddc4;font-family:'Plus Jakarta Sans',sans-serif;padding:14px}
 
-    :root {
-      --green: #2ec27e;
-      --green-dark: #1fa868;
-      --green-light: #e8faf2;
-      --dark: #0d1b2a;
-      --dark-mid: #1c3144;
-      --text-muted: #8ca0b3;
-      --white: #ffffff;
-      --bg: #f4f7f9;
-      --card-shadow: 0 20px 60px rgba(13,27,42,0.12);
-    }
+/* ── SHELL ── */
+.shell{display:flex;width:min(1040px,100%);height:min(680px,94vh);border-radius:22px;overflow:hidden;box-shadow:0 20px 72px rgba(0,50,20,.22)}
 
-    html, body {
-      height: 100%;
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-    }
+/* ── LEFT ── */
+.L{flex:0 0 44%;background:#e6f4ea;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 22px;gap:14px}
+.L svg.il{width:min(268px,86%);flex-shrink:0}
+.Lt{font-size:clamp(15px,1.6vw,19px);font-weight:800;color:#1a3020;text-align:center;line-height:1.3}
+.Ls{font-size:12px;color:#5a8a6a;text-align:center;line-height:1.65;max-width:232px}
+.dots{display:flex;gap:6px}
+.d{width:8px;height:8px;border-radius:50%;background:#bcd8c4}.d.a{background:#2ec27e;width:20px;border-radius:4px}
 
-    .wrapper {
-      display: flex;
-      height: 100vh;
-      overflow: hidden;
-    }
+/* ── RIGHT ── */
+.R{flex:1;background:#fff;display:flex;align-items:center;justify-content:center;padding:32px 38px;overflow-y:auto}
 
-    /* ── LEFT PANEL ── */
-    .left {
-      flex: 1.1;
-      background: var(--dark);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 48px 52px;
-      overflow: hidden;
-    }
+/* ── PAGES ── */
+.pg{width:100%;max-width:330px}
+.hide{display:none!important}
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.pg:not(.hide){animation:up .3s ease}
 
-    /* decorative blobs */
-    .left::before {
-      content: '';
-      position: absolute;
-      width: 420px; height: 420px;
-      background: radial-gradient(circle, rgba(46,194,126,0.22) 0%, transparent 70%);
-      top: -80px; left: -80px;
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    .left::after {
-      content: '';
-      position: absolute;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(46,194,126,0.14) 0%, transparent 70%);
-      bottom: 40px; right: -60px;
-      border-radius: 50%;
-      pointer-events: none;
-    }
+/* ── ROLE CARDS ── */
+.rc{display:flex;align-items:center;gap:13px;padding:14px 16px;border:2px solid #e4eee7;border-radius:13px;cursor:pointer;color:inherit;margin-bottom:10px;background:#fff;transition:all .24s cubic-bezier(.34,1.56,.64,1)}
+.rc:hover{border-color:#2ec27e;transform:translateY(-3px);box-shadow:0 10px 26px rgba(46,194,126,.14)}
+.rc:hover .ri{background:#2ec27e}.rc:hover .ri svg{color:#fff}.rc:hover .ra{color:#2ec27e;transform:translateX(4px)}
+.ri{width:43px;height:43px;background:#e6f4ea;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.24s}
+.ri svg{color:#2ec27e;transition:.2s}
+.rb{flex:1}.rn{font-size:14.5px;font-weight:700;color:#1a3020}.rd{font-size:11.5px;color:#7a9a80;margin-top:1px}
+.ra{font-size:21px;color:#c4dcc9;transition:.24s}
 
-    /* grid pattern overlay */
-    .grid-overlay {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 48px 48px;
-      pointer-events: none;
-    }
+/* ── FORM ── */
+.fg{margin-bottom:13px}
+label{display:block;font-size:12px;font-weight:700;color:#2a4030;margin-bottom:5px}
+.iw{position:relative}
+.iw input{width:100%;padding:11px 34px 11px 36px;border:1.5px solid #ddeae0;border-radius:9px;font-family:inherit;font-size:13.5px;color:#1a3020;background:#f7fbf8;outline:none;transition:.2s}
+.iw input:focus{border-color:#2ec27e;background:#fff;box-shadow:0 0 0 3px rgba(46,194,126,.1)}
+.iw input.v{border-color:#2ec27e}.iw input.e{border-color:#e74c3c;box-shadow:0 0 0 3px rgba(231,76,60,.08)}
+.ic{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:#a0b8a8;pointer-events:none;transition:.2s}
+.iw:focus-within .ic{color:#2ec27e}
+.ey{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#a0b8a8;line-height:0;padding:2px;transition:.2s}
+.ey:hover{color:#1a3020}
+.h{font-size:11px;font-weight:500;margin-top:4px}.h.v{color:#1fa868}.h.e{color:#e74c3c}
 
-    .left-top {
-      position: relative;
-      z-index: 2;
-    }
+/* ── STRENGTH ── */
+.sb{display:flex;gap:3px;margin-top:6px}
+.sg{flex:1;height:3px;background:#ddeae0;border-radius:3px;transition:.3s}
+.sg.w{background:#e74c3c}.sg.f{background:#f59e0b}.sg.g{background:#3b82f6}.sg.s{background:#2ec27e}
+.sl{font-size:10.5px;font-weight:600;margin-top:3px;color:#a0b8a0}
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+/* ── BUTTONS ── */
+.btn{width:100%;padding:12.5px;border:none;border-radius:9px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:.2s;margin-top:4px}
+.bd{background:#1e2e26;color:#fff}.bd:hover{background:#263c2e;transform:translateY(-1px)}
+.bg{background:#2ec27e;color:#fff;box-shadow:0 4px 14px rgba(46,194,126,.3)}.bg:hover{background:#1fa868;transform:translateY(-1px)}
 
-    .logo-icon {
-      width: 42px; height: 42px;
-      background: var(--green);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 18px;
-      color: var(--white);
-      letter-spacing: -1px;
-      box-shadow: 0 0 0 3px rgba(46,194,126,0.3);
-    }
-
-    .logo-text {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      color: var(--white);
-      line-height: 1.25;
-      max-width: 130px;
-      opacity: 0.9;
-    }
-
-    .left-center {
-      position: relative;
-      z-index: 2;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: rgba(46,194,126,0.15);
-      border: 1px solid rgba(46,194,126,0.3);
-      color: var(--green);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 100px;
-      margin-bottom: 28px;
-      width: fit-content;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .badge::before {
-      content: '';
-      width: 7px; height: 7px;
-      background: var(--green);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.3); }
-    }
-
-    .headline {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(34px, 4vw, 52px);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-      margin-bottom: 20px;
-    }
-
-    .headline span {
-      color: var(--green);
-    }
-
-    .subtext {
-      font-size: 15.5px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      max-width: 360px;
-      font-weight: 400;
-    }
-
-    /* illustration card */
-    .illustration {
-      margin-top: 44px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 28px;
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      backdrop-filter: blur(4px);
-    }
-
-    .illus-icon {
-      width: 56px; height: 56px;
-      background: linear-gradient(135deg, rgba(46,194,126,0.2), rgba(46,194,126,0.05));
-      border: 1px solid rgba(46,194,126,0.25);
-      border-radius: 16px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .illus-icon svg { color: var(--green); }
-
-    .illus-text h4 {
-      font-family: 'Syne', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 5px;
-    }
-
-    .illus-text p {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .stats-row {
-      display: flex;
-      gap: 32px;
-      margin-top: 36px;
-    }
-
-    .stat { }
-
-    .stat-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 26px;
-      font-weight: 800;
-      color: var(--white);
-    }
-
-    .stat-num span { color: var(--green); }
-
-    .stat-label {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .left-bottom {
-      position: relative;
-      z-index: 2;
-      font-size: 12.5px;
-      color: rgba(140,160,179,0.5);
-    }
-
-    /* ── RIGHT PANEL ── */
-    .right {
-      flex: 0.9;
-      background: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 48px 52px;
-      position: relative;
-    }
-
-    .right-inner {
-      width: 100%;
-      max-width: 400px;
-      animation: fadeUp 0.6s ease both;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .right-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 30px;
-      font-weight: 800;
-      color: var(--dark);
-      letter-spacing: -0.8px;
-      margin-bottom: 8px;
-    }
-
-    .right-sub {
-      font-size: 14.5px;
-      color: #6b7a8d;
-      margin-bottom: 44px;
-      line-height: 1.6;
-    }
-
-    .role-card {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      background: var(--white);
-      border: 2px solid transparent;
-      border-radius: 18px;
-      padding: 24px 28px;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 20px rgba(13,27,42,0.06);
-      text-decoration: none;
-      color: inherit;
-      margin-bottom: 16px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .role-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(46,194,126,0.04), transparent);
-      opacity: 0;
-      transition: opacity 0.25s;
-    }
-
-    .role-card:hover {
-      border-color: var(--green);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 36px rgba(46,194,126,0.18);
-    }
-
-    .role-card:hover::after { opacity: 1; }
-
-    .role-card:hover .role-icon { background: var(--green); }
-    .role-card:hover .role-icon svg { color: var(--white); }
-    .role-card:hover .role-arrow { color: var(--green); transform: translateX(4px); }
-
-    .role-icon {
-      width: 52px; height: 52px;
-      background: var(--green-light);
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      transition: background 0.25s;
-    }
-
-    .role-icon svg {
-      color: var(--green);
-      transition: color 0.25s;
-    }
-
-    .role-info { flex: 1; }
-
-    .role-name {
-      font-family: 'Syne', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 3px;
-    }
-
-    .role-desc {
-      font-size: 13px;
-      color: #8ca0b3;
-      font-weight: 400;
-    }
-
-    .role-arrow {
-      font-size: 20px;
-      color: #c8d3dc;
-      transition: color 0.25s, transform 0.25s;
-    }
-
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin: 8px 0;
-    }
-
-    .divider-line { flex: 1; height: 1px; background: #e4eaf0; }
-    .divider-text { font-size: 12px; color: #b0bec5; font-weight: 500; }
-
-    .right-footer {
-      margin-top: 44px;
-      text-align: center;
-      font-size: 12.5px;
-      color: #b0bec5;
-    }
-  </style>
+/* ── MISC ── */
+.sn{font-size:24px;font-weight:800;color:#1a3020;margin-bottom:3px;letter-spacing:-.5px}
+.sn em{color:#2ec27e;font-style:normal}
+.st{font-size:12.5px;color:#7a9a80;margin-bottom:26px;line-height:1.5}
+.ph{font-size:22px;font-weight:800;color:#1a3020;margin-bottom:4px;letter-spacing:-.4px}
+.ps{font-size:12.5px;color:#7a9a80;margin-bottom:20px;line-height:1.5}
+.bge{display:inline-flex;align-items:center;gap:5px;background:#e6f4ea;color:#1fa868;font-size:10px;font-weight:700;padding:4px 11px;border-radius:100px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.5px}
+.dv{display:flex;align-items:center;gap:10px;margin:12px 0}
+.dl{flex:1;height:1px;background:#edf5f0}.dt{font-size:11px;color:#b0c8b5;font-weight:600}
+.lr{text-align:center;font-size:12.5px;color:#7a9a80;margin-top:12px}
+.lr a{color:#1fa868;font-weight:700;text-decoration:none;cursor:pointer}.lr a:hover{text-decoration:underline}
+.bk{color:#9ab8a0!important;font-weight:500!important}
+.frg{display:flex;justify-content:flex-end;margin:-2px 0 14px}
+.frg a{font-size:12px;font-weight:600;color:#1fa868;text-decoration:none;cursor:pointer}.frg a:hover{text-decoration:underline}
+.ob{background:#e6f4ea;border:1px solid rgba(46,194,126,.25);border-radius:8px;padding:7px 11px;font-size:11.5px;color:#1a6040;margin-top:6px}
+.sc{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#a0b8a0;margin:12px 0 9px}
+.sd{height:1px;background:#edf5f0;margin:3px 0 13px}
+.cp{font-size:11px;color:#a0b8a0;text-align:center;margin-top:20px}
+</style>
 </head>
 <body>
 
-<div class="wrapper">
+<!-- ═══ REUSABLE ICON SYMBOLS ═══ -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+  <symbol id="i-otp"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01M8 12h.01M16 12h.01"/></symbol>
+  <symbol id="i-eye"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-stu"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
+  <symbol id="i-adm"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+</svg>
 
-  <!-- LEFT -->
-  <div class="left">
-    <div class="grid-overlay"></div>
+<div class="shell">
 
-    <div class="left-top">
-      <div class="logo">
-        <div class="logo-icon">OE</div>
-        <div class="logo-text">Online Exam Registration</div>
-      </div>
-    </div>
+  <!-- ═══ LEFT PANEL — static ═══ -->
+  <div class="L">
+    <svg class="il" viewBox="0 0 280 238" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-    <div class="left-center">
-      <div class="badge">Exam Portal 2025</div>
+      <!-- bg circle -->
+      <circle cx="138" cy="112" r="96" fill="#c2e2c8" opacity=".52"/>
 
-      <h1 class="headline">
-        Your Exams,<br>
-        <span>Seamlessly</span><br>
-        Managed.
-      </h1>
+      <!-- CLOCK -->
+      <circle cx="57" cy="47" r="15" fill="#fff" stroke="#5a9a6a" stroke-width="1.5"/>
+      <line x1="57" y1="47" x2="57" y2="36" stroke="#5a9a6a" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="57" y1="47" x2="66" y2="52" stroke="#5a9a6a" stroke-width="1.5" stroke-linecap="round"/>
 
-      <p class="subtext">
-        A unified platform for students to register for exams and for administrators to manage them — all in one place.
-      </p>
+      <!-- MATH SYMBOLS -->
+      <text x="182" y="28" font-size="12" fill="#5a9a6a" opacity=".78" font-style="italic">f(x)</text>
+      <text x="228" y="62" font-size="11" fill="#5a9a6a" opacity=".72">√x</text>
+      <text x="248" y="106" font-size="15" fill="#5a9a6a" opacity=".72">π</text>
+      <text x="234" y="150" font-size="10" fill="#5a9a6a" opacity=".65">⟨x,y⟩</text>
+      <text x="200" y="180" font-size="9"  fill="#5a9a6a" opacity=".6">x²</text>
+      <text x="36"  y="78"  font-size="11" fill="#5a9a6a" opacity=".65">x-y</text>
+      <text x="22"  y="120" font-size="10" fill="#5a9a6a" opacity=".6">(a,b)</text>
 
-      <div class="illustration">
-        <div class="illus-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-            <polyline points="10 9 9 9 8 9"/>
-          </svg>
-        </div>
-        <div class="illus-text">
-          <h4>Instant Exam Registration</h4>
-          <p>Browse, register, and track your upcoming exams from a single dashboard.</p>
-        </div>
-      </div>
+      <!-- CURSOR ARROW -->
+      <path d="M250 54 L261 66 L255 65 L258 75 L250 64 L245 66Z" stroke="#5a9a6a" stroke-width="1.2" fill="#e6f4ea" opacity=".82"/>
 
-      <div class="stats-row">
-        <div class="stat">
-          <div class="stat-num">500<span>+</span></div>
-          <div class="stat-label">Students Enrolled</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">40<span>+</span></div>
-          <div class="stat-label">Exams Listed</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">99<span>%</span></div>
-          <div class="stat-label">Uptime</div>
-        </div>
-      </div>
-    </div>
+      <!-- GEAR SPEECH BUBBLE -->
+      <rect x="186" y="87" width="44" height="40" rx="8" fill="#fff" stroke="#5a9a6a" stroke-width="1.3"/>
+      <path d="M196 127 L196 132 L202 128Z" fill="#5a9a6a" opacity=".38"/>
+      <circle cx="208" cy="106" r="7" stroke="#5a9a6a" stroke-width="1.3"/>
+      <circle cx="208" cy="106" r="3" fill="#5a9a6a" opacity=".5"/>
+      <line x1="208" y1="97" x2="208" y2="100" stroke="#5a9a6a" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="208" y1="112" x2="208" y2="115" stroke="#5a9a6a" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="199" y1="106" x2="202" y2="106" stroke="#5a9a6a" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="214" y1="106" x2="217" y2="106" stroke="#5a9a6a" stroke-width="1.5" stroke-linecap="round"/>
 
-    <div class="left-bottom">
-      © 2025 Online Exam Registration System
-    </div>
+      <!-- FLYING PAPER 1 -->
+      <g transform="rotate(-8,108,116)">
+        <rect x="80" y="83" width="56" height="72" rx="4" fill="#fff" stroke="#8ab89a" stroke-width="1.3"/>
+        <rect x="88" y="93" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
+        <rect x="99" y="93" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
+        <rect x="110" y="93" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
+        <rect x="88" y="105" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
+        <rect x="99" y="105" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
+        <rect x="110" y="105" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
+        <line x1="88" y1="120" x2="128" y2="120" stroke="#b8d4bc" stroke-width="1"/>
+        <line x1="88" y1="128" x2="124" y2="128" stroke="#b8d4bc" stroke-width="1"/>
+        <line x1="88" y1="136" x2="126" y2="136" stroke="#b8d4bc" stroke-width="1"/>
+        <line x1="88" y1="144" x2="120" y2="144" stroke="#b8d4bc" stroke-width="1"/>
+      </g>
+
+      <!-- FLYING PAPER 2 -->
+      <g transform="rotate(-20,72,146)">
+        <rect x="46" y="114" width="54" height="66" rx="4" fill="#fff" stroke="#8ab89a" stroke-width="1.3"/>
+        <rect x="54" y="124" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
+        <rect x="65" y="124" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
+        <rect x="76" y="124" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
+        <line x1="54" y1="138" x2="92" y2="138" stroke="#b8d4bc" stroke-width="1"/>
+        <line x1="54" y1="146" x2="88" y2="146" stroke="#b8d4bc" stroke-width="1"/>
+        <line x1="54" y1="154" x2="90" y2="154" stroke="#b8d4bc" stroke-width="1"/>
+        <line x1="54" y1="162" x2="86" y2="162" stroke="#b8d4bc" stroke-width="1"/>
+        <line x1="54" y1="170" x2="89" y2="170" stroke="#b8d4bc" stroke-width="1"/>
+      </g>
+
+      <!-- 3D CUBE -->
+      <g opacity=".62">
+        <path d="M245 133 L258 126 L271 133 L271 148 L258 155 L245 148Z" stroke="#5a9a6a" stroke-width="1.3"/>
+        <line x1="258" y1="126" x2="258" y2="155" stroke="#5a9a6a" stroke-width="1.3"/>
+        <line x1="245" y1="133" x2="258" y2="140" stroke="#5a9a6a" stroke-width="1.3"/>
+        <line x1="271" y1="133" x2="258" y2="140" stroke="#5a9a6a" stroke-width="1.3"/>
+      </g>
+
+      <!-- DESK -->
+      <rect x="84" y="188" width="136" height="7" rx="3.5" fill="#6a9a76"/>
+      <rect x="92"  y="195" width="5" height="26" rx="2.5" fill="#5a8a66"/>
+      <rect x="214" y="195" width="5" height="26" rx="2.5" fill="#5a8a66"/>
+
+      <!-- CHAIR -->
+      <rect x="150" y="184" width="52" height="6" rx="3" fill="#4a8a5a"/>
+      <rect x="172" y="190" width="5" height="32" rx="2.5" fill="#3a7a4a"/>
+      <rect x="155" y="215" width="33" height="5" rx="2.5" fill="#3a7a4a"/>
+
+      <!-- STUDENT: head -->
+      <circle cx="154" cy="142" r="15" fill="#f5c5a0"/>
+      <path d="M140 140 Q141 127 154 126 Q167 127 168 140 Q162 131 154 132 Q146 131 140 140Z" fill="#181410"/>
+      <ellipse cx="140" cy="143" rx="2.5" ry="3.5" fill="#f0b898"/>
+      <!-- body -->
+      <path d="M136 166 Q140 157 154 156 Q168 157 172 166 L172 188 L136 188Z" fill="#eef9f2"/>
+      <path d="M136 166 L142 157 L154 160 L166 157 L172 166 L164 169 L154 165 L144 169Z" fill="#3a6a4a"/>
+      <!-- arm reaching forward to write -->
+      <path d="M137 172 Q126 176 118 183 Q114 188 116 193" stroke="#f5c5a0" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="116" cy="194" r="4.5" fill="#f5c5a0"/>
+      <!-- pencil -->
+      <line x1="116" y1="194" x2="102" y2="202" stroke="#f0c040" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="101" cy="203" r="1.5" fill="#2a1a00"/>
+      <!-- paper on desk -->
+      <rect x="90" y="181" width="56" height="7" rx="2" fill="#fff" stroke="#b8d4bc" stroke-width="1"/>
+
+      <!-- PLANT -->
+      <path d="M23 236 L29 224 L41 224 L47 236Z" fill="#6a5a3a"/>
+      <ellipse cx="35" cy="224" rx="11" ry="3.5" fill="#7a6a4a"/>
+      <line x1="35" y1="223" x2="35" y2="200" stroke="#4a8a5a" stroke-width="2"/>
+      <ellipse cx="27" cy="212" rx="10" ry="5.5" fill="#5aaa6a" transform="rotate(-25,27,212)"/>
+      <ellipse cx="43" cy="206" rx="10" ry="5.5" fill="#4a9a5a" transform="rotate(22,43,206)"/>
+      <ellipse cx="25" cy="202" rx="9"  ry="5"   fill="#5aaa6a" transform="rotate(-35,25,202)"/>
+
+      <!-- BACKPACK -->
+      <rect x="182" y="208" width="28" height="34" rx="7" fill="#4aaa6a" stroke="#3a9a5a" stroke-width="1"/>
+      <rect x="187" y="214" width="18" height="12" rx="5" fill="#5aba7a"/>
+      <circle cx="196" cy="232" r="3" fill="#3a9a5a"/>
+      <path d="M182 216 Q178 226 180 238" stroke="#3a9a5a" stroke-width="1.8" stroke-linecap="round"/>
+
+      <!-- DECORATIVE DOTS -->
+      <circle cx="59"  cy="184" r="7"   stroke="#5a9a6a" stroke-width="1.3" opacity=".42"/>
+      <circle cx="69"  cy="210" r="4.5" stroke="#5a9a6a" stroke-width="1.2" opacity=".32"/>
+    </svg>
+
+    <div class="Lt">Online Exam<br>Registration System</div>
+    <div class="Ls">A seamless portal for exam registration &amp; management.</div>
   </div>
 
-  <!-- RIGHT -->
-  <div class="right">
-    <div class="right-inner">
-      <h2 class="right-title">Welcome Back 👋</h2>
-      <p class="right-sub">Choose your role to continue to the portal.</p>
+  <!-- ═══ RIGHT PANEL ═══ -->
+  <div class="R">
 
-      <a href="login-student.html" class="role-card">
-        <div class="role-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-          </svg>
-        </div>
-        <div class="role-info">
-          <div class="role-name">I'm a Student</div>
-          <div class="role-desc">Register & manage your exams</div>
-        </div>
-        <div class="role-arrow">›</div>
-      </a>
+    <!-- ── PAGE 0 : LANDING ── -->
+    <div id="p0" class="pg">
+      <div class="sn">Welcome <em>Back</em></div>
+      <div class="st">Select your role to continue to the portal.</div>
 
-      <div class="divider">
-        <div class="divider-line"></div>
-        <div class="divider-text">or</div>
-        <div class="divider-line"></div>
+      <div class="rc" onclick="go('p1')">
+        <div class="ri"><svg width="20" height="20"><use href="#i-stu"/></svg></div>
+        <div class="rb"><div class="rn">Student</div><div class="rd">Register &amp; track your exams</div></div>
+        <div class="ra">›</div>
       </div>
-
-      <a href="login-admin.html" class="role-card">
-        <div class="role-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-            <circle cx="9" cy="7" r="4"/>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-          </svg>
-        </div>
-        <div class="role-info">
-          <div class="role-name">I'm an Admin</div>
-          <div class="role-desc">Manage exams & students</div>
-        </div>
-        <div class="role-arrow">›</div>
-      </a>
-
-      <div class="right-footer">
-        Secure · Private · Reliable
+      <div class="dv"><div class="dl"></div><div class="dt">or</div><div class="dl"></div></div>
+      <div class="rc" onclick="go('p2')">
+        <div class="ri"><svg width="20" height="20"><use href="#i-adm"/></svg></div>
+        <div class="rb"><div class="rn">Administrator</div><div class="rd">Manage exams &amp; students</div></div>
+        <div class="ra">›</div>
       </div>
+      <div class="cp">© 2026 Online Exam Registration System</div>
     </div>
-  </div>
 
-</div>
+    <!-- ── PAGE 1 : STUDENT LOGIN ── -->
+    <div id="p1" class="pg hide">
+      <div class="bge"><svg width="11" height="11"><use href="#i-stu"/></svg> Student Portal</div>
+      <div class="ph">Sign in</div>
+      <div class="ps">Enter your credentials to access your dashboard.</div>
 
-</body>
-</html>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <title>Document</title> -->
-     <link rel="stylesheet" href="index.css">
-</head>
-<body>
-    <h1>People entered:</h1>
-    <h2 id="count-el">0</h2>
-    <button id="increment-btn" onclick="increment()">INCREMENT</button><br>
-    <button id="save-btn" onclick="save()">SAVE</button>
-    <p id="save-el">Previous Entries : </p>
-    <script src="index.js"></script>
+      <div class="fg">
+        <label>Username</label>
+        <div class="iw">
+          <svg class="ic" width="15" height="15"><use href="#i-user"/></svg>
+          <input type="text" id="s_u" placeholder="Your username"/>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Password</label>
+        <div class="iw">
+          <svg class="ic" width="15" height="15"><use href="#i-lock"/></svg>
+          <input type="password" id="s_p" placeholder="Your password"/>
+          <button class="ey" onclick="eye('s_p')"><svg width="14" height="14"><use href="#i-eye"/></svg></button>
+        </div>
+      </div>
+      <div class="frg"><a onclick="alert('Contact your administrator to reset your password.')">Forgot password?</a></div>
+      <button class="btn bd" onclick="slogin()">Sign in</button>
+      <div class="dv"><div class="dl"></div><div class="dt">New here?</div><div class="dl"></div></div>
+      <div class="lr"><a onclick="go('p3')">Create a Student Account →</a></div>
+      <div class="lr"><a class="bk" onclick="go('p0')">← Back</a></div>
+    </div>
+
+    <!-- ── PAGE 2 : ADMIN LOGIN ── -->
+    <div id="p2" class="pg hide">
+      <div class="bge"><svg width="11" height="11"><use href="#i-adm"/></svg> Admin Portal</div>
+      <div class="ph">Admin Sign in</div>
+      <div class="ps">Access the admin panel to manage exams and students.</div>
+
+      <div class="fg">
+        <label>Username</label>
+        <div class="iw">
+          <svg class="ic" width="15" height="15"><use href="#i-user"/></svg>
+          <input type="text" id="a_u" placeholder="Admin username"/>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Password</label>
+        <div class="iw">
+          <svg class="ic" width="15" height="15"><use href="#i-lock"/></svg>
+          <input type="password" id="a_p" placeholder="Admin password"/>
+          <button class="ey" onclick="eye('a_p')"><svg width="14" height="14"><use href="#i-eye"/></svg></button>
+        </div>
+      </div>
+      <div class="frg"><a onclick="alert('Contact the IT department to reset your admin password.')">Forgot password?</a></div>
+      <button class="btn bd" onclick="alogin()">Sign in as Admin</button>
+      <div class="dv"><div class="dl"></div><div class="dt">New admin?</div><div class="dl"></div></div>
+      <div class="lr"><a onclick="go('p4')">Create an Admin Account →</a></div>
+      <div class="lr"><a class="bk" onclick="go('p0')">← Back</a></div>
+    </div>
+
+    <!-- ── PAGE 3 : STUDENT SIGNUP ── -->
+    <div id="p3" class="pg hide">
+      <div class="bge"><svg width="11" height="11"><use href="#i-stu"/></svg> New Student</div>
+      <div class="ph">Create Account</div>
+      <div class="ps">Fill in the details below to get started.</div>
+
+      <div class="sc">Account Info</div>
+      <div class="fg">
+        <label>Email Address</label>
+        <div class="iw">
+          <svg class="ic" width="15" height="15"><use href="#i-mail"/></svg>
+          <input type="email" id="sr_e" placeholder="you@example.com" oninput="vEmail('sr_e')"/>
+        </div>
+        <div class="h" id="sr_eh"></div>
+      </div>
+      <div class="fg">
+        <label>Username</label>
+        <div class="iw">
+          <svg class="ic" width="15" height="15"><use href="#i-user"/></svg>
+          <input type="text" id="sr_u" placeholder="Choose a username" oninput="vUser('sr_u')"/>
+        </div>
+        <div class="h" id="sr_uh">4–20 chars, letters/numbers/underscore.</div>
+      </div>
+
+      <div class="sd"></div>
+      <div class="sc">Security</div>
+      <div class="fg">
+        <label>Password</label>
+        <div class="iw">
+          <svg class="ic" width="15" height="15"><use href="#i-lock"/></svg>
+          <input type="password" id="sr_p" placeholder="Create a strong password" oninput="str('sr_p','sr_')"/>
+          <button class="ey" onclick="eye('sr_p')"><svg width="14" height="14"><use href="#i-eye"/></svg></button>
+        </div>
+        <div class="sb"><div class="sg" id="sr_s1"></div><div class="sg" id="sr_s2"></div><div class="sg" id="sr_s3"></div><div class="sg" id="sr_s4"></div></div>
+        <div class="sl" id="sr_sl">Enter a password</div>
+      </div>
+      <div class="fg">
+        <label>Confirm Password</label>
+        <div class="iw">
+          <svg class="ic" width="15" height="15"><use href="#i-lock"/></svg>
+          <input type="password" id="sr_c" placeholder="Re-enter your password" oninput="mtch('sr_c','sr_p')"/>
+          <button class="ey" onclick="eye('sr_c')"><svg width="14" height="14"><use href="#i-eye"/></svg></button>
+        </div>
+        <div class="h" id="sr_ch"></div>
+      </div>
+
+      <div class="sd"></div>
+      <div class="sc">Verification</div>
+      <div class="fg">
+        <label>OTP</label>
+        <div class="iw">
+          <svg class="ic" width="15" height="15"><use href="#i-otp"/></svg>
+          <input type="text" id="sr_o" placeholder="Enter OTP" maxlength="6" oninput="vOtp('sr_o')"/>
+        </div>
+        <div class="h" id="sr_oh"></div>
+      </div>
+
+      <button class="btn bg" onclick="ssignup()">Create Account</button>
+      <div class="lr"><a onclick="go('p1')">Already have an account? Sign in →</a></div>
+    </div>
+
+    <!-- ── PAGE 4 : ADMIN SIGNUP ── -->
+    <div id="p4" class="pg hide">
+      <div class="bge"><svg width="11" height="11"><use href="#i-adm"/></svg> New Admin</div>
+      <div class="ph">Create Admin Account</div>
+      <div class="ps">Register a new administrator account.</div>
+
+      <div class="sc">Account Info</div>
+      <div class="fg">
+        <label>Email Address</label>
+        <div class="iw">
+          <svg class="ic" width="15" height="15"><use href="#i-mail"/></svg>
+          <input type="email" id="ar_e" placeholder="admin@institution.edu" oninput="vEmail('ar_e')"/>
+        </div>
+        <div class="h" id="ar_eh"></div>
+      </div>
+      <div class="fg">
+        <label>Username</label>
+        <div class="iw">
+          <svg class="ic" width="15" height="15"><use href="#i-user"/></svg>
+          <input type="text" id="ar_u" placeholder="Choose a username" oninput="vUser('ar_u')"/>
+        </div>
+        <div class="h" id="ar_uh">4–20 chars, letters/numbers/underscore.</div>
+      </div>
+
+      <div class="sd"></div>
+      <div class="sc">Security</div>
+      <div class="fg">
+        <label>Password</label>
+        <div class="iw">
+          <svg class="ic" width="15" height="15"><use href="#i-lock"/></svg>
+          <input type="password" id="ar_p" placeholder="Create a strong password" oninput="str('ar_p','ar_')"/>
+          <button class="ey" onclick="eye('ar_p')"><svg width="14" height="14"><use href="#i-eye"/></svg></button>
+        </div>
+        <div class="sb"><div class="sg" id="ar_s1"></div><div class="sg" id="ar_s2"></div><div class="sg" id="ar_s3"></div><div class="sg" id="ar_s4"></div></div>
+        <div class="sl" id="ar_sl">Enter a password</div>
+      </div>
+      <div class="fg">
+        <label>Confirm Password</label>
+        <div class="iw">
+          <svg class="ic" width="15" height="15"><use href="#i-lock"/></svg>
+          <input type="password" id="ar_c" placeholder="Re-enter your password" oninput="mtch('ar_c','ar_p')"/>
+          <button class="ey" onclick="eye('ar_c')"><svg width="14" height="14"><use href="#i-eye"/></svg></button>
+        </div>
+        <div class="h" id="ar_ch"></div>
+      </div>
+
+      <div class="sd"></div>
+      <div class="sc">Verification</div>
+      <div class="fg">
+        <label>OTP</label>
+        <div class="iw">
+          <svg class="ic" width="15" height="15"><use href="#i-otp"/></svg>
+          <input type="text" id="ar_o" placeholder="Enter OTP" maxlength="6" oninput="vOtp('ar_o')"/>
+        </div>
+        <div class="h" id="ar_oh"></div>
+      </div>
+
+      <button class="btn bg" onclick="asignup()">Create Admin Account</button>
+      <div class="lr"><a onclick="go('p2')">Already have an account? Sign in →</a></div>
+    </div>
+
+  </div><!-- /R -->
+</div><!-- /shell -->
+
+<script>
+// ── Navigate between pages ──
+const go = id => {
+  document.querySelectorAll('.pg').forEach(p => p.classList.add('hide'));
+  document.getElementById(id).classList.remove('hide');
+};
+
+// ── Toggle password visibility ──
+const eye = id => {
+  const el = document.getElementById(id);
+  el.type = el.type === 'password' ? 'text' : 'password';
+};
+
+// ── Set input + hint state ──
+const setH = (id, ok, msg) => {
+  document.getElementById(id).className = ok ? 'v' : 'e';
+  const h = document.getElementById(id + 'h');
+  h.textContent = msg; h.className = 'h ' + (ok ? 'v' : 'e');
+};
+
+// ── Validators ──
+const vEmail = id => { const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById(id).value); setH(id, ok, ok ? '✓ Valid email' : '⚠ Invalid email address'); return ok; };
+const vUser  = id => { const ok = /^[a-zA-Z0-9_]{4,20}$/.test(document.getElementById(id).value);        setH(id, ok, ok ? '✓ Username valid' : '⚠ 4–20 chars, letters/numbers/underscore'); return ok; };
+const vOtp   = id => { const ok = document.getElementById(id).value === '123456';                          setH(id, ok, ok ? '✓ OTP verified'    : '⚠ Incorrect OTP — use 123456'); return ok; };
+const mtch = (cid, pid) => {
+  const ok = !!document.getElementById(pid).value && document.getElementById(pid).value === document.getElementById(cid).value;
+  setH(cid, ok, ok ? '✓ Passwords match' : '⚠ Passwords do not match');
+  return ok;
+};
+
+// ── Password strength meter ──
+const str = (id, px) => {
+  const v = document.getElementById(id).value; let s = 0;
+  if (v.length >= 8) s++; if (/[A-Z]/.test(v)) s++; if (/[0-9]/.test(v)) s++; if (/[^a-zA-Z0-9]/.test(v)) s++;
+  const cls = ['','w','f','g','s'], lbl = ['Enter a password','Weak','Fair','Good','Strong'], col = ['#a0b8a0','#e74c3c','#f59e0b','#3b82f6','#1fa868'];
+  [1,2,3,4].forEach(i => { document.getElementById(px+'s'+i).className = 'sg ' + (i <= s ? cls[s] : ''); });
+  const l = document.getElementById(px+'sl'); l.textContent = v ? lbl[s] : lbl[0]; l.style.color = v ? col[s] : col[0];
+};
+
+// ── Check required fields ──
+const need = ids => ids.every(id => { const v = document.getElementById(id).value.trim(); if (!v) document.getElementById(id).className = 'e'; return !!v; });
+
+// ── Submit handlers ──
+const slogin  = () => { if (!need(['s_u','s_p'])) return alert('Please fill in all fields.'); alert('Login successful! (Demo)'); };
+const alogin  = () => { if (!need(['a_u','a_p'])) return alert('Please fill in all fields.'); alert('Admin login successful! (Demo)'); };
+const ssignup = () => { if (!(vEmail('sr_e') & vUser('sr_u') & mtch('sr_c','sr_p') & vOtp('sr_o'))) return alert('Please fix the errors above.'); alert('Student account created! (Demo)'); go('p1'); };
+const asignup = () => { if (!(vEmail('ar_e') & vUser('ar_u') & mtch('ar_c','ar_p') & vOtp('ar_o'))) return alert('Please fix the errors above.'); alert('Admin account created! (Demo)');  go('p2'); };
+</script>
 </body>
 </html>
