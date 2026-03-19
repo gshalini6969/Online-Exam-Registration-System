@@ -1,11 +1,755 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExamPortal – Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #eef8f1;
+    --surface: #ffffff;
+    --surface2: #f0f8f3;
+    --border: #d4ead9;
+    --accent: #2d6a4f;
+    --accent2: #40916c;
+    --danger: #e63946;
+    --warn: #e9a800;
+    --text: #1b2d24;
+    --muted: #6b8f75;
+    --sidebar-w: 260px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); display: flex; min-height: 100vh; }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: var(--sidebar-w);
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    z-index: 100;
+    transition: transform .3s ease;
+    box-shadow: 2px 0 12px rgba(45,106,79,.06);
+  }
+  .logo {
+    padding: 24px 20px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .logo-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--accent);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-family: 'Inter', sans-serif; font-weight: 800; color: #ffffff; font-size: 16px;
+  }
+  .logo-text { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: -0.5px; }
+  .logo-sub { font-size: 11px; color: var(--muted); margin-top: 2px; letter-spacing: 1.5px; text-transform: uppercase; }
+
+  .nav-section { padding: 16px 12px 4px; }
+  .nav-label { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; padding: 0 8px 8px; }
+  .nav-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px; border-radius: 10px; cursor: pointer;
+    font-size: 14px; font-weight: 500; color: var(--muted);
+    transition: all .2s; margin-bottom: 2px;
+    border: 1px solid transparent;
+  }
+  .nav-item:hover { background: var(--surface2); color: var(--text); }
+  .nav-item.active { background: rgba(45,106,79,.12); color: var(--accent); border-color: rgba(45,106,79,.25); }
+  .nav-icon { width: 18px; text-align: center; font-size: 16px; flex-shrink: 0; }
+  .nav-badge {
+    margin-left: auto; background: var(--warn); color: #ffffff;
+    font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 20px;
+  }
+  .nav-badge.green { background: var(--accent); }
+  .nav-badge.red { background: var(--danger); }
+
+  .sidebar-footer {
+    margin-top: auto; padding: 16px 12px;
+    border-top: 1px solid var(--border);
+  }
+  .admin-card {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px; border-radius: 10px; background: var(--surface2);
+  }
+  .admin-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 13px; color: #ffffff;
+  }
+  .admin-name { font-size: 13px; font-weight: 600; }
+  .admin-role { font-size: 11px; color: var(--muted); }
+
+  /* MAIN */
+  .main { margin-left: var(--sidebar-w); flex: 1; display: flex; flex-direction: column; }
+
+  .topbar {
+    padding: 20px 32px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 16px; background: var(--bg);
+    position: sticky; top: 0; z-index: 50;
+  }
+  .topbar-title { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 800; flex: 1; }
+  .topbar-sub { font-size: 13px; color: var(--muted); font-weight: 400; margin-left: 8px; font-family: 'Inter', sans-serif; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 18px; border-radius: 10px; font-size: 13px;
+    font-weight: 600; cursor: pointer; border: none; font-family: 'Inter', sans-serif;
+    transition: all .2s;
+  }
+  .btn-primary { background: var(--accent); color: #ffffff; }
+  .btn-primary:hover { background: var(--accent2); }
+  .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-outline:hover { background: var(--surface2); }
+  .btn-danger { background: rgba(230,57,70,.1); color: var(--danger); border: 1px solid rgba(230,57,70,.25); }
+  .btn-danger:hover { background: rgba(230,57,70,.2); }
+  .btn-success { background: rgba(45,106,79,.12); color: var(--accent); border: 1px solid rgba(45,106,79,.3); }
+  .btn-success:hover { background: rgba(45,106,79,.2); }
+
+  .content { padding: 32px; }
+
+  /* PAGES */
+  .page { display: none; }
+  .page.active { display: block; animation: fadeIn .3s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* STATS */
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 20px 22px;
+    transition: border-color .2s;
+  }
+  .stat-card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(45,106,79,.1); }
+  .stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+  .stat-value { font-family: 'Inter', sans-serif; font-size: 32px; font-weight: 800; }
+  .stat-delta { font-size: 12px; margin-top: 4px; }
+  .stat-delta.up { color: var(--accent); }
+  .stat-delta.down { color: var(--danger); }
+
+  /* TABLE */
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden; margin-bottom: 24px;
+  }
+  .card-header {
+    padding: 18px 22px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .card-title { font-size: 15px; font-weight: 700; flex: 1; }
+  .card-body { padding: 0; }
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    padding: 12px 20px; font-size: 11px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 1px; text-align: left;
+    background: var(--surface2); border-bottom: 1px solid var(--border);
+  }
+  td { padding: 14px 20px; font-size: 13px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,.02); }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600;
+  }
+  .badge-green { background: rgba(45,106,79,.12); color: var(--accent); }
+  .badge-red { background: rgba(230,57,70,.12); color: var(--danger); }
+  .badge-yellow { background: rgba(233,168,0,.12); color: var(--warn); }
+  .badge-blue { background: rgba(64,145,108,.15); color: var(--accent2); }
+
+  /* FORM */
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+  label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  input, select, textarea {
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--text); border-radius: 10px; padding: 11px 14px;
+    font-size: 14px; font-family: 'Inter', sans-serif;
+    transition: border-color .2s; outline: none;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+  textarea { resize: vertical; min-height: 90px; }
+  select option { background: var(--surface2); }
+
+  /* SEARCH */
+  .search-bar {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 9px 14px; min-width: 220px;
+  }
+  .search-bar input {
+    border: none; background: transparent; padding: 0;
+    font-size: 13px; width: 100%; color: var(--text);
+  }
+  .search-icon { color: var(--muted); font-size: 14px; }
+
+  /* SECTION HEADERS */
+  .section-intro {
+    margin-bottom: 24px;
+  }
+  .section-intro h2 { font-family: 'Inter', sans-serif; font-size: 26px; font-weight: 800; margin-bottom: 4px; }
+  .section-intro p { color: var(--muted); font-size: 14px; }
+
+  /* REPORT CARDS */
+  .report-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .report-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px; cursor: pointer;
+    transition: all .2s; position: relative; overflow: hidden;
+  }
+  .report-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .report-card.green::before { background: var(--accent); }
+  .report-card.blue::before { background: var(--accent2); }
+  .report-card.yellow::before { background: var(--warn); }
+  .report-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(45,106,79,.1); }
+  .report-icon { font-size: 28px; margin-bottom: 12px; }
+  .report-name { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+  .report-desc { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+
+  /* HALL TICKET */
+  .ticket-preview {
+    background: var(--surface2); border: 2px dashed var(--border);
+    border-radius: 14px; padding: 28px;
+    display: flex; gap: 24px; align-items: flex-start;
+  }
+  .ticket-left { flex: 1; }
+  .ticket-right { width: 100px; }
+  .ticket-field { margin-bottom: 16px; }
+  .ticket-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+  .ticket-value { font-size: 14px; font-weight: 600; }
+  .barcode {
+    background: white; border-radius: 6px; padding: 8px;
+    display: flex; gap: 2px; height: 60px; align-items: stretch;
+  }
+  .bar { background: var(--text); width: 3px; }
+  .bar.thin { width: 1px; }
+
+  /* FILTER ROW */
+  .filter-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .filter-chip {
+    padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600;
+    cursor: pointer; border: 1px solid var(--border); color: var(--muted);
+    transition: all .2s;
+  }
+  .filter-chip.active, .filter-chip:hover { border-color: var(--accent); color: var(--accent); background: rgba(45,106,79,.1); }
+
+  .action-row { display: flex; gap: 8px; }
+</style>
 </head>
 <body>
-    
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="logo">
+    <div class="logo-badge">
+      <div class="logo-icon">E</div>
+      <div>
+        <div class="logo-text">ExamPortal</div>
+        <div class="logo-sub">Admin Console</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Dashboard</div>
+    <div class="nav-item active" onclick="showPage('dashboard', this)">
+      <span class="nav-icon">⬡</span> Overview
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Exam Management</div>
+    <div class="nav-item" onclick="showPage('manage-exams', this)">
+      <span class="nav-icon">📋</span> Manage Exam Details
+    </div>
+    <div class="nav-item" onclick="showPage('registrations', this)">
+      <span class="nav-icon">✅</span> Approve / Reject Registrations
+      <span class="nav-badge">12</span>
+    </div>
+    <div class="nav-item" onclick="showPage('hall-tickets', this)">
+      <span class="nav-icon">🎫</span> Generate Hall Tickets
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Reports</div>
+    <div class="nav-item" onclick="showPage('reports', this)">
+      <span class="nav-icon">📊</span> Generate Reports
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="admin-card">
+      <div class="admin-avatar">A</div>
+      <div>
+        <div class="admin-name">Administrator</div>
+        <div class="admin-role">Super Admin</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-title" id="topbar-title">Overview <span class="topbar-sub">Admin Dashboard</span></div>
+    <button class="btn btn-outline" style="font-size:12px;">🔔 Notifications</button>
+    <button class="btn btn-primary" id="topbar-action" onclick="handleTopAction()">+ New Exam</button>
+  </div>
+
+  <div class="content">
+
+    <!-- PAGE: DASHBOARD -->
+    <div class="page active" id="page-dashboard">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Students</div>
+          <div class="stat-value" style="color:var(--accent2)">1,284</div>
+          <div class="stat-delta up">↑ 8% this month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Active Exams</div>
+          <div class="stat-value" style="color:var(--accent)">7</div>
+          <div class="stat-delta up">↑ 2 new added</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Pending Approvals</div>
+          <div class="stat-value" style="color:var(--warn)">12</div>
+          <div class="stat-delta down">⚠ Needs attention</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Hall Tickets Issued</div>
+          <div class="stat-value">946</div>
+          <div class="stat-delta up">↑ 73.7% issued</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Recent Registrations</span>
+          <button class="btn btn-outline" onclick="showPage('registrations', document.querySelector('[onclick*=registrations]'))">View All</button>
+        </div>
+        <div class="card-body">
+          <table>
+            <thead><tr>
+              <th>Student Name</th><th>Exam</th><th>Subjects</th><th>Applied</th><th>Status</th><th>Action</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Priya Sharma</strong><br><small style="color:var(--muted)">PRN: 2024001</small></td>
+                <td>GATE 2026</td><td>CSE</td><td>Mar 15</td>
+                <td><span class="badge badge-yellow">⏳ Pending</span></td>
+                <td class="action-row">
+                  <button class="btn btn-success" style="padding:5px 12px;font-size:12px">✓</button>
+                  <button class="btn btn-danger" style="padding:5px 12px;font-size:12px">✗</button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Ravi Kumar</strong><br><small style="color:var(--muted)">PRN: 2024002</small></td>
+                <td>JEE Mains</td><td>PCM</td><td>Mar 14</td>
+                <td><span class="badge badge-green">✓ Approved</span></td>
+                <td><span style="color:var(--muted);font-size:12px">Processed</span></td>
+              </tr>
+              <tr>
+                <td><strong>Ananya Reddy</strong><br><small style="color:var(--muted)">PRN: 2024003</small></td>
+                <td>UPSC Prelims</td><td>GS I, GS II</td><td>Mar 13</td>
+                <td><span class="badge badge-yellow">⏳ Pending</span></td>
+                <td class="action-row">
+                  <button class="btn btn-success" style="padding:5px 12px;font-size:12px">✓</button>
+                  <button class="btn btn-danger" style="padding:5px 12px;font-size:12px">✗</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: MANAGE EXAMS -->
+    <div class="page" id="page-manage-exams">
+      <div class="section-intro">
+        <h2>Manage Exam Details</h2>
+        <p>Create, edit, and configure all exam schedules and metadata.</p>
+      </div>
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-header">
+          <span class="card-title">Add New Exam</span>
+        </div>
+        <div class="card-body" style="padding:24px">
+          <div class="form-grid">
+            <div class="form-group"><label>Exam Name</label><input type="text" placeholder="e.g. GATE 2026"></div>
+            <div class="form-group"><label>Exam Code</label><input type="text" placeholder="e.g. GATE26"></div>
+            <div class="form-group"><label>Exam Date</label><input type="date"></div>
+            <div class="form-group"><label>Last Date to Register</label><input type="date"></div>
+            <div class="form-group"><label>Exam Mode</label>
+              <select><option>Online</option><option>Offline</option><option>Hybrid</option></select>
+            </div>
+            <div class="form-group"><label>Exam Fee (₹)</label><input type="number" placeholder="500"></div>
+            <div class="form-group full"><label>Description</label><textarea placeholder="Describe eligibility, pattern, etc."></textarea></div>
+            <div class="form-group"><label>Available Subjects</label><input type="text" placeholder="CSE, ECE, ME (comma separated)"></div>
+            <div class="form-group"><label>Exam Center</label><input type="text" placeholder="e.g. Amaravati, Hyderabad"></div>
+          </div>
+          <div style="margin-top:20px;display:flex;gap:12px">
+            <button class="btn btn-primary">💾 Save Exam</button>
+            <button class="btn btn-outline">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">All Exams</span>
+          <div class="search-bar"><span class="search-icon">🔍</span><input type="text" placeholder="Search exams..."></div>
+        </div>
+        <div class="card-body">
+          <table>
+            <thead><tr><th>Exam</th><th>Code</th><th>Date</th><th>Mode</th><th>Registrations</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>GATE 2026</strong></td><td>GATE26</td><td>Feb 8, 2026</td>
+                <td><span class="badge badge-blue">Online</span></td><td>342</td>
+                <td><span class="badge badge-green">Active</span></td>
+                <td class="action-row"><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">Edit</button><button class="btn btn-danger" style="padding:5px 12px;font-size:12px">Delete</button></td>
+              </tr>
+              <tr>
+                <td><strong>JEE Mains 2026</strong></td><td>JEE26</td><td>Apr 2, 2026</td>
+                <td><span class="badge badge-blue">Online</span></td><td>589</td>
+                <td><span class="badge badge-green">Active</span></td>
+                <td class="action-row"><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">Edit</button><button class="btn btn-danger" style="padding:5px 12px;font-size:12px">Delete</button></td>
+              </tr>
+              <tr>
+                <td><strong>UPSC Prelims</strong></td><td>UPSC26</td><td>May 25, 2026</td>
+                <td><span class="badge badge-yellow">Offline</span></td><td>211</td>
+                <td><span class="badge badge-yellow">Draft</span></td>
+                <td class="action-row"><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">Edit</button><button class="btn btn-danger" style="padding:5px 12px;font-size:12px">Delete</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: REGISTRATIONS -->
+    <div class="page" id="page-registrations">
+      <div class="section-intro">
+        <h2>Approve / Reject Registrations</h2>
+        <p>Review and process student exam registration requests.</p>
+      </div>
+      <div class="filter-row">
+        <span class="filter-chip active" data-filter="all" onclick="filterRegistrations('all', this)">All (<span class="chip-count-all">4</span>)</span>
+        <span class="filter-chip" data-filter="pending" onclick="filterRegistrations('pending', this)">Pending (<span class="chip-count-pending">0</span>)</span>
+        <span class="filter-chip" data-filter="approved" onclick="filterRegistrations('approved', this)">Approved (<span class="chip-count-approved">0</span>)</span>
+        <span class="filter-chip" data-filter="rejected" onclick="filterRegistrations('rejected', this)">Rejected (<span class="chip-count-rejected">0</span>)</span>
+        <div style="margin-left:auto" class="search-bar"><span class="search-icon">🔍</span><input type="text" placeholder="Search student..." oninput="searchRegistrations(this.value)"></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Registration Requests</span>
+          <button class="btn btn-success" style="font-size:12px">✓ Approve All Pending</button>
+        </div>
+        <div class="card-body">
+          <table>
+            <thead><tr><th>Student</th><th>PRN</th><th>Exam</th><th>Subjects Selected</th><th>Fee Paid</th><th>Applied On</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="reg-table">
+              <tr data-status="pending">
+                <td><strong>Priya Sharma</strong></td><td>2024001</td><td>GATE 2026</td><td>CSE</td>
+                <td><span class="badge badge-green">✓ Paid</span></td><td>Mar 15</td>
+                <td><span class="badge badge-yellow">Pending</span></td>
+                <td class="action-row">
+                  <button class="btn btn-success" style="padding:5px 12px;font-size:12px" onclick="updateStatus(this,'Approved')">✓ Approve</button>
+                  <button class="btn btn-danger" style="padding:5px 12px;font-size:12px" onclick="updateStatus(this,'Rejected')">✗ Reject</button>
+                </td>
+              </tr>
+              <tr data-status="pending">
+                <td><strong>Ananya Reddy</strong></td><td>2024003</td><td>UPSC Prelims</td><td>GS I, GS II</td>
+                <td><span class="badge badge-green">✓ Paid</span></td><td>Mar 13</td>
+                <td><span class="badge badge-yellow">Pending</span></td>
+                <td class="action-row">
+                  <button class="btn btn-success" style="padding:5px 12px;font-size:12px" onclick="updateStatus(this,'Approved')">✓ Approve</button>
+                  <button class="btn btn-danger" style="padding:5px 12px;font-size:12px" onclick="updateStatus(this,'Rejected')">✗ Reject</button>
+                </td>
+              </tr>
+              <tr data-status="pending">
+                <td><strong>Mohit Verma</strong></td><td>2024007</td><td>JEE Mains</td><td>PCM</td>
+                <td><span class="badge badge-red">✗ Unpaid</span></td><td>Mar 12</td>
+                <td><span class="badge badge-yellow">Pending</span></td>
+                <td class="action-row">
+                  <button class="btn btn-success" style="padding:5px 12px;font-size:12px" onclick="updateStatus(this,'Approved')">✓ Approve</button>
+                  <button class="btn btn-danger" style="padding:5px 12px;font-size:12px" onclick="updateStatus(this,'Rejected')">✗ Reject</button>
+                </td>
+              </tr>
+              <tr data-status="approved">
+                <td><strong>Ravi Kumar</strong></td><td>2024002</td><td>JEE Mains</td><td>PCM</td>
+                <td><span class="badge badge-green">✓ Paid</span></td><td>Mar 14</td>
+                <td><span class="badge badge-green">Approved</span></td>
+                <td><span style="color:var(--muted);font-size:12px">Processed</span></td>
+              </tr>
+              <tr data-status="rejected">
+                <td><strong>Kiran Mehta</strong></td><td>2024009</td><td>GATE 2026</td><td>ECE</td>
+                <td><span class="badge badge-red">✗ Unpaid</span></td><td>Mar 11</td>
+                <td><span class="badge badge-red">Rejected</span></td>
+                <td><span style="color:var(--muted);font-size:12px">Processed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: HALL TICKETS -->
+    <div class="page" id="page-hall-tickets">
+      <div class="section-intro">
+        <h2>Generate Hall Tickets</h2>
+        <p>Issue and manage hall tickets for approved students.</p>
+      </div>
+      <div style="display:flex;gap:16px;margin-bottom:24px">
+        <div class="card" style="flex:1;margin-bottom:0">
+          <div class="card-header"><span class="card-title">Generate Bulk Hall Tickets</span></div>
+          <div class="card-body" style="padding:22px">
+            <div class="form-grid" style="margin-bottom:16px">
+              <div class="form-group"><label>Select Exam</label>
+                <select><option>GATE 2026</option><option>JEE Mains 2026</option><option>UPSC Prelims</option></select>
+              </div>
+              <div class="form-group"><label>Filter by Subject</label>
+                <select><option>All Subjects</option><option>CSE</option><option>ECE</option><option>ME</option></select>
+              </div>
+            </div>
+            <div style="background:var(--surface2);border-radius:10px;padding:16px;margin-bottom:16px;font-size:13px;color:var(--muted)">
+              <strong style="color:var(--text)">342 approved students</strong> eligible for hall ticket generation for GATE 2026.
+            </div>
+            <button class="btn btn-primary">🎫 Generate All Hall Tickets</button>
+          </div>
+        </div>
+        <div class="card" style="flex:1;margin-bottom:0">
+          <div class="card-header"><span class="card-title">Single Student</span></div>
+          <div class="card-body" style="padding:22px">
+            <div class="form-group" style="margin-bottom:14px"><label>Student PRN / Roll No.</label><input type="text" placeholder="Enter PRN"></div>
+            <div class="form-group" style="margin-bottom:16px"><label>Exam</label><select><option>GATE 2026</option><option>JEE Mains</option></select></div>
+            <button class="btn btn-outline">🔍 Lookup & Generate</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">Hall Ticket Preview</span><button class="btn btn-primary" style="font-size:12px">⬇ Download PDF</button></div>
+        <div class="card-body" style="padding:24px">
+          <div class="ticket-preview">
+            <div class="ticket-left">
+              <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:800;margin-bottom:4px;color:var(--accent)">GATE 2026 — Hall Ticket</div>
+              <div style="font-size:12px;color:var(--muted);margin-bottom:20px">Issued by ExamPortal Admin • Valid ID Required at Center</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+                <div class="ticket-field"><div class="ticket-label">Student Name</div><div class="ticket-value">Priya Sharma</div></div>
+                <div class="ticket-field"><div class="ticket-label">Roll Number</div><div class="ticket-value">GATE26-CSE-0042</div></div>
+                <div class="ticket-field"><div class="ticket-label">PRN</div><div class="ticket-value">2024001</div></div>
+                <div class="ticket-field"><div class="ticket-label">Exam Date</div><div class="ticket-value">Feb 8, 2026</div></div>
+                <div class="ticket-field"><div class="ticket-label">Reporting Time</div><div class="ticket-value">9:00 AM</div></div>
+                <div class="ticket-field"><div class="ticket-label">Subject</div><div class="ticket-value">Computer Science</div></div>
+                <div class="ticket-field"><div class="ticket-label">Exam Center</div><div class="ticket-value">Room 201, Block A</div></div>
+                <div class="ticket-field"><div class="ticket-label">Center Address</div><div class="ticket-value">Amaravati, AP</div></div>
+                <div class="ticket-field"><div class="ticket-label">Duration</div><div class="ticket-value">3 Hours</div></div>
+              </div>
+            </div>
+            <div class="ticket-right">
+              <div style="width:80px;height:80px;background:var(--surface);border-radius:8px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;font-size:30px;border:1px solid var(--border)">👤</div>
+              <div class="barcode">
+                <div class="bar"></div><div class="bar thin"></div><div class="bar"></div><div class="bar thin"></div>
+                <div class="bar thin"></div><div class="bar"></div><div class="bar thin"></div><div class="bar"></div>
+                <div class="bar"></div><div class="bar thin"></div><div class="bar"></div>
+              </div>
+              <div style="font-size:9px;color:var(--muted);text-align:center;margin-top:4px">GATE26CSE0042</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">Issued Hall Tickets</span>
+          <div class="search-bar"><span class="search-icon">🔍</span><input type="text" placeholder="Search student..."></div>
+        </div>
+        <div class="card-body">
+          <table>
+            <thead><tr><th>Student</th><th>Roll No.</th><th>Exam</th><th>Center</th><th>Issued On</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Priya Sharma</strong></td><td>GATE26-CSE-0042</td><td>GATE 2026</td><td>Amaravati</td><td>Mar 17</td>
+                <td><span class="badge badge-green">Issued</span></td>
+                <td><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">⬇ Download</button></td>
+              </tr>
+              <tr>
+                <td><strong>Ravi Kumar</strong></td><td>JEE26-PCM-0013</td><td>JEE Mains</td><td>Hyderabad</td><td>Mar 16</td>
+                <td><span class="badge badge-green">Issued</span></td>
+                <td><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">⬇ Download</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: REPORTS -->
+    <div class="page" id="page-reports">
+      <div class="section-intro">
+        <h2>Generate Reports</h2>
+        <p>Export detailed analytics and summaries for all exam activities.</p>
+      </div>
+      <div class="report-grid" style="margin-bottom:28px">
+        <div class="report-card green">
+          <div class="report-icon">📊</div>
+          <div class="report-name">Registration Report</div>
+          <div class="report-desc">Total registrations, subject-wise breakdown, approval stats.</div>
+          <button class="btn btn-success" style="font-size:12px">Generate → Export</button>
+        </div>
+        <div class="report-card blue">
+          <div class="report-icon">💰</div>
+          <div class="report-name">Payment Report</div>
+          <div class="report-desc">Fee collected, pending dues, payment gateway summary.</div>
+          <button class="btn btn-outline" style="font-size:12px;border-color:var(--accent2);color:var(--accent2)">Generate → Export</button>
+        </div>
+        <div class="report-card yellow">
+          <div class="report-icon">🎫</div>
+          <div class="report-name">Hall Ticket Report</div>
+          <div class="report-desc">Issued vs pending hall tickets per exam and center.</div>
+          <button class="btn btn-outline" style="font-size:12px;border-color:var(--warn);color:var(--warn)">Generate → Export</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Custom Report Builder</span>
+          <button class="btn btn-primary" style="font-size:12px">⬇ Export CSV</button>
+        </div>
+        <div class="card-body" style="padding:22px">
+          <div class="form-grid">
+            <div class="form-group"><label>Report Type</label>
+              <select><option>Registration Summary</option><option>Payment Summary</option><option>Student-wise</option><option>Exam-wise</option></select>
+            </div>
+            <div class="form-group"><label>Exam Filter</label>
+              <select><option>All Exams</option><option>GATE 2026</option><option>JEE Mains</option><option>UPSC Prelims</option></select>
+            </div>
+            <div class="form-group"><label>Date From</label><input type="date"></div>
+            <div class="form-group"><label>Date To</label><input type="date"></div>
+          </div>
+          <div style="margin-top:16px;display:flex;gap:12px">
+            <button class="btn btn-primary">📊 Preview Report</button>
+            <button class="btn btn-outline">⬇ Export PDF</button>
+            <button class="btn btn-outline">⬇ Export Excel</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">Report Preview — Registration Summary</span></div>
+        <div class="card-body">
+          <table>
+            <thead><tr><th>Exam</th><th>Total Registered</th><th>Approved</th><th>Rejected</th><th>Pending</th><th>Fee Collected</th></tr></thead>
+            <tbody>
+              <tr><td><strong>GATE 2026</strong></td><td>342</td><td><span class="badge badge-green">318</span></td><td><span class="badge badge-red">8</span></td><td><span class="badge badge-yellow">16</span></td><td>₹1,59,000</td></tr>
+              <tr><td><strong>JEE Mains 2026</strong></td><td>589</td><td><span class="badge badge-green">531</span></td><td><span class="badge badge-red">21</span></td><td><span class="badge badge-yellow">37</span></td><td>₹2,94,500</td></tr>
+              <tr><td><strong>UPSC Prelims</strong></td><td>211</td><td><span class="badge badge-green">194</span></td><td><span class="badge badge-red">5</span></td><td><span class="badge badge-yellow">12</span></td><td>₹1,05,500</td></tr>
+              <tr style="font-weight:700">
+                <td>TOTAL</td><td>1,142</td><td><span class="badge badge-green">1,043</span></td><td><span class="badge badge-red">34</span></td><td><span class="badge badge-yellow">65</span></td><td>₹5,59,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</main>
+
+<script>
+  const topbarTitles = {
+    'dashboard': ['Overview', 'Admin Dashboard', '+ New Exam'],
+    'manage-exams': ['Manage Exam Details', 'Configure & schedule exams', '+ Add Exam'],
+    'registrations': ['Registrations', 'Approve or reject student requests', 'Bulk Approve'],
+    'hall-tickets': ['Hall Tickets', 'Issue hall tickets to approved students', '🎫 Generate All'],
+    'reports': ['Reports', 'Analytics & exports', '⬇ Export All'],
+  };
+
+  function showPage(id, el) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    el.classList.add('active');
+    const t = topbarTitles[id];
+    document.getElementById('topbar-title').innerHTML = t[0] + ' <span class="topbar-sub">' + t[1] + '</span>';
+    document.getElementById('topbar-action').textContent = t[2];
+  }
+
+  function handleTopAction() {}
+
+  // Track active filter
+  let activeFilter = 'all';
+  let activeSearch = '';
+
+  function updateCounts() {
+    const rows = document.querySelectorAll('#reg-table tr');
+    let counts = { all: 0, pending: 0, approved: 0, rejected: 0 };
+    rows.forEach(row => {
+      const s = row.dataset.status;
+      counts.all++;
+      if (counts[s] !== undefined) counts[s]++;
+    });
+    document.querySelector('.chip-count-all').textContent = counts.all;
+    document.querySelector('.chip-count-pending').textContent = counts.pending;
+    document.querySelector('.chip-count-approved').textContent = counts.approved;
+    document.querySelector('.chip-count-rejected').textContent = counts.rejected;
+  }
+
+  function applyFilter() {
+    const rows = document.querySelectorAll('#reg-table tr');
+    rows.forEach(row => {
+      const statusMatch = activeFilter === 'all' || row.dataset.status === activeFilter;
+      const searchText = row.textContent.toLowerCase();
+      const searchMatch = activeSearch === '' || searchText.includes(activeSearch.toLowerCase());
+      row.style.display = (statusMatch && searchMatch) ? '' : 'none';
+    });
+  }
+
+  function filterRegistrations(filter, chipEl) {
+    activeFilter = filter;
+    document.querySelectorAll('[data-filter]').forEach(c => c.classList.remove('active'));
+    chipEl.classList.add('active');
+    applyFilter();
+  }
+
+  function searchRegistrations(query) {
+    activeSearch = query;
+    applyFilter();
+  }
+
+  function updateStatus(btn, status) {
+    const row = btn.closest('tr');
+    const statusCell = row.querySelector('td:nth-child(7)');
+    const actionCell = row.querySelector('td:nth-child(8)');
+    if (status === 'Approved') {
+      statusCell.innerHTML = '<span class="badge badge-green">Approved</span>';
+      row.dataset.status = 'approved';
+    } else {
+      statusCell.innerHTML = '<span class="badge badge-red">Rejected</span>';
+      row.dataset.status = 'rejected';
+    }
+    actionCell.innerHTML = '<span style="color:var(--muted);font-size:12px">Processed</span>';
+    updateCounts();
+    applyFilter();
+  }
+
+  // Init counts on load
+  document.addEventListener('DOMContentLoaded', () => {
+    updateCounts();
+  });
+</script>
 </body>
 </html>
