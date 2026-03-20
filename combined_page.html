@@ -423,7 +423,6 @@ textarea{resize:vertical;min-height:80px}
       </svg>
       <div class="Lt">Online Exam<br>Registration System</div>
       <div class="Ls">A seamless portal for exam registration &amp; management.</div>
-      <div class="dots"><div class="d a"></div><div class="d"></div><div class="d"></div></div>
     </div>
 
     <!-- RIGHT PANEL -->
@@ -512,7 +511,7 @@ textarea{resize:vertical;min-height:80px}
         <div class="sd"></div><div class="sc">Verification</div>
         <div class="fg"><label>OTP</label>
           <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-otp"/></svg>
-            <input type="text" id="sr_o" placeholder="Enter OTP (123456)" maxlength="6" oninput="vOtp('sr_o')"/></div>
+            <input type="number" id="sr_o" placeholder="Enter OTP" maxlength="6" oninput="vOtp('sr_o')"/></div>
           <div class="h" id="sr_oh"></div></div>
         <button class="btn-auth bg" onclick="ssignup()">Create Account</button>
         <div class="lr"><a onclick="authGo('p1')">Already have an account? Sign in →</a></div>
@@ -546,7 +545,7 @@ textarea{resize:vertical;min-height:80px}
         <div class="sd"></div><div class="sc">Verification</div>
         <div class="fg"><label>OTP</label>
           <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-otp"/></svg>
-            <input type="text" id="ar_o" placeholder="Enter OTP (123456)" maxlength="6" oninput="vOtp('ar_o')"/></div>
+            <input type="number" id="ar_o" placeholder="Enter OTP" maxlength="6" oninput="vOtp('ar_o')"/></div>
           <div class="h" id="ar_oh"></div></div>
         <button class="btn-auth bg" onclick="asignup()">Create Admin Account</button>
         <div class="lr"><a onclick="authGo('p2')">Already have an account? Sign in →</a></div>
@@ -1214,7 +1213,7 @@ const setH = (id, ok, msg) => {
 
 const vEmail = id => { const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById(id).value); setH(id, ok, ok ? '✓ Valid email' : '⚠ Invalid email address'); return ok; };
 const vUser  = id => { const ok = /^[a-zA-Z0-9_]{4,20}$/.test(document.getElementById(id).value); setH(id, ok, ok ? '✓ Username valid' : '⚠ 4–20 chars, letters/numbers/underscore'); return ok; };
-const vOtp   = id => { const ok = document.getElementById(id).value === '123456'; setH(id, ok, ok ? '✓ OTP verified' : '⚠ Incorrect OTP — use 123456'); return ok; };
+const vOtp   = id => { const ok = document.getElementById(id).value === '123456'; setH(id, ok, ok ? '✓ OTP verified' : '⚠ Incorrect OTP'); return ok; };
 const mtch = (cid, pid) => {
   const ok = !!document.getElementById(pid).value && document.getElementById(pid).value === document.getElementById(cid).value;
   setH(cid, ok, ok ? '✓ Passwords match' : '⚠ Passwords do not match');
@@ -1253,7 +1252,7 @@ function enterApp(role) {
 
 const slogin  = () => { if (!need(['s_u','s_p'])) return alert('Please fill in all fields.'); enterApp('student'); };
 const alogin  = () => { if (!need(['a_u','a_p'])) return alert('Please fill in all fields.'); enterApp('admin'); };
-const ssignup = () => { if (!(vEmail('sr_e') & vUser('sr_u') & mtch('sr_c','sr_p') & vOtp('sr_o'))) return alert('Please fix the errors above.'); alert('Student account created! (Demo)'); enterApp('student'); };
+const ssignup = () => { if (!(vEmail('sr_e') & vUser('sr_u') & mtch('sr_c','sr_p') & vOtp('sr_o'))) return alert('Please fix the errors above.'); alert('Student account created!'); enterApp('student'); };
 const asignup = () => { if (!(vEmail('ar_e') & vUser('ar_u') & mtch('ar_c','ar_p') & vOtp('ar_o'))) return alert('Please fix the errors above.'); enterApp('admin'); };
 
 function logout() {
