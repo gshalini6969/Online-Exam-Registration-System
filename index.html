@@ -441,7 +441,7 @@ const setH = (id, ok, msg) => {
 // ── Validators ──
 const vEmail = id => { const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById(id).value); setH(id, ok, ok ? '✓ Valid email' : '⚠ Invalid email address'); return ok; };
 const vUser  = id => { const ok = /^[a-zA-Z0-9_]{4,20}$/.test(document.getElementById(id).value);        setH(id, ok, ok ? '✓ Username valid' : '⚠ 4–20 chars, letters/numbers/underscore'); return ok; };
-const vOtp   = id => { const ok = document.getElementById(id).value === '123456';                          setH(id, ok, ok ? '✓ OTP verified'    : '⚠ Incorrect OTP — use 123456'); return ok; };
+const vOtp   = id => { const ok = document.getElementById(id).value === '123456';                          setH(id, ok, ok ? '✓ OTP verified'    : '⚠ Incorrect OTP'); return ok; };
 const mtch = (cid, pid) => {
   const ok = !!document.getElementById(pid).value && document.getElementById(pid).value === document.getElementById(cid).value;
   setH(cid, ok, ok ? '✓ Passwords match' : '⚠ Passwords do not match');
@@ -461,10 +461,10 @@ const str = (id, px) => {
 const need = ids => ids.every(id => { const v = document.getElementById(id).value.trim(); if (!v) document.getElementById(id).className = 'e'; return !!v; });
 
 // ── Submit handlers ──
-const slogin  = () => { if (!need(['s_u','s_p'])) return alert('Please fill in all fields.'); alert('Login successful! (Demo)'); };
-const alogin  = () => { if (!need(['a_u','a_p'])) return alert('Please fill in all fields.'); alert('Admin login successful! (Demo)'); };
-const ssignup = () => { if (!(vEmail('sr_e') & vUser('sr_u') & mtch('sr_c','sr_p') & vOtp('sr_o'))) return alert('Please fix the errors above.'); alert('Student account created! (Demo)'); go('p1'); };
-const asignup = () => { if (!(vEmail('ar_e') & vUser('ar_u') & mtch('ar_c','ar_p') & vOtp('ar_o'))) return alert('Please fix the errors above.'); alert('Admin account created! (Demo)');  go('p2'); };
+const slogin  = () => { if (!need(['s_u','s_p'])) return alert('Please fill in all fields.'); alert('Login successful!'); };
+const alogin  = () => { if (!need(['a_u','a_p'])) return alert('Please fill in all fields.'); alert('Admin login successful!'); };
+const ssignup = () => { if (!(vEmail('sr_e') & vUser('sr_u') & mtch('sr_c','sr_p') & vOtp('sr_o'))) return alert('Please fix the errors above.'); alert('Student account created!'); go('p1'); };
+const asignup = () => { if (!(vEmail('ar_e') & vUser('ar_u') & mtch('ar_c','ar_p') & vOtp('ar_o'))) return alert('Please fix the errors above.'); alert('Admin account created!');  go('p2'); };
 </script>
 </body>
 </html>
