@@ -42,42 +42,35 @@
 </div>
 
 <script>
-const responses = {
-  register:  "To register: 1) Login to student portal → 2) Go to Exam Registration → 3) Select subjects → 4) Pay fee → 5) Download hall ticket.",
-  subjects:  "Available subjects: CS401 - Data Structures, CS402 - DBMS, CS403 - OS, CS404 - Networks, CS405 - Software Engg, MA401 - Maths IV.",
-  payment:   "Accepted payments: UPI (GPay/PhonePe), Net Banking, Debit/Credit cards. Fee: ₹500/subject. Receipt is auto-generated.",
-  deadline:  "Deadlines: Registration open Mar 15 | Last date Mar 31 | Late fine (₹200) till Apr 5 | Hall ticket Apr 10 | Exams from Apr 20.",
-  cancel:    "Cancellation allowed before last date only. Refund in 7 working days. Go to My Registrations → Select subject → Cancel.",
-  status:    "Check status: Login → My Registrations. Status shows: Pending / Confirmed / Cancelled. Confirmation email is also sent.",
-  document:  "Required: Student ID, Enrollment Number, Fee clearance receipt, 75% attendance, passport photo (upload).",
-  default:   "I can help with: registration steps, subjects, fee payment, deadlines, cancellation, status check, or required documents. What do you need?"
-};
-
-function getReply(q) {
-  q = q.toLowerCase();
-  if (q.match(/register|registration/)) return responses.register;
-  if (q.match(/subject|course/))        return responses.subjects;
-  if (q.match(/pay|fee|payment/))       return responses.payment;
-  if (q.match(/deadline|date|when/))    return responses.deadline;
-  if (q.match(/cancel/))                return responses.cancel;
-  if (q.match(/status|check/))          return responses.status;
-  if (q.match(/document|need|require/)) return responses.document;
-  return responses.default;
-}
-
-function send() {
+async function send() {
   const inp = document.getElementById('inp');
   const chat = document.getElementById('chat');
   const text = inp.value.trim();
   if (!text) return;
 
+  // Show user message
   chat.innerHTML += `<div class="msg user">${text}</div>`;
   inp.value = '';
+  chat.scrollTop = chat.scrollHeight;
 
-  setTimeout(() => {
-    chat.innerHTML += `<div class="msg bot">${getReply(text)}</div>`;
-    chat.scrollTop = chat.scrollHeight;
-  }, 400);
+  // Show typing indicator
+  const typingId = 'typing-' + Date.now();
+  chat.innerHTML += `<div class="msg bot" id="${typingId}">⏳ Typing...</div>`;
+  chat.scrollTop = chat.scrollHeight;
+
+  try {
+    const res = await fetch('/api/chatbot/ask', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: text })
+    });
+    const data = await res.json();
+
+    // Replace typing indicator with real reply
+    document.getElementById(typingId).innerHTML = data.reply.replace(/\n/g, '<br>');
+  } catch {
+    document.getElementById(typingId).innerHTML = '⚠️ Connection error. Please try again.';
+  }
 
   chat.scrollTop = chat.scrollHeight;
 }
