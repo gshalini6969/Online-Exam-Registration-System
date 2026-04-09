@@ -5,17 +5,17 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>ExamPortal — Online Exam Registration System</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link 
+href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#eef8f1;--surface:#fff;--surface2:#f0f8f3;--border:#d4ead9;
-  --accent:#2d6a4f;--accent2:#40916c;--accent-light:rgba(45,106,79,.10);
-  --danger:#e63946;--warn:#e9a800;--text:#1b2d24;--muted:#6b8f75;
-  --green-bg:#b8ddc4;--sidebar-w:260px;
+ --bg:#eef8f1;--surface:#fff;--surface2:#f0f8f3;--border:#d4ead9;
+ --accent:#2d6a4f;--accent2:#40916c;--accent-light:rgba(45,106,79,.10);
+ --danger:#e63946;--warn:#e9a800;--text:#1b2d24;--muted:#6b8f75;
+ --green-bg:#b8ddc4;--sidebar-w:260px;
 }
 body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);min-height:100vh}
-
 /* AUTH */
 #auth-layer{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:var(--green-bg);z-index:1000;transition:opacity .4s,visibility .4s;padding:14px}
 #auth-layer.hidden{opacity:0;visibility:hidden;pointer-events:none}
@@ -72,7 +72,6 @@ body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);min-height:100
 .sc{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#a0b8a0;margin:12px 0 9px}
 .sd{height:1px;background:#edf5f0;margin:3px 0 13px}
 .cp{font-size:11px;color:#a0b8a0;text-align:center;margin-top:20px}
-
 /* APP */
 #app-layer{display:none;background:var(--bg);min-height:100vh;flex-direction:column}
 #app-layer.visible{display:flex}
@@ -80,7 +79,6 @@ body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);min-height:100
 #logout-btn{margin-left:auto;padding:7px 16px;border-radius:9px;border:1px solid var(--border);background:transparent;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;color:var(--muted);transition:all .2s}
 #logout-btn:hover{background:rgba(230,57,70,.08);color:var(--danger);border-color:rgba(230,57,70,.3)}
 #app-body{display:flex;flex:1;min-height:0}
-
 /* SIDEBAR */
 .sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:sticky;top:58px;height:calc(100vh - 58px);overflow-y:auto;flex-shrink:0;box-shadow:2px 0 12px rgba(45,106,79,.06)}
 .logo{padding:22px 20px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
@@ -102,7 +100,6 @@ body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);min-height:100
 .user-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;flex-shrink:0}
 .user-name{font-size:13px;font-weight:600}
 .user-id{font-size:11px;color:var(--muted)}
-
 /* MAIN */
 .main{flex:1;display:flex;flex-direction:column;min-width:0;overflow-y:auto}
 .topbar{padding:18px 30px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px;background:var(--surface);position:sticky;top:0;z-index:50}
@@ -112,7 +109,6 @@ body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);min-height:100
 .page{display:none}
 .page.active{display:block;animation:fadeIn .25s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-
 /* SHARED */
 .btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;border:none;font-family:inherit;transition:all .2s}
 .btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent2);transform:translateY(-1px)}
@@ -148,7 +144,7 @@ tr:hover td{background:rgba(45,106,79,.02)}
 .stat-delta{font-size:12px;margin-top:4px}
 .stat-delta.up{color:var(--accent)}.stat-delta.down{color:var(--danger)}
 .welcome-banner{background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);border-radius:16px;padding:24px 28px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;color:#fff;position:relative;overflow:hidden}
-.welcome-banner::after{content:'🎓';position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:64px;opacity:.2}
+.welcome-banner::after{content:' ';position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:64px;opacity:.2}
 .welcome-name{font-size:22px;font-weight:800;letter-spacing:-.4px;margin-bottom:4px}
 .welcome-sub{font-size:13px;opacity:.85}
 .welcome-prn{font-size:11px;opacity:.7;margin-top:6px;letter-spacing:1px;text-transform:uppercase}
@@ -223,7 +219,6 @@ textarea{resize:vertical;min-height:80px}
 .alert{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:12px;margin-bottom:16px;font-size:13px}
 .alert-warn{background:rgba(233,168,0,.1);border:1px solid rgba(233,168,0,.25);color:#7a5800}
 .alert-green{background:rgba(45,106,79,.1);border:1px solid rgba(45,106,79,.2);color:var(--accent)}
-
 /* ── ADD EXAM FORM ── */
 .add-exam-card .card-header{background:var(--surface2);padding:18px 24px}
 .add-exam-card .card-body{padding:24px}
@@ -231,13 +226,10 @@ textarea{resize:vertical;min-height:80px}
 .add-exam-card input:focus,.add-exam-card select:focus,.add-exam-card textarea:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(45,106,79,.08)}
 .add-exam-card input::placeholder,.add-exam-card textarea::placeholder{color:#b0c8b4}
 .add-exam-card .form-group label{font-size:11px;font-weight:700;color:#3a6a4a;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px}
-
 /* ══════════════════════════════════════
-   HALL TICKET PAGE — NEW STYLES
+ HALL TICKET PAGE — NEW STYLES
 ══════════════════════════════════════ */
 .ht-two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
-
-/* generation panel cards */
 .ht-panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
 .ht-panel-header{padding:16px 22px;border-bottom:1px solid var(--border);font-size:14px;font-weight:700;color:var(--text)}
 .ht-panel-body{padding:22px}
@@ -247,21 +239,13 @@ textarea{resize:vertical;min-height:80px}
 .ht-field-group select,.ht-field-group input{background:#f8fcf9;border:1.5px solid var(--border);border-radius:10px;padding:10px 13px;font-size:13px;color:var(--text);font-family:inherit;outline:none;transition:all .2s;width:100%}
 .ht-field-group select:focus,.ht-field-group input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(45,106,79,.08)}
 .ht-field-group input::placeholder{color:#b0c8b4}
-
-/* info pill */
 .ht-count-pill{background:rgba(45,106,79,.07);border:1px solid rgba(45,106,79,.2);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--text);margin-bottom:18px;line-height:1.5}
 .ht-count-pill strong{color:var(--accent)}
-
-/* btn full */
 .btn-full{width:100%;justify-content:center;padding:12px}
-
-/* ── HALL TICKET PREVIEW ── */
 .ht-preview-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:24px}
 .ht-preview-header{padding:16px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .ht-preview-header-title{font-size:14px;font-weight:700}
 .ht-preview-body{padding:24px}
-
-/* the actual ticket */
 .admit-card{border:1.5px solid var(--border);border-radius:14px;overflow:hidden;background:#fff}
 .admit-card-top{background:linear-gradient(135deg,rgba(45,106,79,.06) 0%,rgba(64,145,108,.04) 100%);border-bottom:1.5px solid var(--border);padding:18px 24px;display:flex;align-items:flex-start;gap:0}
 .admit-card-top-info{flex:1}
@@ -275,15 +259,11 @@ textarea{resize:vertical;min-height:80px}
 .admit-card-barcode .bar.thin{width:1px}
 .admit-card-barcode .bar.gap{background:transparent;width:3px}
 .admit-card-barcode-num{font-size:9px;color:var(--muted);letter-spacing:.5px;font-weight:600}
-
 .admit-card-fields{padding:20px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .admit-field{display:flex;flex-direction:column;gap:3px}
 .admit-field-label{font-size:9.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px}
 .admit-field-value{font-size:13.5px;font-weight:600;color:var(--text)}
-
-/* issued hall tickets table */
 .ht-issued-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
-
 /* ── CHATBOT ── */
 #chat-fab{position:fixed;bottom:28px;right:28px;z-index:500;width:52px;height:52px;border-radius:50%;border:none;background:var(--accent);color:#fff;font-size:22px;cursor:pointer;box-shadow:0 4px 20px rgba(45,106,79,.4);transition:all .2s;display:none}
 #chat-fab:hover{background:var(--accent2);transform:scale(1.07)}
@@ -306,483 +286,453 @@ textarea{resize:vertical;min-height:80px}
 </style>
 </head>
 <body>
-
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
-  <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
-  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
-  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
-  <symbol id="i-otp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01M8 12h.01M16 12h.01"/></symbol>
-  <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
-  <symbol id="i-stu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
-  <symbol id="i-adm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+ <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+ <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+ <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+ <symbol id="i-otp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01M8 12h.01M16 12h.01"/></symbol>
+ <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
+ <symbol id="i-stu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
+ <symbol id="i-adm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
 </svg>
-
 <!-- AUTH LAYER -->
 <div id="auth-layer">
-  <div class="shell">
-    <div class="L">
-      <svg class="il" viewBox="0 0 280 238" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="138" cy="112" r="96" fill="#c2e2c8" opacity=".52"/>
-        <circle cx="57" cy="47" r="15" fill="#fff" stroke="#5a9a6a" stroke-width="1.5"/>
-        <line x1="57" y1="47" x2="57" y2="36" stroke="#5a9a6a" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="57" y1="47" x2="66" y2="52" stroke="#5a9a6a" stroke-width="1.5" stroke-linecap="round"/>
-        <text x="182" y="28" font-size="12" fill="#5a9a6a" opacity=".78" font-style="italic">f(x)</text>
-        <text x="228" y="62" font-size="11" fill="#5a9a6a" opacity=".72">√x</text>
-        <text x="248" y="106" font-size="15" fill="#5a9a6a" opacity=".72">π</text>
-        <text x="234" y="150" font-size="10" fill="#5a9a6a" opacity=".65">⟨x,y⟩</text>
-        <text x="200" y="180" font-size="9" fill="#5a9a6a" opacity=".6">x²</text>
-        <text x="36" y="78" font-size="11" fill="#5a9a6a" opacity=".65">x-y</text>
-        <text x="22" y="120" font-size="10" fill="#5a9a6a" opacity=".6">(a,b)</text>
-        <path d="M250 54 L261 66 L255 65 L258 75 L250 64 L245 66Z" stroke="#5a9a6a" stroke-width="1.2" fill="#e6f4ea" opacity=".82"/>
-        <rect x="186" y="87" width="44" height="40" rx="8" fill="#fff" stroke="#5a9a6a" stroke-width="1.3"/>
-        <circle cx="208" cy="106" r="7" stroke="#5a9a6a" stroke-width="1.3"/>
-        <circle cx="208" cy="106" r="3" fill="#5a9a6a" opacity=".5"/>
-        <g transform="rotate(-8,108,116)">
-          <rect x="80" y="83" width="56" height="72" rx="4" fill="#fff" stroke="#8ab89a" stroke-width="1.3"/>
-          <rect x="88" y="93" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
-          <rect x="99" y="93" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
-          <rect x="110" y="93" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
-          <rect x="88" y="105" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
-          <rect x="99" y="105" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
-          <rect x="110" y="105" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
-          <line x1="88" y1="120" x2="128" y2="120" stroke="#b8d4bc" stroke-width="1"/>
-          <line x1="88" y1="128" x2="124" y2="128" stroke="#b8d4bc" stroke-width="1"/>
-          <line x1="88" y1="136" x2="126" y2="136" stroke="#b8d4bc" stroke-width="1"/>
-          <line x1="88" y1="144" x2="120" y2="144" stroke="#b8d4bc" stroke-width="1"/>
-        </g>
-        <rect x="84" y="188" width="136" height="7" rx="3.5" fill="#6a9a76"/>
-        <rect x="92" y="195" width="5" height="26" rx="2.5" fill="#5a8a66"/>
-        <rect x="214" y="195" width="5" height="26" rx="2.5" fill="#5a8a66"/>
-        <circle cx="154" cy="142" r="15" fill="#f5c5a0"/>
-        <path d="M140 140 Q141 127 154 126 Q167 127 168 140 Q162 131 154 132 Q146 131 140 140Z" fill="#181410"/>
-        <path d="M136 166 Q140 157 154 156 Q168 157 172 166 L172 188 L136 188Z" fill="#eef9f2"/>
-        <path d="M136 166 L142 157 L154 160 L166 157 L172 166 L164 169 L154 165 L144 169Z" fill="#3a6a4a"/>
-        <path d="M137 172 Q126 176 118 183 Q114 188 116 193" stroke="#f5c5a0" stroke-width="7" stroke-linecap="round"/>
-        <circle cx="116" cy="194" r="4.5" fill="#f5c5a0"/>
-        <line x1="116" y1="194" x2="102" y2="202" stroke="#f0c040" stroke-width="2.5" stroke-linecap="round"/>
-        <circle cx="101" cy="203" r="1.5" fill="#2a1a00"/>
-        <rect x="90" y="181" width="56" height="7" rx="2" fill="#fff" stroke="#b8d4bc" stroke-width="1"/>
-        <line x1="35" y1="223" x2="35" y2="200" stroke="#4a8a5a" stroke-width="2"/>
-        <ellipse cx="27" cy="212" rx="10" ry="5.5" fill="#5aaa6a" transform="rotate(-25,27,212)"/>
-        <ellipse cx="43" cy="206" rx="10" ry="5.5" fill="#4a9a5a" transform="rotate(22,43,206)"/>
-        <rect x="182" y="208" width="28" height="34" rx="7" fill="#4aaa6a" stroke="#3a9a5a" stroke-width="1"/>
-        <rect x="187" y="214" width="18" height="12" rx="5" fill="#5aba7a"/>
-        <circle cx="196" cy="232" r="3" fill="#3a9a5a"/>
-      </svg>
-      <div class="Lt">Online Exam<br>Registration System</div>
-      <div class="Ls">A seamless portal for exam registration &amp; management.</div>
-      <div class="dots"><div class="d a"></div><div class="d"></div><div class="d"></div></div>
-    </div>
-    <div class="R">
-      <div id="p0" class="pg">
-        <div class="sn">Welcome <em>Back</em></div>
-        <div class="st">Select your role to continue to the portal.</div>
-        <div class="rc" onclick="authGo('p1')">
-          <div class="ri"><svg width="20" height="20"><use href="#i-stu"/></svg></div>
-          <div class="rb"><div class="rn">Student</div><div class="rd">Register &amp; track your exams</div></div>
-          <div class="ra">›</div>
-        </div>
-        <div class="dv"><div class="dl"></div><div class="dt">or</div><div class="dl"></div></div>
-        <div class="rc" onclick="authGo('p2')">
-          <div class="ri"><svg width="20" height="20"><use href="#i-adm"/></svg></div>
-          <div class="rb"><div class="rn">Administrator</div><div class="rd">Manage exams &amp; students</div></div>
-          <div class="ra">›</div>
-        </div>
-        <div class="cp">© 2026 Online Exam Registration System</div>
-      </div>
-      <div id="p1" class="pg hide">
-        <div class="bge"><svg width="11" height="11"><use href="#i-stu"/></svg> Student Portal</div>
-        <div class="ph">Sign in</div><div class="ps">Enter your credentials to access your dashboard.</div>
-        <div class="fg"><label>Username</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-user"/></svg><input type="text" id="s_u" placeholder="Your username"/></div></div>
-        <div class="fg"><label>Password</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg><input type="password" id="s_p" placeholder="Your password"/><button class="ey" onclick="eye('s_p')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div></div>
-        <div class="frg"><a onclick="alert('Contact your administrator to reset your password.')">Forgot password?</a></div>
-        <button class="btn-auth bd" onclick="slogin()">Sign in</button>
-        <div class="dv"><div class="dl"></div><div class="dt">New here?</div><div class="dl"></div></div>
-        <div class="lr"><a onclick="authGo('p3')">Create a Student Account →</a></div>
-        <div class="lr"><a class="bk" onclick="authGo('p0')">← Back</a></div>
-      </div>
-      <div id="p2" class="pg hide">
-        <div class="bge"><svg width="11" height="11"><use href="#i-adm"/></svg> Admin Portal</div>
-        <div class="ph">Admin Sign in</div><div class="ps">Access the admin panel to manage exams and students.</div>
-        <div class="fg"><label>Username</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-user"/></svg><input type="text" id="a_u" placeholder="Admin username"/></div></div>
-        <div class="fg"><label>Password</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg><input type="password" id="a_p" placeholder="Admin password"/><button class="ey" onclick="eye('a_p')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div></div>
-        <div class="frg"><a onclick="alert('Contact the IT department to reset your admin password.')">Forgot password?</a></div>
-        <button class="btn-auth bd" onclick="alogin()">Sign in as Admin</button>
-        <div class="dv"><div class="dl"></div><div class="dt">New admin?</div><div class="dl"></div></div>
-        <div class="lr"><a onclick="authGo('p4')">Create an Admin Account →</a></div>
-        <div class="lr"><a class="bk" onclick="authGo('p0')">← Back</a></div>
-      </div>
-      <div id="p3" class="pg hide">
-        <div class="bge"><svg width="11" height="11"><use href="#i-stu"/></svg> New Student</div>
-        <div class="ph">Create Account</div><div class="ps">Fill in the details below to get started.</div>
-        <div class="sc">Account Info</div>
-        <div class="fg"><label>Email Address</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-mail"/></svg><input type="email" id="sr_e" placeholder="you@example.com"/></div><div class="h" id="sr_eh"></div></div>
-        <div class="fg"><label>Username</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-user"/></svg><input type="text" id="sr_u" placeholder="Choose a username"/></div><div class="h" id="sr_uh">4–20 chars, letters/numbers/underscore.</div></div>
-        <div class="sd"></div><div class="sc">Academic Details</div>
-        <div class="fg"><label>Course</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-stu"/></svg><select id="sr_course"><option value="">— Select Course —</option><optgroup label="B.Tech"><option value="Btech-CSE">B.Tech — CSE</option><option value="Btech-ECE">B.Tech — ECE</option><option value="Btech-EEE">B.Tech — EEE</option><option value="Btech-CIVIL">B.Tech — Civil</option><option value="Btech-MECH">B.Tech — Mech</option></optgroup><optgroup label="M.Tech"><option value="Mtech-CSE">M.Tech — CSE</option><option value="Mtech-ECE">M.Tech — ECE</option><option value="Mtech-EEE">M.Tech — EEE</option><option value="Mtech-CIVIL">M.Tech — Civil</option><option value="Mtech-MECH">M.Tech — Mech</option></optgroup></select></div></div>
-        <div class="fg"><label>Semester</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-otp"/></svg><select id="sr_sem"><option value="">Select Semester</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div></div>
-        <div class="sd"></div><div class="sc">Security</div>
-        <div class="fg"><label>Password</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg><input type="password" id="sr_p" placeholder="Create a strong password" oninput="updatePasswordStrength('sr_p','sr_')"/><button class="ey" onclick="eye('sr_p')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div><div class="sb"><div class="sg" id="sr_s1"></div><div class="sg" id="sr_s2"></div><div class="sg" id="sr_s3"></div><div class="sg" id="sr_s4"></div></div><div class="sl" id="sr_sl">Enter a password</div></div>
-        <div class="fg"><label>Confirm Password</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg><input type="password" id="sr_c" placeholder="Re-enter your password" oninput="checkPasswordMatch('sr_c','sr_p','sr_ch')"/><button class="ey" onclick="eye('sr_c')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div><div class="h" id="sr_ch"></div></div>
-        <div class="sd"></div><div class="sc">Email Verification</div>
-        <div class="fg" style="display:flex;gap:8px;align-items:flex-end">
-          <div style="flex:1"><label>OTP Code</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-otp"/></svg><input type="text" id="sr_o" placeholder="Enter 6-digit OTP" maxlength="6"/></div><div class="h" id="sr_oh"></div></div>
-          <button class="btn-auth bg" style="width:auto;padding:11px 14px;font-size:12px;margin:0 0 4px" onclick="sendStudentOtp()">Send OTP</button>
-        </div>
-        <button class="btn-auth bg" id="studentSignupBtn">Create Account</button>
-        <div class="lr"><a onclick="authGo('p1')">Already have an account? Sign in →</a></div>
-      </div>
-      <div id="p4" class="pg hide">
-        <div class="bge"><svg width="11" height="11"><use href="#i-adm"/></svg> New Admin</div>
-        <div class="ph">Create Admin Account</div><div class="ps">Register a new administrator account.</div>
-        <div class="sc">Account Info</div>
-        <div class="fg"><label>Email Address</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-mail"/></svg><input type="email" id="ar_e" placeholder="admin@institution.edu"/></div><div class="h" id="ar_eh"></div></div>
-        <div class="fg"><label>Username</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-user"/></svg><input type="text" id="ar_u" placeholder="Choose a username"/></div><div class="h" id="ar_uh">4–20 chars, letters/numbers/underscore.</div></div>
-        <div class="sd"></div><div class="sc">Security</div>
-        <div class="fg"><label>Password</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg><input type="password" id="ar_p" placeholder="Create a strong password" oninput="updatePasswordStrength('ar_p','ar_')"/><button class="ey" onclick="eye('ar_p')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div><div class="sb"><div class="sg" id="ar_s1"></div><div class="sg" id="ar_s2"></div><div class="sg" id="ar_s3"></div><div class="sg" id="ar_s4"></div></div><div class="sl" id="ar_sl">Enter a password</div></div>
-        <div class="fg"><label>Confirm Password</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg><input type="password" id="ar_c" placeholder="Re-enter your password" oninput="checkPasswordMatch('ar_c','ar_p','ar_ch')"/><button class="ey" onclick="eye('ar_c')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div><div class="h" id="ar_ch"></div></div>
-        <div class="sd"></div><div class="sc">Email Verification</div>
-        <div class="fg" style="display:flex;gap:8px;align-items:flex-end">
-          <div style="flex:1"><label>OTP Code</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-otp"/></svg><input type="text" id="ar_o" placeholder="Enter 6-digit OTP" maxlength="6"/></div><div class="h" id="ar_oh"></div></div>
-          <button class="btn-auth bd" style="width:auto;padding:11px 14px;font-size:12px;margin:0 0 4px" onclick="sendAdminOtp()">Send OTP</button>
-        </div>
-        <button class="btn-auth bg" onclick="adminSignup()">Create Admin Account</button>
-        <div class="lr"><a onclick="authGo('p2')">Already have an account? Sign in →</a></div>
-      </div>
-    </div>
-  </div>
+ <div class="shell">
+ <div class="L">
+ <svg class="il" viewBox="0 0 280 238" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <circle cx="138" cy="112" r="96" fill="#c2e2c8" opacity=".52"/>
+ <circle cx="57" cy="47" r="15" fill="#fff" stroke="#5a9a6a" stroke-width="1.5"/>
+ <line x1="57" y1="47" x2="57" y2="36" stroke="#5a9a6a" stroke-width="1.5" stroke-linecap="round"/>
+ <line x1="57" y1="47" x2="66" y2="52" stroke="#5a9a6a" stroke-width="1.5" stroke-linecap="round"/>
+ <text x="182" y="28" font-size="12" fill="#5a9a6a" opacity=".78" font-style="italic">f(x)</text>
+ <text x="228" y="62" font-size="11" fill="#5a9a6a" opacity=".72">√x</text>
+ <text x="248" y="106" font-size="15" fill="#5a9a6a" opacity=".72">π</text>
+ <text x="234" y="150" font-size="10" fill="#5a9a6a" opacity=".65">⟨x,y⟩</text>
+ <text x="200" y="180" font-size="9" fill="#5a9a6a" opacity=".6">x²</text>
+ <text x="36" y="78" font-size="11" fill="#5a9a6a" opacity=".65">x-y</text>
+ <text x="22" y="120" font-size="10" fill="#5a9a6a" opacity=".6">(a,b)</text>
+ <path d="M250 54 L261 66 L255 65 L258 75 L250 64 L245 66Z" stroke="#5a9a6a" stroke-width="1.2" fill="#e6f4ea" opacity=".82"/>
+ <rect x="186" y="87" width="44" height="40" rx="8" fill="#fff" stroke="#5a9a6a" stroke-width="1.3"/>
+ <circle cx="208" cy="106" r="7" stroke="#5a9a6a" stroke-width="1.3"/>
+ <circle cx="208" cy="106" r="3" fill="#5a9a6a" opacity=".5"/>
+ <g transform="rotate(-8,108,116)">
+ <rect x="80" y="83" width="56" height="72" rx="4" fill="#fff" stroke="#8ab89a" stroke-width="1.3"/>
+ <rect x="88" y="93" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
+ <rect x="99" y="93" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
+ <rect x="110" y="93" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
+ <rect x="88" y="105" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
+ <rect x="99" y="105" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
+ <rect x="110" y="105" width="7" height="7" rx="1" stroke="#8ab89a" stroke-width="1" fill="none"/>
+ <line x1="88" y1="120" x2="128" y2="120" stroke="#b8d4bc" stroke-width="1"/>
+ <line x1="88" y1="128" x2="124" y2="128" stroke="#b8d4bc" stroke-width="1"/>
+ <line x1="88" y1="136" x2="126" y2="136" stroke="#b8d4bc" stroke-width="1"/>
+ <line x1="88" y1="144" x2="120" y2="144" stroke="#b8d4bc" stroke-width="1"/>
+ </g>
+ <rect x="84" y="188" width="136" height="7" rx="3.5" fill="#6a9a76"/>
+ <rect x="92" y="195" width="5" height="26" rx="2.5" fill="#5a8a66"/>
+ <rect x="214" y="195" width="5" height="26" rx="2.5" fill="#5a8a66"/>
+ <circle cx="154" cy="142" r="15" fill="#f5c5a0"/>
+ <path d="M140 140 Q141 127 154 126 Q167 127 168 140 Q162 131 154 132 Q146 131 140 140Z" fill="#181410"/>
+ <path d="M136 166 Q140 157 154 156 Q168 157 172 166 L172 188 L136 188Z" fill="#eef9f2"/>
+ <path d="M136 166 L142 157 L154 160 L166 157 L172 166 L164 169 L154 165 L144 169Z" fill="#3a6a4a"/>
+ <path d="M137 172 Q126 176 118 183 Q114 188 116 193" stroke="#f5c5a0" stroke-width="7" stroke-linecap="round"/>
+ <circle cx="116" cy="194" r="4.5" fill="#f5c5a0"/>
+ <line x1="116" y1="194" x2="102" y2="202" stroke="#f0c040" stroke-width="2.5" stroke-linecap="round"/>
+ <circle cx="101" cy="203" r="1.5" fill="#2a1a00"/>
+ <rect x="90" y="181" width="56" height="7" rx="2" fill="#fff" stroke="#b8d4bc" stroke-width="1"/>
+ <line x1="35" y1="223" x2="35" y2="200" stroke="#4a8a5a" stroke-width="2"/>
+ <ellipse cx="27" cy="212" rx="10" ry="5.5" fill="#5aaa6a" transform="rotate(-25,27,212)"/>
+ <ellipse cx="43" cy="206" rx="10" ry="5.5" fill="#4a9a5a" transform="rotate(22,43,206)"/>
+ <rect x="182" y="208" width="28" height="34" rx="7" fill="#4aaa6a" stroke="#3a9a5a" stroke-width="1"/>
+ <rect x="187" y="214" width="18" height="12" rx="5" fill="#5aba7a"/>
+ <circle cx="196" cy="232" r="3" fill="#3a9a5a"/>
+ </svg>
+ <div class="Lt">Online Exam<br>Registration System</div>
+ <div class="Ls">A seamless portal for exam registration &amp; management.</div>
+ <div class="dots"><div class="d a"></div><div class="d"></div><div class="d"></div></div>
+ </div>
+ <div class="R">
+ <div id="p0" class="pg">
+ <div class="sn">Welcome <em>Back</em></div>
+ <div class="st">Select your role to continue to the portal.</div>
+ <div class="rc" onclick="authGo('p1')">
+ <div class="ri"><svg width="20" height="20"><use href="#i-stu"/></svg></div>
+ <div class="rb"><div class="rn">Student</div><div class="rd">Register &amp; track your exams</div></div>
+ <div class="ra">›</div>
+ </div>
+ <div class="dv"><div class="dl"></div><div class="dt">or</div><div class="dl"></div></div>
+ <div class="rc" onclick="authGo('p2')">
+ <div class="ri"><svg width="20" height="20"><use href="#i-adm"/></svg></div>
+ <div class="rb"><div class="rn">Administrator</div><div class="rd">Manage exams &amp; students</div></div>
+ <div class="ra">›</div>
+ </div>
+ <div class="cp">© 2026 Online Exam Registration System</div>
+ </div>
+ <div id="p1" class="pg hide">
+ <div class="bge"><svg width="11" height="11"><use href="#i-stu"/></svg> Student Portal</div>
+ <div class="ph">Sign in</div><div class="ps">Enter your credentials to access your dashboard.</div>
+ <div class="fg"><label>Username</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-user"/></svg><input type="text" id="s_u" placeholder="Your username"/></div></div>
+ <div class="fg"><label>Password</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg><input type="password" id="s_p" placeholder="Your password"/><button class="ey" onclick="eye('s_p')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div></div>
+ <div class="frg"><a onclick="alert('Contact your administrator to reset your password.')">Forgot password?</a></div>
+ <button class="btn-auth bd" onclick="slogin()">Sign in</button>
+ <div class="dv"><div class="dl"></div><div class="dt">New here?</div><div class="dl"></div></div>
+ <div class="lr"><a onclick="authGo('p3')">Create a Student Account →</a></div>
+ <div class="lr"><a class="bk" onclick="authGo('p0')">← Back</a></div>
+ </div>
+ <div id="p2" class="pg hide">
+ <div class="bge"><svg width="11" height="11"><use href="#i-adm"/></svg> Admin Portal</div>
+ <div class="ph">Admin Sign in</div><div class="ps">Access the admin panel to manage exams and students.</div>
+ <div class="fg"><label>Username</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-user"/></svg><input type="text" id="a_u" placeholder="Admin username"/></div></div>
+ <div class="fg"><label>Password</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg><input type="password" id="a_p" placeholder="Admin password"/><button class="ey" onclick="eye('a_p')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div></div>
+ <div class="frg"><a onclick="alert('Contact the IT department to reset your admin password.')">Forgot password?</a></div>
+ <button class="btn-auth bd" onclick="alogin()">Sign in as Admin</button>
+ <div class="dv"><div class="dl"></div><div class="dt">New admin?</div><div class="dl"></div></div>
+ <div class="lr"><a onclick="authGo('p4')">Create an Admin Account →</a></div>
+ <div class="lr"><a class="bk" onclick="authGo('p0')">← Back</a></div>
+ </div>
+ <div id="p3" class="pg hide">
+ <div class="bge"><svg width="11" height="11"><use href="#i-stu"/></svg> New Student</div>
+ <div class="ph">Create Account</div><div class="ps">Fill in the details below to get started.</div>
+ <div class="sc">Account Info</div>
+ <div class="fg"><label>Email Address</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-mail"/></svg><input type="email" id="sr_e" placeholder="you@example.com"/></div><div class="h" id="sr_eh"></div></div>
+ <div class="fg"><label>Username</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-user"/></svg><input type="text" id="sr_u" placeholder="Choose a username"/></div><div class="h" id="sr_uh">4–20 chars, letters/numbers/underscore.</div></div>
+ <div class="sd"></div><div class="sc">Academic Details</div>
+ <div class="fg"><label>Course</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-stu"/></svg><select id="sr_course"><option value="">— Select Course —</option><optgroup label="B.Tech"><option value="Btech-CSE">B.Tech — CSE</option><option value="Btech-ECE">B.Tech — ECE</option><option value="Btech-EEE">B.Tech — EEE</option><option value="Btech-CIVIL">B.Tech — Civil</option><option value="Btech-MECH">B.Tech — Mech</option></optgroup><optgroup label="M.Tech"><option value="Mtech-CSE">M.Tech — CSE</option><option value="Mtech-ECE">M.Tech — ECE</option><option value="Mtech-EEE">M.Tech — EEE</option><option value="Mtech-CIVIL">M.Tech — Civil</option><option value="Mtech-MECH">M.Tech — Mech</option></optgroup></select></div></div>
+ <div class="fg"><label>Semester</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-otp"/></svg><select id="sr_sem"><option value="">Select Semester</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div></div>
+ <div class="sd"></div><div class="sc">Security</div>
+ <div class="fg"><label>Password</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg><input type="password" id="sr_p" placeholder="Create a strong password" oninput="updatePasswordStrength('sr_p','sr_')"/><button class="ey" onclick="eye('sr_p')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div><div class="sb"><div class="sg" id="sr_s1"></div><div class="sg" id="sr_s2"></div><div class="sg" id="sr_s3"></div><div class="sg" id="sr_s4"></div></div><div class="sl" id="sr_sl">Enter a password</div></div>
+ <div class="fg"><label>Confirm Password</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg><input type="password" id="sr_c" placeholder="Re-enter your password" oninput="checkPasswordMatch('sr_c','sr_p','sr_ch')"/><button class="ey" onclick="eye('sr_c')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div><div class="h" id="sr_ch"></div></div>
+ <div class="sd"></div><div class="sc">Email Verification</div>
+ <div class="fg" style="display:flex;gap:8px;align-items:flex-end">
+ <div style="flex:1"><label>OTP Code</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-otp"/></svg><input type="text" id="sr_o" placeholder="Enter 6-digit OTP" maxlength="6"/></div><div class="h" id="sr_oh"></div></div>
+ <button class="btn-auth bg" style="width:auto;padding:11px 14px;font-size:12px;margin:0 0 4px" onclick="sendStudentOtp()">Send OTP</button>
+ </div>
+ <button class="btn-auth bg" id="studentSignupBtn">Create Account</button>
+ <div class="lr"><a onclick="authGo('p1')">Already have an account? Sign in →</a></div>
+ </div>
+ <div id="p4" class="pg hide">
+ <div class="bge"><svg width="11" height="11"><use href="#i-adm"/></svg> New Admin</div>
+ <div class="ph">Create Admin Account</div><div class="ps">Register a new administrator account.</div>
+ <div class="sc">Account Info</div>
+ <div class="fg"><label>Email Address</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-mail"/></svg><input type="email" id="ar_e" placeholder="admin@institution.edu"/></div><div class="h" id="ar_eh"></div></div>
+ <div class="fg"><label>Username</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-user"/></svg><input type="text" id="ar_u" placeholder="Choose a username"/></div><div class="h" id="ar_uh">4–20 chars, letters/numbers/underscore.</div></div>
+ <div class="sd"></div><div class="sc">Security</div>
+ <div class="fg"><label>Password</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg><input type="password" id="ar_p" placeholder="Create a strong password" oninput="updatePasswordStrength('ar_p','ar_')"/><button class="ey" onclick="eye('ar_p')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div><div class="sb"><div class="sg" id="ar_s1"></div><div class="sg" id="ar_s2"></div><div class="sg" id="ar_s3"></div><div class="sg" id="ar_s4"></div></div><div class="sl" id="ar_sl">Enter a password</div></div>
+ <div class="fg"><label>Confirm Password</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg><input type="password" id="ar_c" placeholder="Re-enter your password" oninput="checkPasswordMatch('ar_c','ar_p','ar_ch')"/><button class="ey" onclick="eye('ar_c')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div><div class="h" id="ar_ch"></div></div>
+ <div class="sd"></div><div class="sc">Email Verification</div>
+ <div class="fg" style="display:flex;gap:8px;align-items:flex-end">
+ <div style="flex:1"><label>OTP Code</label><div class="iw"><svg class="ic" width="15" height="15"><use href="#i-otp"/></svg><input type="text" id="ar_o" placeholder="Enter 6-digit OTP" maxlength="6"/></div><div class="h" id="ar_oh"></div></div>
+ <button class="btn-auth bd" style="width:auto;padding:11px 14px;font-size:12px;margin:0 0 4px" onclick="sendAdminOtp()">Send OTP</button>
+ </div>
+ <button class="btn-auth bg" onclick="adminSignup()">Create Admin Account</button>
+ <div class="lr"><a onclick="authGo('p2')">Already have an account? Sign in →</a></div>
+ </div>
+ </div>
+ </div>
 </div>
-
 <!-- APP LAYER -->
 <div id="app-layer">
-  <div id="app-topbar">
-    <div class="logo-icon" style="width:32px;height:32px;font-size:14px">E</div>
-    <span style="font-size:15px;font-weight:800;letter-spacing:-.3px">ExamPortal</span>
-    <div style="width:1px;height:20px;background:var(--border);margin:0 6px"></div>
-    <span id="role-label" style="font-size:12px;font-weight:600;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:5px 13px;border-radius:20px"></span>
-    <button id="logout-btn" onclick="logout()">↩ Logout</button>
-  </div>
-  <div id="app-body">
-    <!-- STUDENT SIDEBAR -->
-    <aside class="sidebar" id="sidebar-student">
-      <div class="logo"><div class="logo-icon">M</div><div><div class="logo-text">MASTERY <span>HUB</span></div><div class="logo-sub">Student Portal</div></div></div>
-      <div class="nav-section">
-        <div class="nav-label">Overview</div>
-        <div class="nav-item active" onclick="showPage('s-dashboard',this,'student')"><span class="nav-icon">⬡</span> Dashboard</div>
-      </div>
-      <div class="nav-section">
-        <div class="nav-label">Exams</div>
-        <div class="nav-item" onclick="showPage('s-available-exams',this,'student')"><span class="nav-icon">📋</span> View Available Exams</div>
-        <div class="nav-item" onclick="showPage('s-register',this,'student')"><span class="nav-icon">✏️</span> Register for Exam <span class="nav-badge warn">New</span></div>
-        <div class="nav-item" onclick="showPage('s-payment',this,'student')"><span class="nav-icon">💳</span> Online Payment</div>
-      </div>
-      <div class="nav-section">
-        <div class="nav-label">My Records</div>
-        <div class="nav-item" onclick="showPage('s-hall-ticket',this,'student')"><span class="nav-icon">🎫</span> Hall Ticket <span class="nav-badge">1</span></div>
-        <div class="nav-item" onclick="showPage('s-schedule',this,'student')"><span class="nav-icon">📅</span> Exam Schedule</div>
-        <div class="nav-item" onclick="showPage('s-my-exams',this,'student')"><span class="nav-icon">📊</span> My Registrations</div>
-      </div>
-      <div class="nav-section">
-        <div class="nav-label">Support</div>
-        <div class="nav-item" onclick="toggleChat()"><span class="nav-icon">🤖</span> ExamBot Chat</div>
-      </div>
-      <div class="sidebar-footer">
-        <div class="user-card">
-          <div class="user-avatar">S</div>
-          <div><div class="user-name" id="sidebarUserName">Student Name</div><div class="user-id" id="sidebarUserCourse">Course</div></div>
-        </div>
-      </div>
-    </aside>
-    <!-- ADMIN SIDEBAR -->
-    <aside class="sidebar" id="sidebar-admin" style="display:none">
-      <div class="logo"><div class="logo-icon">E</div><div><div class="logo-text">Exam<span>Portal</span></div><div class="logo-sub">Admin Console</div></div></div>
-      <div class="nav-section">
-        <div class="nav-label">Dashboard</div>
-        <div class="nav-item active" onclick="showPage('a-dashboard',this,'admin')"><span class="nav-icon">⬡</span> Overview</div>
-      </div>
-      <div class="nav-section">
-        <div class="nav-label">Exam Management</div>
-        <div class="nav-item" onclick="showPage('a-manage-exams',this,'admin')"><span class="nav-icon">📋</span> Manage Exam Details</div>
-        <div class="nav-item" onclick="showPage('a-registrations',this,'admin')"><span class="nav-icon">✅</span> Approve / Reject Registrations <span class="nav-badge warn" id="pendingBadge">0</span></div>
-        <div class="nav-item" onclick="showPage('a-hall-tickets',this,'admin')"><span class="nav-icon">🎫</span> Generate Hall Tickets</div>
-      </div>
-      <div class="nav-section">
-        <div class="nav-label">Analytics</div>
-        <div class="nav-item" onclick="showPage('a-reports',this,'admin')"><span class="nav-icon">📊</span> Generate Reports</div>
-      </div>
-      <div class="sidebar-footer">
-        <div class="user-card">
-          <div class="user-avatar">A</div>
-          <div><div class="user-name">Administrator</div><div class="user-id">Super Admin</div></div>
-        </div>
-      </div>
-    </aside>
-
-    <main class="main">
-      <div class="topbar">
-        <div class="topbar-title" id="topbar-title">Dashboard <span class="topbar-sub">Welcome back</span></div>
-        <div class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search exams..."></div>
-        <button class="btn btn-outline" style="font-size:12px;position:relative">🔔 Alerts <span class="notif-dot"></span></button>
-      </div>
-
-      <div class="content">
-
-        <!-- S-DASHBOARD -->
-        <div class="page active" id="page-s-dashboard">
-          <div class="welcome-banner"><div><div class="welcome-name" id="welcomeName">Good morning, Student! 👋</div><div class="welcome-sub">Welcome to your exam dashboard</div><div class="welcome-prn" id="welcomePrn">Student Portal</div></div></div>
-          <div class="stats-grid">
-            <div class="stat-card"><div class="stat-icon">📋</div><div class="stat-label">Registered Exams</div><div class="stat-value" style="color:var(--accent)">0</div><div class="stat-sub">Active registrations</div></div>
-            <div class="stat-card"><div class="stat-icon">⏳</div><div class="stat-label">Pending Payment</div><div class="stat-value" style="color:var(--warn)">0</div><div class="stat-sub">Complete to confirm</div></div>
-            <div class="stat-card"><div class="stat-icon">🎫</div><div class="stat-label">Hall Tickets</div><div class="stat-value" style="color:var(--accent2)">0</div><div class="stat-sub">Ready to download</div></div>
-            <div class="stat-card"><div class="stat-icon">📅</div><div class="stat-label">Upcoming Exams</div><div class="stat-value" style="color:var(--text)">0</div><div class="stat-sub">Scheduled exams</div></div>
-          </div>
-          <div class="card"><div class="card-header"><span class="card-title">My Registrations</span></div><div class="card-body" id="dashboardRegistrations"><p style="color:var(--muted);text-align:center;padding:20px">No registrations yet. Browse available exams to get started.</p></div></div>
-        </div>
-
-        <!-- S-AVAILABLE EXAMS -->
-        <div class="page" id="page-s-available-exams">
-          <div class="section-intro"><h2>Available Exams</h2><p>Browse and register for upcoming competitive exams.</p></div>
-          <div class="exam-grid" id="availableExamsGrid"><p style="color:var(--muted)">Loading exams...</p></div>
-          <div class="card"><div class="card-header"><span class="card-title">All Exams</span><div class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search..."></div></div><div class="card-body" style="padding:0" id="allExamsTableBody"><p style="padding:20px;color:var(--muted)">Loading...</p></div></div>
-        </div>
-
-        <!-- S-REGISTER -->
-        <div class="page" id="page-s-register">
-          <div class="section-intro"><h2>Register for Exam</h2><p>Fill in the details and select your subjects to apply.</p></div>
-          <div class="steps">
-            <div class="step done"><div class="step-num">✓</div> Exam Selection</div><div class="step-line done"></div>
-            <div class="step active"><div class="step-num">2</div> Subject Selection</div><div class="step-line"></div>
-            <div class="step"><div class="step-num">3</div> Review</div><div class="step-line"></div>
-            <div class="step"><div class="step-num">4</div> Payment</div>
-          </div>
-          <div class="card"><div class="card-header"><span class="card-title">Select Exam</span></div><div class="card-body"><div class="form-group" style="margin-bottom:20px"><label>Exam</label><select id="registerExamSelect" onchange="loadSubjectsForExam()"><option value="">Select an exam</option></select></div><div id="subjectsContainer"></div></div></div>
-          <div style="display:flex;gap:12px"><button class="btn btn-primary" onclick="submitRegistration()">Proceed to Payment →</button><button class="btn btn-outline">Save as Draft</button></div>
-        </div>
-
-        <!-- S-PAYMENT -->
-        <div class="page" id="page-s-payment">
-          <div class="section-intro"><h2>Online Payment</h2><p>Complete your fee payment to confirm the registration.</p></div>
-          <div class="two-col">
-            <div><div class="card"><div class="card-header"><span class="card-title">Payment Summary</span></div><div class="card-body"><div class="payment-summary"><div class="payment-row"><span>Exam Fee</span><span>—</span></div><div class="payment-row"><span>Processing Fee</span><span>₹20</span></div><div class="payment-row total"><span>Total Payable</span><span style="color:var(--accent)">—</span></div></div><div style="font-size:12px;color:var(--muted);margin-top:4px">🔒 Secured · SSL Encrypted</div></div></div></div>
-            <div><div class="card"><div class="card-header"><span class="card-title">Select Payment Method</span></div><div class="card-body"><div class="payment-methods"><div class="pay-method selected" onclick="selectPayment(this)"><div class="pay-method-icon">🏦</div><div>Net Banking</div></div><div class="pay-method" onclick="selectPayment(this)"><div class="pay-method-icon">💳</div><div>Debit / Credit</div></div><div class="pay-method" onclick="selectPayment(this)"><div class="pay-method-icon">📱</div><div>UPI</div></div></div><div id="upiField" style="display:none;margin-bottom:16px"><div class="form-group"><label>UPI ID</label><input type="text" placeholder="yourname@upi"></div></div><div class="alert alert-green" style="margin-bottom:16px"><span>✓</span> Your details are verified. Click below to proceed.</div><button class="btn btn-primary" style="width:100%;justify-content:center;padding:13px">🔒 Pay Securely (Demo)</button></div></div></div>
-          </div>
-        </div>
-
-        <!-- S-HALL TICKET -->
-        <div class="page" id="page-s-hall-ticket">
-          <div class="section-intro"><h2>Hall Ticket</h2><p>Download your admit card for approved exams.</p></div>
-          <div class="card"><div class="card-header"><span class="card-title">Hall Tickets</span><button class="btn btn-primary" style="font-size:12px">⬇ Download PDF</button><button class="btn btn-outline" style="font-size:12px">🖨 Print</button></div><div class="card-body" id="hallTicketList"><div class="ticket-wrap"><div class="ticket-header"><div><div class="ticket-brand"><span>EXAM</span>PORTAL</div><div class="ticket-issued">Issued by ExamPortal Admin · College ID Required</div></div><div style="text-align:right"><div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Admit Card</div><div style="font-size:18px;font-weight:800;color:var(--accent)">Hall Ticket</div></div></div><p style="color:var(--muted);text-align:center;padding:20px">No hall tickets issued yet.</p></div></div></div>
-        </div>
-
-        <!-- S-SCHEDULE -->
-        <div class="page" id="page-s-schedule">
-          <div class="section-intro"><h2>Exam Schedule</h2><p>Your upcoming exams and important dates at a glance.</p></div>
-          <div class="card"><div class="card-header"><span class="card-title">Upcoming Exams</span></div><div class="card-body" id="scheduleList"><div class="schedule-list"><p style="color:var(--muted);text-align:center;padding:20px">Loading schedule...</p></div></div></div>
-          <div class="card"><div class="card-header"><span class="card-title">Important Dates</span></div><div class="card-body" style="padding:0"><table><thead><tr><th>Event</th><th>Exam</th><th>Date</th><th>Status</th></tr></thead><tbody id="scheduleDatesTable"><tr><td colspan="4" style="text-align:center;color:var(--muted);padding:20px">No schedule available.</td></tr></tbody></table></div></div>
-        </div>
-
-        <!-- S-MY REGISTRATIONS -->
-        <div class="page" id="page-s-my-exams">
-          <div class="section-intro"><h2>My Registrations</h2><p>Track all your exam applications and their statuses.</p></div>
-          <div class="card"><div class="card-header"><span class="card-title">Registration History</span><div class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search..."></div></div><div class="card-body" id="myRegistrationsList" style="padding:0"><p style="padding:20px;color:var(--muted)">Loading...</p></div></div>
-        </div>
-
-        <!-- A-DASHBOARD -->
-        <div class="page" id="page-a-dashboard">
-          <div class="section-intro"><h2>Admin Dashboard</h2><p>Welcome to the admin console.</p></div>
-          <div class="stats-grid">
-            <div class="stat-card"><div class="stat-label">Total Students</div><div class="stat-value" style="color:var(--accent2)" id="adminTotalStudents">0</div><div class="stat-delta up">Registered users</div></div>
-            <div class="stat-card"><div class="stat-label">Active Exams</div><div class="stat-value" style="color:var(--accent)" id="adminActiveExams">0</div><div class="stat-delta up">Open for registration</div></div>
-            <div class="stat-card"><div class="stat-label">Pending Approvals</div><div class="stat-value" style="color:var(--warn)" id="adminPendingApprovals">0</div><div class="stat-delta down">⚠ Needs attention</div></div>
-            <div class="stat-card"><div class="stat-label">Hall Tickets Issued</div><div class="stat-value">0</div><div class="stat-delta up">Processed</div></div>
-          </div>
-          <div class="card"><div class="card-header"><span class="card-title">Recent Registrations</span><button class="btn btn-outline" onclick="showPage('a-registrations',document.querySelector('[onclick*=a-registrations]'),'admin')">View All</button></div><div class="card-body" style="padding:0" id="adminRecentRegs"><p style="padding:20px;color:var(--muted)">Loading recent registrations...</p></div></div>
-        </div>
-
-        <!-- A-MANAGE EXAMS -->
-        <div class="page" id="page-a-manage-exams">
-          <div class="section-intro"><h2>Manage Exam Details</h2><p>Create, edit, and configure all exam schedules and metadata.</p></div>
-          <div class="card add-exam-card" style="margin-bottom:24px">
-            <div class="card-header" style="background:var(--surface2)"><span class="card-title" style="font-size:15px">Add New Exam</span></div>
-            <div class="card-body" style="padding:24px">
-              <div class="form-grid">
-                <div class="form-group"><label>Exam Name</label><input type="text" id="new_exam_name" placeholder="e.g. GATE 2026"/></div>
-                <div class="form-group"><label>Exam Code</label><input type="text" id="new_exam_code" placeholder="e.g. GATE26"/></div>
-                <div class="form-group"><label>Exam Date</label><input type="date" id="new_exam_date"/></div>
-                <div class="form-group"><label>Last Date to Register</label><input type="date" id="new_last_date"/></div>
-                <div class="form-group"><label>Exam Mode</label><select id="new_exam_mode"><option value="Online">Online</option><option value="Offline">Offline</option><option value="Hybrid">Hybrid</option></select></div>
-                <div class="form-group"><label>Exam Fee (₹)</label><input type="number" id="new_exam_fee" placeholder="500" min="0"/></div>
-                <div class="form-group full"><label>Description</label><textarea id="new_exam_desc" placeholder="Describe eligibility, pattern, etc." style="min-height:90px"></textarea></div>
-                <div class="form-group"><label>Available Subjects</label><input type="text" id="new_exam_subjects" placeholder="CSE, ECE, ME (comma separated)"/></div>
-                <div class="form-group"><label>Exam Center</label><input type="text" id="new_exam_center" placeholder="e.g. Amaravati, Hyderabad"/></div>
-              </div>
-              <div style="margin-top:22px;display:flex;gap:12px">
-                <button class="btn btn-primary" onclick="submitNewExam()" style="padding:11px 28px">➕ Add Exam</button>
-                <button class="btn btn-outline" onclick="clearNewExamForm()" style="padding:11px 20px">✕ Clear</button>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header"><span class="card-title">Exam List</span><div class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search exams..." oninput="filterAdminExams(this.value)"></div></div>
-            <div class="card-body" id="adminExamList" style="padding:0"><p style="padding:20px;color:var(--muted)">Loading exams...</p></div>
-          </div>
-        </div>
-
-        <!-- A-REGISTRATIONS -->
-        <div class="page" id="page-a-registrations">
-          <div class="section-intro"><h2>Approve / Reject Registrations</h2><p>Review and process student exam registration requests.</p></div>
-          <div class="filter-row">
-            <span class="filter-chip active" data-filter="all" onclick="filterRegistrations('all',this)">All (<span class="chip-count-all">0</span>)</span>
-            <span class="filter-chip" data-filter="pending" onclick="filterRegistrations('pending',this)">Pending (<span class="chip-count-pending">0</span>)</span>
-            <span class="filter-chip" data-filter="approved" onclick="filterRegistrations('approved',this)">Approved (<span class="chip-count-approved">0</span>)</span>
-            <span class="filter-chip" data-filter="rejected" onclick="filterRegistrations('rejected',this)">Rejected (<span class="chip-count-rejected">0</span>)</span>
-            <div style="margin-left:auto" class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search student..." oninput="searchRegistrations(this.value)"></div>
-          </div>
-          <div class="card"><div class="card-header"><span class="card-title">Registration Requests</span></div><div class="card-body" style="padding:0"><table><thead><tr><th>Student</th><th>PRN</th><th>Exam</th><th>Subjects</th><th>Fee</th><th>Applied</th><th>Status</th><th>Actions</th></tr></thead><tbody id="reg-table"><tr><td colspan="8" style="text-align:center;padding:20px;color:var(--muted)">Loading registrations...</td></tr></tbody></table></div></div>
-        </div>
-
-        <!-- ══════════════════════════════════════════════
-             A-HALL TICKETS  —  Redesigned UI
-        ══════════════════════════════════════════════ -->
-        <div class="page" id="page-a-hall-tickets">
-          <div class="section-intro">
-            <h2>Generate Hall Tickets</h2>
-            <p>Issue and manage hall tickets for approved students.</p>
-          </div>
-
-          <!-- TOP ROW: Bulk + Single -->
-          <div class="ht-two-col">
-
-            <!-- Bulk Generation -->
-            <div class="ht-panel">
-              <div class="ht-panel-header">Generate Bulk Hall Tickets</div>
-              <div class="ht-panel-body">
-                <div class="ht-field-row">
-                  <div class="ht-field-group">
-                    <label>Select Exam</label>
-                    <select id="ht_bulk_exam" onchange="htUpdateBulkInfo()">
-                      <option value="">— Select Exam —</option>
-                    </select>
-                  </div>
-                  <div class="ht-field-group">
-                    <label>Filter by Subject</label>
-                    <select id="ht_bulk_subject">
-                      <option value="">All Subjects</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="ht-count-pill" id="ht_bulk_info">
-                  Select an exam to see eligible students.
-                </div>
-                <button class="btn btn-primary btn-full" onclick="generateBulkHallTickets()">
-                  🎫 Generate All Hall Tickets
-                </button>
-              </div>
-            </div>
-
-            <!-- Single Student -->
-            <div class="ht-panel">
-              <div class="ht-panel-header">Single Student</div>
-              <div class="ht-panel-body">
-                <div class="ht-field-group" style="margin-bottom:14px">
-                  <label>Student PRN / Roll No.</label>
-                  <input type="text" id="ht_single_prn" placeholder="Enter PRN"/>
-                </div>
-                <div class="ht-field-group" style="margin-bottom:18px">
-                  <label>Exam</label>
-                  <select id="ht_single_exam">
-                    <option value="">— Select Exam —</option>
-                  </select>
-                </div>
-                <button class="btn btn-outline" style="width:100%;justify-content:center;padding:11px" onclick="lookupSingleStudent()">
-                  🔍 Lookup &amp; Generate
-                </button>
-              </div>
-            </div>
-
-          </div><!-- /.ht-two-col -->
-
-          <!-- HALL TICKET PREVIEW -->
-          <div class="ht-preview-card" id="ht_preview_card">
-            <div class="ht-preview-header">
-              <span class="ht-preview-header-title">Hall Ticket Preview</span>
-              <button class="btn btn-primary" style="font-size:12px;padding:8px 18px" onclick="window.print()">
-                ⬇ Download PDF
-              </button>
-            </div>
-            <div class="ht-preview-body">
-              <div class="admit-card" id="ht_preview_content">
-                <!-- populated by JS -->
-                <div style="padding:40px;text-align:center;color:var(--muted)">
-                  <div style="font-size:36px;margin-bottom:12px">🎫</div>
-                  <div style="font-size:14px;font-weight:600">No hall ticket selected</div>
-                  <div style="font-size:13px;margin-top:4px">Generate tickets above or click a row in the Issued Hall Tickets table.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ISSUED HALL TICKETS TABLE -->
-          <div class="ht-issued-card">
-            <div class="card-header">
-              <span class="card-title">Issued Hall Tickets</span>
-              <div class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search student or roll no..." oninput="filterIssuedTickets(this.value)"></div>
-            </div>
-            <div style="padding:0">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Student</th>
-                    <th>Roll No.</th>
-                    <th>Exam</th>
-                    <th>Center</th>
-                    <th>Issued On</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody id="ht_issued_table">
-                  <tr><td colspan="7" style="text-align:center;padding:30px;color:var(--muted)">Loading issued hall tickets…</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <!-- /A-HALL TICKETS -->
-
-        <!-- A-REPORTS -->
-        <div class="page" id="page-a-reports">
-          <div class="section-intro"><h2>Generate Reports</h2><p>Export detailed analytics and summaries for all exam activities.</p></div>
-          <div class="report-grid">
-            <div class="report-card green"><div class="report-icon">📊</div><div class="report-name">Registration Report</div><div class="report-desc">Total registrations, subject-wise breakdown, approval stats.</div><button class="btn btn-success" style="font-size:12px">Generate → Export</button></div>
-            <div class="report-card blue"><div class="report-icon">💰</div><div class="report-name">Payment Report</div><div class="report-desc">Fee collected, pending dues, payment gateway summary.</div><button class="btn btn-outline" style="font-size:12px;border-color:var(--accent2);color:var(--accent2)">Generate → Export</button></div>
-            <div class="report-card yellow"><div class="report-icon">🎫</div><div class="report-name">Hall Ticket Report</div><div class="report-desc">Issued vs pending hall tickets per exam and center.</div><button class="btn btn-outline" style="font-size:12px;border-color:var(--warn);color:var(--warn)">Generate → Export</button></div>
-          </div>
-          <div class="card"><div class="card-header"><span class="card-title">Report Preview — Registration Summary</span><button class="btn btn-primary" style="font-size:12px">⬇ Export CSV</button></div><div class="card-body" style="padding:0"><table><thead><tr><th>Exam</th><th>Total Registered</th><th>Approved</th><th>Rejected</th><th>Pending</th></tr></thead><tbody id="adminReportTable"><tr><td colspan="5" style="text-align:center;padding:20px;color:var(--muted)">Loading report data...</td></tr></tbody></table></div></div>
-        </div>
-
-      </div><!-- /.content -->
-    </main>
-  </div>
+ <div id="app-topbar">
+ <div class="logo-icon" style="width:32px;height:32px;font-size:14px">E</div>
+ <span style="font-size:15px;font-weight:800;letter-spacing:-.3px">ExamPortal</span>
+ <div style="width:1px;height:20px;background:var(--border);margin:0 6px"></div>
+ <span id="role-label" style="font-size:12px;font-weight:600;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:5px 13px;border-radius:20px"></span>
+ <button id="logout-btn" onclick="logout()">↩ Logout</button>
+ </div>
+ <div id="app-body">
+ <!-- STUDENT SIDEBAR -->
+ <aside class="sidebar" id="sidebar-student">
+ <div class="logo"><div class="logo-icon">M</div><div><div class="logo-text">MASTERY <span>HUB</span></div><div class="logo-sub">Student Portal</div></div></div>
+ <div class="nav-section">
+ <div class="nav-label">Overview</div>
+ <div class="nav-item active" onclick="showPage('s-dashboard',this,'student')"><span class="nav-icon">⬡</span> Dashboard</div>
+ </div>
+ <div class="nav-section">
+ <div class="nav-label">Exams</div>
+ <div class="nav-item" onclick="showPage('s-available-exams',this,'student')"><span class="nav-icon">📋</span> View Available Exams</div>
+ <div class="nav-item" onclick="showPage('s-register',this,'student')"><span class="nav-icon">✏️</span> Register for Exam <span class="nav-badge warn">New</span></div>
+ <div class="nav-item" onclick="showPage('s-payment',this,'student')"><span class="nav-icon">💳</span> Online Payment</div>
+ </div>
+ <div class="nav-section">
+ <div class="nav-label">My Records</div>
+ <div class="nav-item" onclick="showPage('s-hall-ticket',this,'student')"><span class="nav-icon">🎫</span> Hall Ticket <span class="nav-badge">1</span></div>
+ <div class="nav-item" onclick="showPage('s-schedule',this,'student')"><span class="nav-icon">📅</span> Exam Schedule</div>
+ <div class="nav-item" onclick="showPage('s-my-exams',this,'student')"><span class="nav-icon">📁</span> My Registrations</div>
+ </div>
+ <div class="nav-section">
+ <div class="nav-label">Support</div>
+ <div class="nav-item" onclick="toggleChat()"><span class="nav-icon">💬</span> ExamBot Chat</div>
+ </div>
+ <div class="sidebar-footer">
+ <div class="user-card">
+ <div class="user-avatar">S</div>
+ <div><div class="user-name" id="sidebarUserName">Student Name</div><div class="user-id" id="sidebarUserCourse">Course</div></div>
+ </div>
+ </div>
+ </aside>
+ <!-- ADMIN SIDEBAR -->
+ <aside class="sidebar" id="sidebar-admin" style="display:none">
+ <div class="logo"><div class="logo-icon">E</div><div><div class="logo-text">Exam<span>Portal</span></div><div class="logo-sub">Admin Console</div></div></div>
+ <div class="nav-section">
+ <div class="nav-label">Dashboard</div>
+ <div class="nav-item active" onclick="showPage('a-dashboard',this,'admin')"><span class="nav-icon">⬡</span> Overview</div>
+ </div>
+ <div class="nav-section">
+ <div class="nav-label">Exam Management</div>
+ <div class="nav-item" onclick="showPage('a-manage-exams',this,'admin')"><span class="nav-icon">📝</span> Manage Exam Details</div>
+ <div class="nav-item" onclick="showPage('a-registrations',this,'admin')"><span class="nav-icon">✅</span> Approve / Reject Registrations <span class="nav-badge warn" id="pendingBadge">0</span></div>
+ <div class="nav-item" onclick="showPage('a-hall-tickets',this,'admin')"><span class="nav-icon">🎫</span> Generate Hall Tickets</div>
+ </div>
+ <div class="nav-section">
+ <div class="nav-label">Analytics</div>
+ <div class="nav-item" onclick="showPage('a-reports',this,'admin')"><span class="nav-icon">📊</span> Generate Reports</div>
+ </div>
+ <div class="sidebar-footer">
+ <div class="user-card">
+ <div class="user-avatar">A</div>
+ <div><div class="user-name">Administrator</div><div class="user-id">Super Admin</div></div>
+ </div>
+ </div>
+ </aside>
+ <main class="main">
+ <div class="topbar">
+ <div class="topbar-title" id="topbar-title">Dashboard <span class="topbar-sub">Welcome back</span></div>
+ <div class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search exams..."></div>
+ <button class="btn btn-outline" style="font-size:12px;position:relative">🔔 Alerts <span class="notif-dot"></span></button>
+ </div>
+ <div class="content">
+ <!-- S-DASHBOARD -->
+ <div class="page active" id="page-s-dashboard">
+ <div class="welcome-banner"><div><div class="welcome-name" id="welcomeName">Good morning, Student! 👋</div><div class="welcome-sub">Welcome to your exam dashboard</div><div class="welcome-prn" id="welcomePrn">Student Portal</div></div></div>
+ <div class="stats-grid">
+ <div class="stat-card"><div class="stat-icon">📝</div><div class="stat-label">Registered Exams</div><div class="stat-value" style="color:var(--accent)" id="statRegistered">0</div><div class="stat-sub">Active registrations</div></div>
+ <div class="stat-card"><div class="stat-icon">💳</div><div class="stat-label">Pending Payment</div><div class="stat-value" style="color:var(--warn)" id="statPending">0</div><div class="stat-sub">Complete to confirm</div></div>
+ <div class="stat-card"><div class="stat-icon">🎫</div><div class="stat-label">Hall Tickets</div><div class="stat-value" style="color:var(--accent2)" id="statTickets">0</div><div class="stat-sub">Ready to download</div></div>
+ <div class="stat-card"><div class="stat-icon">📅</div><div class="stat-label">Upcoming Exams</div><div class="stat-value" style="color:var(--text)" id="statUpcoming">0</div><div class="stat-sub">Scheduled exams</div></div>
+ </div>
+ <div class="card"><div class="card-header"><span class="card-title">My Registrations</span></div><div class="card-body" id="dashboardRegistrations"><p style="color:var(--muted);text-align:center;padding:20px">No registrations yet. Browse available exams to get started.</p></div></div>
+ </div>
+ <!-- S-AVAILABLE EXAMS -->
+ <div class="page" id="page-s-available-exams">
+ <div class="section-intro"><h2>Available Exams</h2><p>Browse and register for upcoming competitive exams.</p></div>
+ <div class="exam-grid" id="availableExamsGrid"><p style="color:var(--muted)">Loading exams...</p></div>
+ <div class="card"><div class="card-header"><span class="card-title">All Exams</span><div class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search..."></div></div><div class="card-body" style="padding:0" id="allExamsTableBody"><p style="padding:20px;color:var(--muted)">Loading...</p></div></div>
+ </div>
+ <!-- S-REGISTER -->
+ <div class="page" id="page-s-register">
+ <div class="section-intro"><h2>Register for Exam</h2><p>Fill in the details and select your subjects to apply.</p></div>
+ <div class="steps">
+ <div class="step done"><div class="step-num">✓</div> Exam Selection</div><div class="step-line done"></div>
+ <div class="step active"><div class="step-num">2</div> Subject Selection</div><div class="step-line"></div>
+ <div class="step"><div class="step-num">3</div> Review</div><div class="step-line"></div>
+ <div class="step"><div class="step-num">4</div> Payment</div>
+ </div>
+ <div class="card"><div class="card-header"><span class="card-title">Select Exam</span></div><div class="card-body"><div class="form-group" style="margin-bottom:20px"><label>Exam</label><select id="registerExamSelect" onchange="loadSubjectsForExam()"><option value="">Select an exam</option></select></div><div id="subjectsContainer"></div></div></div>
+ <div style="display:flex;gap:12px"><button class="btn btn-primary" onclick="submitRegistration()">Proceed to Payment →</button><button class="btn btn-outline">Save as Draft</button></div>
+ </div>
+ <!-- S-PAYMENT -->
+ <div class="page" id="page-s-payment">
+ <div class="section-intro"><h2>Online Payment</h2><p>Complete your fee payment to confirm the registration.</p></div>
+ <div class="two-col">
+ <div><div class="card"><div class="card-header"><span class="card-title">Payment Summary</span></div><div class="card-body"><div class="payment-summary"><div class="payment-row"><span>Exam Fee</span><span>—</span></div><div class="payment-row"><span>Processing Fee</span><span>₹20</span></div><div class="payment-row total"><span>Total Payable</span><span style="color:var(--accent)">—</span></div></div><div style="font-size:12px;color:var(--muted);margin-top:4px">🔒 Secured · SSL Encrypted</div></div></div></div>
+ <div><div class="card"><div class="card-header"><span class="card-title">Select Payment Method</span></div><div class="card-body"><div class="payment-methods"><div class="pay-method selected" onclick="selectPayment(this)"><div class="pay-method-icon">🏦</div><div>Net Banking</div></div><div class="pay-method" onclick="selectPayment(this)"><div class="pay-method-icon">💳</div><div>Debit / Credit</div></div><div class="pay-method" onclick="selectPayment(this)"><div class="pay-method-icon">📱</div><div>UPI</div></div></div><div id="upiField" style="display:none;margin-bottom:16px"><div class="form-group"><label>UPI ID</label><input type="text" placeholder="yourname@upi"></div></div><div class="alert alert-green" style="margin-bottom:16px"><span>✓</span> Your details are verified. Click below to proceed.</div><button class="btn btn-primary" style="width:100%;justify-content:center;padding:13px">🔒 Pay Securely (Demo)</button></div></div></div>
+ </div>
+ </div>
+ <!-- S-HALL TICKET -->
+ <div class="page" id="page-s-hall-ticket">
+ <div class="section-intro"><h2>Hall Ticket</h2><p>Download your admit card for approved exams.</p></div>
+ <div class="card"><div class="card-header"><span class="card-title">Hall Tickets</span><button class="btn btn-primary" style="font-size:12px">⬇ Download PDF</button><button class="btn btn-outline" style="font-size:12px">🖨 Print</button></div><div class="card-body" id="hallTicketList"><div class="ticket-wrap"><div class="ticket-header"><div><div class="ticket-brand"><span>EXAM</span>PORTAL</div><div class="ticket-issued">Issued by ExamPortal Admin · College ID Required</div></div><div style="text-align:right"><div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Admit Card</div><div style="font-size:18px;font-weight:800;color:var(--accent)">Hall Ticket</div></div></div><p style="color:var(--muted);text-align:center;padding:20px">No hall tickets issued yet.</p></div></div></div>
+ </div>
+ <!-- S-SCHEDULE -->
+ <div class="page" id="page-s-schedule">
+ <div class="section-intro"><h2>Exam Schedule</h2><p>Your upcoming exams and important dates at a glance.</p></div>
+ <div class="card"><div class="card-header"><span class="card-title">Upcoming Exams</span></div><div class="card-body" id="scheduleList"><div class="schedule-list"><p style="color:var(--muted);text-align:center;padding:20px">Loading schedule...</p></div></div></div>
+ <div class="card"><div class="card-header"><span class="card-title">Important Dates</span></div><div class="card-body" style="padding:0"><table><thead><tr><th>Event</th><th>Exam</th><th>Date</th><th>Status</th></tr></thead><tbody id="scheduleDatesTable"><tr><td colspan="4" style="text-align:center;color:var(--muted);padding:20px">No schedule available.</td></tr></tbody></table></div></div>
+ </div>
+ <!-- S-MY REGISTRATIONS -->
+ <div class="page" id="page-s-my-exams">
+ <div class="section-intro"><h2>My Registrations</h2><p>Track all your exam applications and their statuses.</p></div>
+ <div class="card"><div class="card-header"><span class="card-title">Registration History</span><div class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search..."></div></div><div class="card-body" id="myRegistrationsList" style="padding:0"><p style="padding:20px;color:var(--muted)">Loading...</p></div></div>
+ </div>
+ <!-- A-DASHBOARD -->
+ <div class="page" id="page-a-dashboard">
+ <div class="section-intro"><h2>Admin Dashboard</h2><p>Welcome to the admin console.</p></div>
+ <div class="stats-grid">
+ <div class="stat-card"><div class="stat-label">Total Students</div><div class="stat-value" style="color:var(--accent2)" id="adminTotalStudents">0</div><div class="stat-delta up">Registered users</div></div>
+ <div class="stat-card"><div class="stat-label">Active Exams</div><div class="stat-value" style="color:var(--accent)" id="adminActiveExams">0</div><div class="stat-delta up">Open for registration</div></div>
+ <div class="stat-card"><div class="stat-label">Pending Approvals</div><div class="stat-value" style="color:var(--warn)" id="adminPendingApprovals">0</div><div class="stat-delta down">⚠ Needs attention</div></div>
+ <div class="stat-card"><div class="stat-label">Hall Tickets Issued</div><div class="stat-value" id="adminHallTickets">0</div><div class="stat-delta up">Processed</div></div>
+ </div>
+ <div class="card"><div class="card-header"><span class="card-title">Recent Registrations</span><button class="btn btn-outline" onclick="showPage('a-registrations',document.querySelector('[onclick*=a-registrations]'),'admin')">View All</button></div><div class="card-body" style="padding:0" id="adminRecentRegs"><p style="padding:20px;color:var(--muted)">Loading recent registrations...</p></div></div>
+ </div>
+ <!-- A-MANAGE EXAMS -->
+ <div class="page" id="page-a-manage-exams">
+ <div class="section-intro"><h2>Manage Exam Details</h2><p>Create, edit, and configure all exam schedules and metadata.</p></div>
+ <div class="card add-exam-card" style="margin-bottom:24px">
+ <div class="card-header" style="background:var(--surface2)"><span class="card-title" style="font-size:15px">Add New Exam</span></div>
+ <div class="card-body" style="padding:24px">
+ <div class="form-grid">
+ <div class="form-group"><label>Exam Name</label><input type="text" id="new_exam_name" placeholder="e.g. GATE 2026"/></div>
+ <div class="form-group"><label>Exam Code</label><input type="text" id="new_exam_code" placeholder="e.g. GATE26"/></div>
+ <div class="form-group"><label>Exam Date</label><input type="date" id="new_exam_date"/></div>
+ <div class="form-group"><label>Last Date to Register</label><input type="date" id="new_last_date"/></div>
+ <div class="form-group"><label>Exam Mode</label><select id="new_exam_mode"><option value="Online">Online</option><option value="Offline">Offline</option><option value="Hybrid">Hybrid</option></select></div>
+ <div class="form-group"><label>Exam Fee (₹)</label><input type="number" id="new_exam_fee" placeholder="500" min="0"/></div>
+ <div class="form-group full"><label>Description</label><textarea id="new_exam_desc" placeholder="Describe eligibility, pattern, etc." style="min-height:90px"></textarea></div>
+ <div class="form-group"><label>Available Subjects</label><input type="text" id="new_exam_subjects" placeholder="CSE, ECE, ME (comma separated)"/></div>
+ <div class="form-group"><label>Exam Center</label><input type="text" id="new_exam_center" placeholder="e.g. Amaravati, Hyderabad"/></div>
+ </div>
+ <div style="margin-top:22px;display:flex;gap:12px">
+ <button class="btn btn-primary" onclick="submitNewExam()" style="padding:11px 28px">➕ Add Exam</button>
+ <button class="btn btn-outline" onclick="clearNewExamForm()" style="padding:11px 20px">✕ Clear</button>
+ </div>
+ </div>
+ </div>
+ <div class="card">
+ <div class="card-header"><span class="card-title">Exam List</span><div class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search exams..." oninput="filterAdminExams(this.value)"></div></div>
+ <div class="card-body" id="adminExamList" style="padding:0"><p style="padding:20px;color:var(--muted)">Loading exams...</p></div>
+ </div>
+ </div>
+ <!-- A-REGISTRATIONS -->
+ <div class="page" id="page-a-registrations">
+ <div class="section-intro"><h2>Approve / Reject Registrations</h2><p>Review and process student exam registration requests.</p></div>
+ <div class="filter-row">
+ <span class="filter-chip active" data-filter="all" onclick="filterRegistrations('all',this)">All (<span class="chip-count-all">0</span>)</span>
+ <span class="filter-chip" data-filter="pending" onclick="filterRegistrations('pending',this)">Pending (<span class="chip-count-pending">0</span>)</span>
+ <span class="filter-chip" data-filter="approved" onclick="filterRegistrations('approved',this)">Approved (<span class="chip-count-approved">0</span>)</span>
+ <span class="filter-chip" data-filter="rejected" onclick="filterRegistrations('rejected',this)">Rejected (<span class="chip-count-rejected">0</span>)</span>
+ <div style="margin-left:auto" class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search student..." oninput="searchRegistrations(this.value)"></div>
+ </div>
+ <div class="card"><div class="card-header"><span class="card-title">Registration Requests</span></div><div class="card-body" style="padding:0"><table><thead><tr><th>Student</th><th>PRN</th><th>Exam</th><th>Subjects</th><th>Fee</th><th>Applied</th><th>Status</th><th>Actions</th></tr></thead><tbody id="reg-table"><tr><td colspan="8" style="text-align:center;padding:20px;color:var(--muted)">Loading registrations...</td></tr></tbody></table></div></div>
+ </div>
+ <!-- A-HALL TICKETS -->
+ <div class="page" id="page-a-hall-tickets">
+ <div class="section-intro">
+ <h2>Generate Hall Tickets</h2>
+ <p>Issue and manage hall tickets for approved students.</p>
+ </div>
+ <div class="ht-two-col">
+ <!-- Bulk Generation -->
+ <div class="ht-panel">
+ <div class="ht-panel-header">Generate Bulk Hall Tickets</div>
+ <div class="ht-panel-body">
+ <div class="ht-field-row">
+ <div class="ht-field-group">
+ <label>Select Exam</label>
+ <select id="ht_bulk_exam" onchange="htUpdateBulkInfo()">
+ <option value="">— Select Exam —</option>
+ </select>
+ </div>
+ <div class="ht-field-group">
+ <label>Filter by Subject</label>
+ <select id="ht_bulk_subject">
+ <option value="">All Subjects</option>
+ </select>
+ </div>
+ </div>
+ <div class="ht-count-pill" id="ht_bulk_info">
+ Select an exam to see eligible students.
+ </div>
+ <button class="btn btn-primary btn-full" onclick="generateBulkHallTickets()">
+ Generate All Hall Tickets
+ </button>
+ </div>
+ </div>
+ <!-- Single Student -->
+ <div class="ht-panel">
+ <div class="ht-panel-header">Single Student</div>
+ <div class="ht-panel-body">
+ <div class="ht-field-group" style="margin-bottom:14px">
+ <label>Student PRN / Roll No.</label>
+ <input type="text" id="ht_single_prn" placeholder="Enter PRN"/>
+ </div>
+ <div class="ht-field-group" style="margin-bottom:18px">
+ <label>Exam</label>
+ <select id="ht_single_exam">
+ <option value="">— Select Exam —</option>
+ </select>
+ </div>
+ <button class="btn btn-outline" style="width:100%;justify-content:center;padding:11px" onclick="lookupSingleStudent()">
+ Lookup &amp; Generate
+ </button>
+ </div>
+ </div>
+ </div>
+ <!-- HALL TICKET PREVIEW -->
+ <div class="ht-preview-card" id="ht_preview_card">
+ <div class="ht-preview-header">
+ <span class="ht-preview-header-title">Hall Ticket Preview</span>
+ <button class="btn btn-primary" style="font-size:12px;padding:8px 18px" onclick="window.print()">
+ ⬇ Download PDF
+ </button>
+ </div>
+ <div class="ht-preview-body">
+ <div class="admit-card" id="ht_preview_content">
+ <div style="padding:40px;text-align:center;color:var(--muted)">
+ <div style="font-size:36px;margin-bottom:12px">🎫</div>
+ <div style="font-size:14px;font-weight:600">No hall ticket selected</div>
+ <div style="font-size:13px;margin-top:4px">Generate tickets above or click a row in the Issued Hall Tickets table.</div>
+ </div>
+ </div>
+ </div>
+ </div>
+ <!-- ISSUED HALL TICKETS TABLE -->
+ <div class="ht-issued-card">
+ <div class="card-header">
+ <span class="card-title">Issued Hall Tickets</span>
+ <div class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search student or roll no..." oninput="filterIssuedTickets(this.value)"></div>
+ </div>
+ <div style="padding:0">
+ <table>
+ <thead>
+ <tr>
+ <th>Student</th>
+ <th>Roll No.</th>
+ <th>Exam</th>
+ <th>Center</th>
+ <th>Issued On</th>
+ <th>Status</th>
+ <th>Action</th>
+ </tr>
+ </thead>
+ <tbody id="ht_issued_table">
+ <tr><td colspan="7" style="text-align:center;padding:30px;color:var(--muted)">Loading issued hall tickets…</td></tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+ </div>
+ <!-- /A-HALL TICKETS -->
+ <!-- A-REPORTS -->
+ <div class="page" id="page-a-reports">
+ <div class="section-intro"><h2>Generate Reports</h2><p>Export detailed analytics and summaries for all exam activities.</p></div>
+ <div class="report-grid">
+ <div class="report-card green"><div class="report-icon">📊</div><div class="report-name">Registration Report</div><div class="report-desc">Total registrations, subject-wise breakdown, approval stats.</div><button class="btn btn-success" style="font-size:12px">Generate → Export</button></div>
+ <div class="report-card blue"><div class="report-icon">💰</div><div class="report-name">Payment Report</div><div class="report-desc">Fee collected, pending dues, payment gateway summary.</div><button class="btn btn-outline" style="font-size:12px;border-color:var(--accent2);color:var(--accent2)">Generate → Export</button></div>
+ <div class="report-card yellow"><div class="report-icon">🎫</div><div class="report-name">Hall Ticket Report</div><div class="report-desc">Issued vs pending hall tickets per exam and center.</div><button class="btn btn-outline" style="font-size:12px;border-color:var(--warn);color:var(--warn)">Generate → Export</button></div>
+ </div>
+ <div class="card"><div class="card-header"><span class="card-title">Report Preview — Registration Summary</span><button class="btn btn-primary" style="font-size:12px">⬇ Export CSV</button></div><div class="card-body" style="padding:0"><table><thead><tr><th>Exam</th><th>Total Registered</th><th>Approved</th><th>Rejected</th><th>Pending</th></tr></thead><tbody id="adminReportTable"><tr><td colspan="5" style="text-align:center;padding:20px;color:var(--muted)">Loading report data...</td></tr></tbody></table></div></div>
+ </div>
+ </div><!-- /.content -->
+ </main>
+ </div>
 </div>
-
 <!-- CHATBOT -->
-<button id="chat-fab" onclick="toggleChat()" title="ExamBot">🤖</button>
+<button id="chat-fab" onclick="toggleChat()" title="ExamBot">💬</button>
 <div id="chatbot-panel">
-  <div class="chat-header">
-    <div class="chat-dot"></div>
-    <div class="chat-title">🎓 ExamBot — Exam Registration Assistant</div>
-    <button class="chat-close" onclick="toggleChat()">×</button>
-  </div>
-  <div id="chat-messages">
-    <div class="msg bot">👋 Hi! I'm <b>ExamBot</b>. Ask me about exam registration, subjects, fees, deadlines, or documents!</div>
-  </div>
-  <div class="chat-input-row">
-    <input id="chat-inp" type="text" placeholder="Type your question..." onkeydown="if(event.key==='Enter')chatSend()"/>
-    <button onclick="chatSend()">Send</button>
-  </div>
+ <div class="chat-header">
+ <div class="chat-dot"></div>
+ <div class="chat-title">🤖 ExamBot — Exam Registration Assistant</div>
+ <button class="chat-close" onclick="toggleChat()">×</button>
+ </div>
+ <div id="chat-messages">
+ <div class="msg bot">👋 Hi! I'm <b>ExamBot</b>. Ask me about exam registration, subjects, fees, deadlines, or documents!</div>
+ </div>
+ <div class="chat-input-row">
+ <input id="chat-inp" type="text" placeholder="Type your question..." onkeydown="if(event.key==='Enter')chatSend()"/>
+ <button onclick="chatSend()">Send</button>
+ </div>
 </div>
-
 <script>
 // ═══════════════════════════════════════
 // AUTH HELPERS
@@ -790,470 +740,519 @@ textarea{resize:vertical;min-height:80px}
 function authGo(id){document.querySelectorAll('.pg').forEach(p=>p.classList.add('hide'));document.getElementById(id).classList.remove('hide')}
 function eye(id){const i=document.getElementById(id);i.type=i.type==='password'?'text':'password'}
 function updatePasswordStrength(inputId,prefix){
-  const val=document.getElementById(inputId).value;let s=0;
-  if(val.length>=8)s++;if(/[A-Z]/.test(val))s++;if(/[0-9]/.test(val))s++;if(/[^A-Za-z0-9]/.test(val))s++;
-  const cls=['','w','f','g','s'],lbl=['Enter a password','Weak','Fair','Good','Strong'];
-  [1,2,3,4].forEach(i=>{const e=document.getElementById(prefix+'s'+i);if(e){e.className='sg';if(i<=s)e.classList.add(cls[s])}});
-  const sl=document.getElementById(prefix+'sl');if(sl)sl.textContent=lbl[s];
+ const val=document.getElementById(inputId).value;let s=0;
+ if(val.length>=8)s++;if(/[A-Z]/.test(val))s++;if(/[0-9]/.test(val))s++;if(/[^A-Za-z0-9]/.test(val))s++;
+ const cls=['','w','f','g','s'],lbl=['Enter a password','Weak','Fair','Good','Strong'];
+ [1,2,3,4].forEach(i=>{const e=document.getElementById(prefix+'s'+i);if(e){e.className='sg';if(i<=s)e.classList.add(cls[s])}});
+ const sl=document.getElementById(prefix+'sl');if(sl)sl.textContent=lbl[s];
 }
 function checkPasswordMatch(cId,pId,hId){
-  const m=document.getElementById(cId).value===document.getElementById(pId).value;
-  const h=document.getElementById(hId);if(h){h.className='h '+(m?'v':'e');h.textContent=m?'✓ Passwords match':'✗ Passwords do not match'}
+ const m=document.getElementById(cId).value===document.getElementById(pId).value;
+ const h=document.getElementById(hId);if(h){h.className='h '+(m?'v':'e');h.textContent=m?'✓ Passwords match':'✗ Passwords do not match'}
 }
-
 // ═══════════════════════════════════════
 // AUTH API
 // ═══════════════════════════════════════
 async function slogin(){
-  const u=document.getElementById('s_u').value.trim(),p=document.getElementById('s_p').value;
-  if(!u||!p){alert('Please enter username and password');return}
-  try{
-    const res=await fetch('/api/auth/login/student',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p})});
-    const d=await res.json();
-    if(d.success){
-      document.getElementById('role-label').textContent='Student';
-      document.getElementById('auth-layer').classList.add('hidden');
-      document.getElementById('app-layer').classList.add('visible');
-      document.getElementById('sidebar-student').style.display='';
-      document.getElementById('sidebar-admin').style.display='none';
-      document.getElementById('sidebarUserName').textContent=d.username||u;
-      document.getElementById('sidebarUserCourse').textContent=d.course||'Student';
-      document.getElementById('welcomeName').textContent='Welcome, '+(d.username||u)+'! 👋';
-      document.getElementById('chat-fab').classList.add('show');
-      showPage('s-dashboard',document.querySelector('#sidebar-student .nav-item'),'student');
-      loadAvailableExams();loadMyRegistrations();loadHallTickets();loadExamSchedule();
-    }else alert(d.message||'Login failed');
-  }catch(e){alert('Error: '+e.message)}
+ const u=document.getElementById('s_u').value.trim(),p=document.getElementById('s_p').value;
+ if(!u||!p){alert('Please enter username and password');return}
+ try{
+ const res=await fetch('/api/auth/login/student',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p})});
+ const d=await res.json();
+ if(d.success){
+ document.getElementById('role-label').textContent='Student';
+ document.getElementById('auth-layer').classList.add('hidden');
+ document.getElementById('app-layer').classList.add('visible');
+ document.getElementById('sidebar-student').style.display='';
+ document.getElementById('sidebar-admin').style.display='none';
+ document.getElementById('sidebarUserName').textContent=d.username||u;
+ document.getElementById('sidebarUserCourse').textContent=d.course||'Student';
+ document.getElementById('welcomeName').textContent='Welcome, '+(d.username||u)+'! 👋';
+ document.getElementById('chat-fab').classList.add('show');
+ showPage('s-dashboard',document.querySelector('#sidebar-student .nav-item'),'student');
+ // ── CHANGE 2: call loadStudentDashboard on login ──
+ loadStudentDashboard();loadAvailableExams();loadMyRegistrations();loadHallTickets();loadExamSchedule();
+ }else alert(d.message||'Login failed');
+ }catch(e){alert('Error: '+e.message)}
 }
 async function alogin(){
-  const u=document.getElementById('a_u').value.trim(),p=document.getElementById('a_p').value;
-  if(!u||!p){alert('Please enter username and password');return}
-  try{
-    const res=await fetch('/api/auth/login/admin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p})});
-    const d=await res.json();
-    if(d.success){
-      document.getElementById('role-label').textContent='Admin';
-      document.getElementById('auth-layer').classList.add('hidden');
-      document.getElementById('app-layer').classList.add('visible');
-      document.getElementById('sidebar-student').style.display='none';
-      document.getElementById('sidebar-admin').style.display='';
-      document.getElementById('chat-fab').classList.add('show');
-      showPage('a-dashboard',document.querySelector('#sidebar-admin .nav-item'),'admin');
-      loadAdminDashboard();loadAdminExams();
-    }else alert(d.message||'Admin login failed');
-  }catch(e){alert('Error: '+e.message)}
+ const u=document.getElementById('a_u').value.trim(),p=document.getElementById('a_p').value;
+ if(!u||!p){alert('Please enter username and password');return}
+ try{
+ const res=await fetch('/api/auth/login/admin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p})});
+ const d=await res.json();
+ if(d.success){
+ document.getElementById('role-label').textContent='Admin';
+ document.getElementById('auth-layer').classList.add('hidden');
+ document.getElementById('app-layer').classList.add('visible');
+ document.getElementById('sidebar-student').style.display='none';
+ document.getElementById('sidebar-admin').style.display='';
+ document.getElementById('chat-fab').classList.add('show');
+ showPage('a-dashboard',document.querySelector('#sidebar-admin .nav-item'),'admin');
+ loadAdminDashboard();
+ loadAdminExams();
+ }else alert(d.message||'Admin login failed');
+ }catch(e){alert('Error: '+e.message)}
 }
 async function sendStudentOtp(){
-  const e=document.getElementById('sr_e').value.trim();if(!e){alert('Please enter your email');return}
-  const res=await fetch('/api/auth/send-otp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,role:'student'})});
-  const d=await res.json();alert(d.message||(d.success?'OTP sent to '+e:'Failed'));
+ const e=document.getElementById('sr_e').value.trim();if(!e){alert('Please enter your email');return}
+ const res=await fetch('/api/auth/send-otp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,role:'student'})});
+ const d=await res.json();alert(d.message||(d.success?'OTP sent to '+e:'Failed'));
 }
 async function sendAdminOtp(){
-  const e=document.getElementById('ar_e').value.trim();if(!e){alert('Please enter your email');return}
-  const res=await fetch('/api/auth/send-otp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,role:'admin'})});
-  const d=await res.json();alert(d.message||(d.success?'OTP sent to '+e:'Failed'));
+ const e=document.getElementById('ar_e').value.trim();if(!e){alert('Please enter your email');return}
+ const res=await fetch('/api/auth/send-otp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,role:'admin'})});
+ const d=await res.json();alert(d.message||(d.success?'OTP sent to '+e:'Failed'));
 }
 async function adminSignup(){
-  const e=document.getElementById('ar_e').value.trim(),u=document.getElementById('ar_u').value.trim(),p=document.getElementById('ar_p').value,c=document.getElementById('ar_c').value,o=document.getElementById('ar_o').value.trim();
-  if(!e||!u||!p||!o){alert('Please fill all fields');return}if(p!==c){alert('Passwords do not match');return}
-  try{
-    const v=await(await fetch('/api/auth/verify-otp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,code:o})})).json();
-    if(!v.success){alert(v.message||'Invalid OTP');return}
-    const d=await(await fetch('/api/auth/signup/admin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,username:u,password:p})})).json();
-    if(d.success){alert('Admin account created! Please sign in.');authGo('p2')}else alert(d.message||'Registration failed');
-  }catch(err){alert('Error: '+err.message)}
+ const e=document.getElementById('ar_e').value.trim(),u=document.getElementById('ar_u').value.trim(),p=document.getElementById('ar_p').value,c=document.getElementById('ar_c').value,o=document.getElementById('ar_o').value.trim();
+ if(!e||!u||!p||!o){alert('Please fill all fields');return}if(p!==c){alert('Passwords do not match');return}
+ try{
+ const v=await(await fetch('/api/auth/verify-otp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,code:o})})).json();
+ if(!v.success){alert(v.message||'Invalid OTP');return}
+ const d=await(await fetch('/api/auth/signup/admin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,username:u,password:p})})).json();
+ if(d.success){alert('Admin account created! Please sign in.');authGo('p2')}else alert(d.message||'Registration failed');
+ }catch(err){alert('Error: '+err.message)}
 }
 document.addEventListener('DOMContentLoaded',()=>{
-  const btn=document.getElementById('studentSignupBtn');
-  if(btn)btn.addEventListener('click',async()=>{
-    const e=document.getElementById('sr_e').value.trim(),u=document.getElementById('sr_u').value.trim(),
-      p=document.getElementById('sr_p').value,c=document.getElementById('sr_c').value,
-      o=document.getElementById('sr_o').value.trim(),
-      course=document.getElementById('sr_course').value,sem=document.getElementById('sr_sem').value;
-    if(!e||!u||!p||!o){alert('Please fill all fields');return}if(p!==c){alert('Passwords do not match');return}
-    try{
-      const v=await(await fetch('/api/auth/verify-otp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,code:o})})).json();
-      if(!v.success){alert(v.message||'Invalid OTP');return}
-      const d=await(await fetch('/api/auth/signup/student',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,username:u,password:p,course,semester:sem})})).json();
-      if(d.success){alert('Account created! Please sign in.');authGo('p1')}else alert(d.message||'Registration failed');
-    }catch(err){alert('Error: '+err.message)}
-  });
+ const btn=document.getElementById('studentSignupBtn');
+ if(btn)btn.addEventListener('click',async()=>{
+ const e=document.getElementById('sr_e').value.trim(),u=document.getElementById('sr_u').value.trim(),
+ p=document.getElementById('sr_p').value,c=document.getElementById('sr_c').value,
+ o=document.getElementById('sr_o').value.trim(),
+ course=document.getElementById('sr_course').value,sem=document.getElementById('sr_sem').value;
+ if(!e||!u||!p||!o){alert('Please fill all fields');return}if(p!==c){alert('Passwords do not match');return}
+ try{
+ const v=await(await fetch('/api/auth/verify-otp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,code:o})})).json();
+ if(!v.success){alert(v.message||'Invalid OTP');return}
+ const d=await(await fetch('/api/auth/signup/student',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,username:u,password:p,course,semester:sem})})).json();
+ if(d.success){alert('Account created! Please sign in.');authGo('p1')}else alert(d.message||'Registration failed');
+ }catch(err){alert('Error: '+err.message)}
+ });
 });
 function logout(){
-  fetch('/api/auth/logout',{method:'POST'}).catch(()=>{});
-  document.getElementById('app-layer').classList.remove('visible');
-  document.getElementById('auth-layer').classList.remove('hidden');
-  document.getElementById('chat-fab').classList.remove('show');
-  if(document.getElementById('chatbot-panel').classList.contains('open'))toggleChat();
-  authGo('p0');
+ fetch('/api/auth/logout',{method:'POST'}).catch(()=>{});
+ document.getElementById('app-layer').classList.remove('visible');
+ document.getElementById('auth-layer').classList.remove('hidden');
+ document.getElementById('chat-fab').classList.remove('show');
+ if(document.getElementById('chatbot-panel').classList.contains('open'))toggleChat();
+ authGo('p0');
 }
-
 // ═══════════════════════════════════════
 // PAGE NAVIGATION
 // ═══════════════════════════════════════
 const pageTitles={
-  's-dashboard':['Dashboard','Welcome back'],
-  's-available-exams':['Available Exams','Browse & register'],
-  's-register':['Register for Exam','Fill your application'],
-  's-payment':['Online Payment','Complete your fee'],
-  's-hall-ticket':['Hall Ticket','Download admit card'],
-  's-schedule':['Exam Schedule','Upcoming dates'],
-  's-my-exams':['My Registrations','Track your applications'],
-  'a-dashboard':['Overview','Admin Dashboard'],
-  'a-manage-exams':['Manage Exam Details','Configure & schedule exams'],
-  'a-registrations':['Registrations','Approve or reject student requests'],
-  'a-hall-tickets':['Hall Tickets','Issue hall tickets to approved students'],
-  'a-reports':['Reports','Analytics & exports'],
+ 's-dashboard':['Dashboard','Welcome back'],
+ 's-available-exams':['Available Exams','Browse & register'],
+ 's-register':['Register for Exam','Fill your application'],
+ 's-payment':['Online Payment','Complete your fee'],
+ 's-hall-ticket':['Hall Ticket','Download admit card'],
+ 's-schedule':['Exam Schedule','Upcoming dates'],
+ 's-my-exams':['My Registrations','Track your applications'],
+ 'a-dashboard':['Overview','Admin Dashboard'],
+ 'a-manage-exams':['Manage Exam Details','Configure & schedule exams'],
+ 'a-registrations':['Registrations','Approve or reject student requests'],
+ 'a-hall-tickets':['Hall Tickets','Issue hall tickets to approved students'],
+ 'a-reports':['Reports','Analytics & exports'],
 };
 function setTopbar(t,s){document.getElementById('topbar-title').innerHTML=t+' <span class="topbar-sub">'+s+'</span>'}
 function showPage(id,el,role){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  const sid=role==='admin'?'#sidebar-admin':'#sidebar-student';
-  document.querySelectorAll(sid+' .nav-item').forEach(n=>n.classList.remove('active'));
-  document.getElementById('page-'+id).classList.add('active');
-  if(el)el.classList.add('active');
-  const t=pageTitles[id]||[id,''];setTopbar(t[0],t[1]);
-  if(id==='a-registrations')loadAdminRegistrations();
-  if(id==='a-hall-tickets')loadHallTicketPage();
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ const sid=role==='admin'?'#sidebar-admin':'#sidebar-student';
+ document.querySelectorAll(sid+' .nav-item').forEach(n=>n.classList.remove('active'));
+ document.getElementById('page-'+id).classList.add('active');
+ if(el)el.classList.add('active');
+ const t=pageTitles[id]||[id,''];setTopbar(t[0],t[1]);
+ // ── CHANGE 3: reload dashboard data when navigating to it ──
+ if(id==='s-dashboard')loadStudentDashboard();
+ if(id==='a-registrations')loadAdminRegistrations();
+ if(id==='a-hall-tickets')loadHallTicketPage();
 }
-
 // ═══════════════════════════════════════
 // PAYMENT
 // ═══════════════════════════════════════
 function selectPayment(el){
-  document.querySelectorAll('.pay-method').forEach(p=>p.classList.remove('selected'));el.classList.add('selected');
-  document.getElementById('upiField').style.display=el.querySelector('div:last-child').textContent.includes('UPI')?'block':'none';
+ document.querySelectorAll('.pay-method').forEach(p=>p.classList.remove('selected'));el.classList.add('selected');
+ document.getElementById('upiField').style.display=el.querySelector('div:last-child').textContent.includes('UPI')?'block':'none';
 }
-
 // ═══════════════════════════════════════
 // FILTERS
 // ═══════════════════════════════════════
 let activeFilter='all',activeSearch='';
 function updateCounts(){
-  const rows=document.querySelectorAll('#reg-table tr');let c={all:0,pending:0,approved:0,rejected:0};
-  rows.forEach(r=>{const s=r.dataset.status;c.all++;if(c[s]!==undefined)c[s]++});
-  document.querySelector('.chip-count-all').textContent=c.all;
-  document.querySelector('.chip-count-pending').textContent=c.pending;
-  document.querySelector('.chip-count-approved').textContent=c.approved;
-  document.querySelector('.chip-count-rejected').textContent=c.rejected;
+ const rows=document.querySelectorAll('#reg-table tr');let c={all:0,pending:0,approved:0,rejected:0};
+ rows.forEach(r=>{const s=r.dataset.status;c.all++;if(c[s]!==undefined)c[s]++});
+ document.querySelector('.chip-count-all').textContent=c.all;
+ document.querySelector('.chip-count-pending').textContent=c.pending;
+ document.querySelector('.chip-count-approved').textContent=c.approved;
+ document.querySelector('.chip-count-rejected').textContent=c.rejected;
 }
 function applyFilter(){
-  document.querySelectorAll('#reg-table tr').forEach(r=>{
-    const sm=activeFilter==='all'||r.dataset.status===activeFilter;
-    const qm=activeSearch===''||r.textContent.toLowerCase().includes(activeSearch.toLowerCase());
-    r.style.display=(sm&&qm)?'':'none';
-  });
+ document.querySelectorAll('#reg-table tr').forEach(r=>{
+ const sm=activeFilter==='all'||r.dataset.status===activeFilter;
+ const qm=activeSearch===''||r.textContent.toLowerCase().includes(activeSearch.toLowerCase());
+ r.style.display=(sm&&qm)?'':'none';
+ });
 }
 function filterRegistrations(f,el){activeFilter=f;document.querySelectorAll('[data-filter]').forEach(c=>c.classList.remove('active'));el.classList.add('active');applyFilter()}
 function searchRegistrations(q){activeSearch=q;applyFilter()}
-
 // ═══════════════════════════════════════
 // NEW EXAM FORM
 // ═══════════════════════════════════════
 function clearNewExamForm(){
-  ['new_exam_name','new_exam_code','new_exam_fee','new_exam_desc','new_exam_subjects','new_exam_center','new_exam_date','new_last_date'].forEach(id=>{const e=document.getElementById(id);if(e)e.value=''});
-  const m=document.getElementById('new_exam_mode');if(m)m.selectedIndex=0;
+ ['new_exam_name','new_exam_code','new_exam_fee','new_exam_desc','new_exam_subjects','new_exam_center','new_exam_date','new_last_date'].forEach(id=>{const e=document.getElementById(id);if(e)e.value=''});
+ const m=document.getElementById('new_exam_mode');if(m)m.selectedIndex=0;
 }
 async function submitNewExam(){
-  const n=document.getElementById('new_exam_name').value.trim(),code=document.getElementById('new_exam_code').value.trim(),
-    ed=document.getElementById('new_exam_date').value,ld=document.getElementById('new_last_date').value,
-    mode=document.getElementById('new_exam_mode').value,fee=document.getElementById('new_exam_fee').value,
-    desc=document.getElementById('new_exam_desc').value.trim(),subs=document.getElementById('new_exam_subjects').value.trim(),
-    ctr=document.getElementById('new_exam_center').value.trim();
-  if(!n||!code||!ed||!ld||!fee){alert('Please fill in all required fields (Name, Code, Dates, Fee).');return}
-  try{
-    const res=await fetch('/api/admin/exams',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({exam_name:n,exam_code:code,exam_date:ed,last_date:ld,exam_mode:mode,fee,description:desc,subjects:subs,center:ctr})});
-    const d=await res.json();
-    if(d.success){alert('Exam added successfully!');clearNewExamForm();loadAdminExams()}else alert(d.message||'Failed to add exam');
-  }catch(e){alert('Error: '+e.message)}
+ const n=document.getElementById('new_exam_name').value.trim(),code=document.getElementById('new_exam_code').value.trim(),
+ ed=document.getElementById('new_exam_date').value,ld=document.getElementById('new_last_date').value,
+ mode=document.getElementById('new_exam_mode').value,fee=document.getElementById('new_exam_fee').value,
+ desc=document.getElementById('new_exam_desc').value.trim(),subs=document.getElementById('new_exam_subjects').value.trim(),
+ ctr=document.getElementById('new_exam_center').value.trim();
+ if(!n||!code||!ed||!ld||!fee){alert('Please fill in all required fields (Name, Code, Dates, Fee).');return}
+ try{
+ const res=await fetch('/api/admin/exams',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({exam_name:n,exam_code:code,exam_date:ed,last_date:ld,exam_mode:mode,fee,description:desc,subjects:subs,center:ctr})});
+ const d=await res.json();
+ if(d.success){alert('Exam added successfully!');clearNewExamForm();loadAdminExams()}else alert(d.message||'Failed to add exam');
+ }catch(e){alert('Error: '+e.message)}
 }
 let allAdminExams=[];
 function filterAdminExams(q){renderAdminExamTable(q?allAdminExams.filter(e=>e.exam_name.toLowerCase().includes(q.toLowerCase())):allAdminExams)}
 function renderAdminExamTable(exams){
-  const c=document.getElementById('adminExamList');
-  if(!exams.length){c.innerHTML='<p style="padding:20px;color:var(--muted)">No exams found.</p>';return}
-  c.innerHTML=`<table style="width:100%"><thead><tr><th>Exam</th><th>Registered</th><th>Approved</th><th>Pending</th><th>Rejected</th></tr></thead><tbody>`+
-    exams.map(e=>`<tr><td><strong>${e.exam_name}</strong></td><td>${e.total_registered}</td><td><span class="badge badge-green">${e.approved}</span></td><td><span class="badge badge-yellow">${e.pending}</span></td><td><span class="badge badge-red">${e.rejected}</span></td></tr>`).join('')+`</tbody></table>`;
+ const c=document.getElementById('adminExamList');
+ if(!exams.length){c.innerHTML='<p style="padding:20px;color:var(--muted)">No exams found.</p>';return}
+ c.innerHTML=`<table style="width:100%"><thead><tr><th>Exam</th><th>Registered</th><th>Approved</th><th>Pending</th><th>Rejected</th></tr></thead><tbody>`+
+ exams.map(e=>`<tr><td><strong>${e.exam_name}</strong></td><td>${e.total_registered}</td><td><span class="badge badge-green">${e.approved}</span></td><td><span class="badge badge-yellow">${e.pending}</span></td><td><span class="badge badge-red">${e.rejected}</span></td></tr>`).join('')+`</tbody></table>`;
 }
-
 // ═══════════════════════════════════════
-// HALL TICKET PAGE — UI LOGIC (frontend only)
+// HALL TICKET PAGE — UI LOGIC
 // ═══════════════════════════════════════
 let issuedTicketsAll = [];
-
 async function loadHallTicketPage() {
-  // Populate exam dropdowns from backend
-  try {
-    const res = await fetch('/api/admin/exams');
-    const exams = await res.json();
-    const bulkSel = document.getElementById('ht_bulk_exam');
-    const singleSel = document.getElementById('ht_single_exam');
-    // Clear existing options (except placeholder)
-    bulkSel.innerHTML = '<option value="">— Select Exam —</option>';
-    singleSel.innerHTML = '<option value="">— Select Exam —</option>';
-    exams.forEach(e => {
-      const o1 = new Option(e.exam_name, e.exam_id);
-      const o2 = new Option(e.exam_name, e.exam_id);
-      bulkSel.add(o1); singleSel.add(o2);
-    });
-  } catch(err) { console.error(err); }
-
-  // Load issued hall tickets
-  try {
-    const res = await fetch('/api/admin/hall-tickets');
-    const tickets = await res.json();
-    issuedTicketsAll = tickets;
-    renderIssuedTickets(tickets);
-  } catch(err) {
-    document.getElementById('ht_issued_table').innerHTML =
-      '<tr><td colspan="7" style="text-align:center;padding:30px;color:var(--muted)">No hall tickets issued yet.</td></tr>';
-  }
+ try {
+ const res = await fetch('/api/admin/exams');
+ const exams = await res.json();
+ const bulkSel = document.getElementById('ht_bulk_exam');
+ const singleSel = document.getElementById('ht_single_exam');
+ bulkSel.innerHTML = '<option value="">— Select Exam —</option>';
+ singleSel.innerHTML = '<option value="">— Select Exam —</option>';
+ exams.forEach(e => {
+ const o1 = new Option(e.exam_name, e.exam_id);
+ const o2 = new Option(e.exam_name, e.exam_id);
+ bulkSel.add(o1); singleSel.add(o2);
+ });
+ } catch(err) { console.error(err); }
+ try {
+ const res = await fetch('/api/admin/hall-tickets');
+ const tickets = await res.json();
+ issuedTicketsAll = tickets;
+ renderIssuedTickets(tickets);
+ } catch(err) {
+ document.getElementById('ht_issued_table').innerHTML =
+ '<tr><td colspan="7" style="text-align:center;padding:30px;color:var(--muted)">No hall tickets issued yet.</td></tr>';
+ }
 }
-
 function htUpdateBulkInfo() {
-  const sel = document.getElementById('ht_bulk_exam');
-  const pill = document.getElementById('ht_bulk_info');
-  if (!sel.value) {
-    pill.innerHTML = 'Select an exam to see eligible students.';
-    return;
-  }
-  const examName = sel.options[sel.selectedIndex].text;
-  // Try to find count from allAdminExams
-  const exam = allAdminExams.find(e => String(e.exam_id) === String(sel.value));
-  const count = exam ? exam.approved : '—';
-  pill.innerHTML = `<strong>${count} approved students</strong> eligible for hall ticket generation for ${examName}.`;
+ const sel = document.getElementById('ht_bulk_exam');
+ const pill = document.getElementById('ht_bulk_info');
+ if (!sel.value) {
+ pill.innerHTML = 'Select an exam to see eligible students.';
+ return;
+ }
+ const examName = sel.options[sel.selectedIndex].text;
+ const exam = allAdminExams.find(e => String(e.exam_id) === String(sel.value));
+ const count = exam ? exam.approved : '—';
+ pill.innerHTML = `<strong>${count} approved students</strong> eligible for hall ticket generation for ${examName}.`;
 }
-
 async function generateBulkHallTickets() {
-  const examId = document.getElementById('ht_bulk_exam').value;
-  if (!examId) { alert('Please select an exam first.'); return; }
-  try {
-    const res = await fetch('/api/admin/hall-tickets/bulk', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ exam_id: examId })
-    });
-    const data = await res.json();
-    if (data.success) {
-      alert(`Hall tickets generated successfully!`);
-      loadHallTicketPage();
-    } else {
-      alert(data.message || 'Generation failed');
-    }
-  } catch(err) {
-    alert('Error: ' + err.message);
-  }
+ const examId = document.getElementById('ht_bulk_exam').value;
+ if (!examId) { alert('Please select an exam first.'); return; }
+ try {
+ const res = await fetch('/api/admin/hall-tickets/bulk', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify({ exam_id: examId })
+ });
+ const data = await res.json();
+ if (data.success) {
+ alert(`Hall tickets generated successfully!`);
+ loadHallTicketPage();
+ } else {
+ alert(data.message || 'Generation failed');
+ }
+ } catch(err) {
+ alert('Error: ' + err.message);
+ }
 }
-
 async function lookupSingleStudent() {
-  const prn = document.getElementById('ht_single_prn').value.trim();
-  const examId = document.getElementById('ht_single_exam').value;
-  if (!prn) { alert('Please enter a PRN or Roll No.'); return; }
-  try {
-    const url = examId
-      ? `/api/admin/hall-tickets/lookup?prn=${encodeURIComponent(prn)}&exam_id=${examId}`
-      : `/api/admin/hall-tickets/lookup?prn=${encodeURIComponent(prn)}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    if (data && (data.student_name || data.roll_number)) {
-      renderAdmitCard(data);
-    } else {
-      alert(data.message || 'Student not found or no approved registration.');
-    }
-  } catch(err) {
-    alert('Error: ' + err.message);
-  }
+ const prn = document.getElementById('ht_single_prn').value.trim();
+ const examId = document.getElementById('ht_single_exam').value;
+ if (!prn) { alert('Please enter a PRN or Roll No.'); return; }
+ try {
+ const url = examId
+ ? `/api/admin/hall-tickets/lookup?prn=${encodeURIComponent(prn)}&exam_id=${examId}`
+ : `/api/admin/hall-tickets/lookup?prn=${encodeURIComponent(prn)}`;
+ const res = await fetch(url);
+ const data = await res.json();
+ if (data && (data.student_name || data.roll_number)) {
+ renderAdmitCard(data);
+ } else {
+ alert(data.message || 'Student not found or no approved registration.');
+ }
+ } catch(err) {
+ alert('Error: ' + err.message);
+ }
 }
-
 function renderAdmitCard(t) {
-  const barcode = generateBarcode();
-  document.getElementById('ht_preview_content').innerHTML = `
-    <div class="admit-card-top">
-      <div class="admit-card-top-info">
-        <div class="admit-card-exam">${t.exam_name || 'Exam'} — Hall Ticket</div>
-        <div class="admit-card-issued">Issued by ExamPortal Admin • Valid ID Required at Center</div>
-      </div>
-      <div class="admit-card-barcode-wrap">
-        <div class="admit-card-barcode">${barcode}</div>
-        <div class="admit-card-barcode-num">${t.roll_number || t.prn}</div>
-      </div>
-      <div class="admit-card-photo">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
-      </div>
-    </div>
-    <div class="admit-card-fields">
-      <div class="admit-field"><div class="admit-field-label">Student Name</div><div class="admit-field-value">${t.student_name || '—'}</div></div>
-      <div class="admit-field"><div class="admit-field-label">Roll Number</div><div class="admit-field-value">${t.roll_number || '—'}</div></div>
-      <div class="admit-field"><div class="admit-field-label">PRN</div><div class="admit-field-value">${t.prn || '—'}</div></div>
-      <div class="admit-field"><div class="admit-field-label">Exam Date</div><div class="admit-field-value">${t.exam_date ? new Date(t.exam_date).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}) : '—'}</div></div>
-      <div class="admit-field"><div class="admit-field-label">Reporting Time</div><div class="admit-field-value">${t.reporting_time || '9:00 AM'}</div></div>
-      <div class="admit-field"><div class="admit-field-label">Subject</div><div class="admit-field-value">${t.subject || t.subjects || '—'}</div></div>
-      <div class="admit-field"><div class="admit-field-label">Exam Center</div><div class="admit-field-value">${t.center_name || '—'}</div></div>
-      <div class="admit-field"><div class="admit-field-label">Center Address</div><div class="admit-field-value">${t.center_address || t.city || '—'}</div></div>
-      <div class="admit-field"><div class="admit-field-label">Duration</div><div class="admit-field-value">${t.duration || '3 Hours'}</div></div>
-    </div>`;
+ const barcode = generateBarcode();
+ document.getElementById('ht_preview_content').innerHTML = `
+ <div class="admit-card-top">
+ <div class="admit-card-top-info">
+ <div class="admit-card-exam">${t.exam_name || 'Exam'} — Hall Ticket</div>
+ <div class="admit-card-issued">Issued by ExamPortal Admin • Valid ID Required at Center</div>
+ </div>
+ <div class="admit-card-barcode-wrap">
+ <div class="admit-card-barcode">${barcode}</div>
+ <div class="admit-card-barcode-num">${t.roll_number || t.prn}</div>
+ </div>
+ <div class="admit-card-photo">
+ <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+ <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+ <circle cx="12" cy="7" r="4"/>
+ </svg>
+ </div>
+ </div>
+ <div class="admit-card-fields">
+ <div class="admit-field"><div class="admit-field-label">Student Name</div><div class="admit-field-value">${t.student_name || '—'}</div></div>
+ <div class="admit-field"><div class="admit-field-label">Roll Number</div><div class="admit-field-value">${t.roll_number || '—'}</div></div>
+ <div class="admit-field"><div class="admit-field-label">PRN</div><div class="admit-field-value">${t.prn || '—'}</div></div>
+ <div class="admit-field"><div class="admit-field-label">Exam Date</div><div class="admit-field-value">${t.exam_date ? new Date(t.exam_date).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}) : '—'}</div></div>
+ <div class="admit-field"><div class="admit-field-label">Reporting Time</div><div class="admit-field-value">${t.reporting_time || '9:00 AM'}</div></div>
+ <div class="admit-field"><div class="admit-field-label">Subject</div><div class="admit-field-value">${t.subject || t.subjects || '—'}</div></div>
+ <div class="admit-field"><div class="admit-field-label">Exam Center</div><div class="admit-field-value">${t.center_name || '—'}</div></div>
+ <div class="admit-field"><div class="admit-field-label">Center Address</div><div class="admit-field-value">${t.center_address || t.city || '—'}</div></div>
+ <div class="admit-field"><div class="admit-field-label">Duration</div><div class="admit-field-value">${t.duration || '3 Hours'}</div></div>
+ </div>`;
 }
-
 function generateBarcode() {
-  const pattern = [3,1,2,1,1,3,1,2,3,1,1,2,2,1,3,1,2,1,1,3];
-  return pattern.map((w,i) => {
-    const isThin = w === 1;
-    const isGap = i % 3 === 2;
-    return `<div class="bar${isThin?' thin':''}${isGap?' gap':''}"></div>`;
-  }).join('');
+ const pattern = [3,1,2,1,1,3,1,2,3,1,1,2,2,1,3,1,2,1,1,3];
+ return pattern.map((w,i) => {
+ const isThin = w === 1;
+ const isGap = i % 3 === 2;
+ return `<div class="bar${isThin?' thin':''}${isGap?' gap':''}"></div>`;
+ }).join('');
 }
-
 function renderIssuedTickets(tickets) {
-  const tbody = document.getElementById('ht_issued_table');
-  if (!tickets || !tickets.length) {
-    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:30px;color:var(--muted)">No hall tickets issued yet.</td></tr>';
-    return;
-  }
-  tbody.innerHTML = tickets.map(t => {
-    const issued = t.issued_on ? new Date(t.issued_on).toLocaleDateString('en-IN',{day:'2-digit',month:'short'}) : '—';
-    return `<tr>
-      <td><strong>${t.student_name}</strong></td>
-      <td style="font-family:monospace;font-size:12px">${t.roll_number}</td>
-      <td>${t.exam_name}</td>
-      <td>${t.center_name || t.city || '—'}</td>
-      <td>${issued}</td>
-      <td><span class="badge badge-green">Issued</span></td>
-      <td>
-        <button class="btn btn-outline" style="padding:5px 12px;font-size:11px" onclick='viewTicket(${JSON.stringify(t)})'>
-          👁 View
-        </button>
-      </td>
-    </tr>`;
-  }).join('');
+ const tbody = document.getElementById('ht_issued_table');
+ if (!tickets || !tickets.length) {
+ tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:30px;color:var(--muted)">No hall tickets issued yet.</td></tr>';
+ return;
+ }
+ tbody.innerHTML = tickets.map(t => {
+ const issued = t.issued_on ? new Date(t.issued_on).toLocaleDateString('en-IN',{day:'2-digit',month:'short'}) : '—';
+ return `<tr>
+ <td><strong>${t.student_name}</strong></td>
+ <td style="font-family:monospace;font-size:12px">${t.roll_number}</td>
+ <td>${t.exam_name}</td>
+ <td>${t.center_name || t.city || '—'}</td>
+ <td>${issued}</td>
+ <td><span class="badge badge-green">Issued</span></td>
+ <td>
+ <button class="btn btn-outline" style="padding:5px 12px;font-size:11px" onclick='viewTicket(${JSON.stringify(t)})'>
+ 👁 View
+ </button>
+ </td>
+ </tr>`;
+ }).join('');
 }
-
 function viewTicket(t) {
-  renderAdmitCard(t);
-  document.getElementById('ht_preview_card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+ renderAdmitCard(t);
+ document.getElementById('ht_preview_card').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-
 function filterIssuedTickets(q) {
-  if (!q) { renderIssuedTickets(issuedTicketsAll); return; }
-  const filtered = issuedTicketsAll.filter(t =>
-    (t.student_name||'').toLowerCase().includes(q.toLowerCase()) ||
-    (t.roll_number||'').toLowerCase().includes(q.toLowerCase()) ||
-    (t.exam_name||'').toLowerCase().includes(q.toLowerCase())
-  );
-  renderIssuedTickets(filtered);
+ if (!q) { renderIssuedTickets(issuedTicketsAll); return; }
+ const filtered = issuedTicketsAll.filter(t =>
+ (t.student_name||'').toLowerCase().includes(q.toLowerCase()) ||
+ (t.roll_number||'').toLowerCase().includes(q.toLowerCase()) ||
+ (t.exam_name||'').toLowerCase().includes(q.toLowerCase())
+ );
+ renderIssuedTickets(filtered);
 }
+// ═══════════════════════════════════════
+// ── CHANGE 1: STUDENT DASHBOARD (NEW WORKING FUNCTION) ──
+// ═══════════════════════════════════════
+async function loadStudentDashboard(){
+ try{
+ const [regsRes, ticketsRes, examsRes] = await Promise.all([
+ fetch('/api/student/my-registrations', {credentials:'include'}),
+ fetch('/api/student/hall-tickets',      {credentials:'include'}),
+ fetch('/api/student/exams',             {credentials:'include'})
+ ]);
+ const regs    = await regsRes.json();
+ const tickets = await ticketsRes.json();
+ const exams   = await examsRes.json();
 
+ // Update stat cards
+ document.getElementById('statRegistered').textContent = regs.length;
+ const pending = regs.filter(r => r.payment_status !== 'Paid').length;
+ document.getElementById('statPending').textContent  = pending;
+ document.getElementById('statTickets').textContent  = tickets.length;
+ document.getElementById('statUpcoming').textContent = exams.length;
+
+ // Dashboard registrations table
+ const container = document.getElementById('dashboardRegistrations');
+ if(!regs.length){
+ container.innerHTML = '<p style="color:var(--muted);text-align:center;padding:20px">No registrations yet. Browse available exams to get started.</p>';
+ return;
+ }
+ container.innerHTML = `<table style="width:100%">
+ <thead>
+ <tr>
+ <th>Exam</th>
+ <th>Subjects</th>
+ <th>Fee</th>
+ <th>Payment</th>
+ <th>Status</th>
+ </tr>
+ </thead>
+ <tbody>
+ ${regs.map(r=>`
+ <tr>
+ <td><strong>${r.exam_name}</strong></td>
+ <td>${r.subject_count} subject${r.subject_count != 1 ? 's' : ''}</td>
+ <td>₹${r.total_fee}</td>
+ <td><span class="badge ${r.payment_status === 'Paid' ? 'badge-green' : 'badge-yellow'}">${r.payment_status}</span></td>
+ <td><span class="badge ${r.admin_status === 'Approved' ? 'badge-green' : r.admin_status === 'Rejected' ? 'badge-red' : 'badge-yellow'}">${r.admin_status}</span></td>
+ </tr>
+ `).join('')}
+ </tbody>
+ </table>`;
+ }catch(e){
+ console.error('Student dashboard error:', e);
+ }
+}
 // ═══════════════════════════════════════
 // STUDENT API
 // ═══════════════════════════════════════
 async function loadAvailableExams(){
-  try{
-    const res=await fetch('/api/student/exams');const exams=await res.json();
-    const grid=document.getElementById('availableExamsGrid');
-    if(!exams.length){grid.innerHTML='<p style="color:var(--muted)">No exams available.</p>';return}
-    grid.innerHTML=exams.map(e=>`<div class="exam-card"><div class="exam-card-title">${e.exam_name}</div><div class="exam-card-code">${e.exam_type||'Exam'}</div><div class="exam-card-meta"><div class="exam-meta-row"><span class="exam-meta-label">📅 Exam Date</span><span class="exam-meta-val">${e.exam_date||'—'}</span></div><div class="exam-meta-row"><span class="exam-meta-label">📝 Last Date</span><span class="exam-meta-val">${e.last_date||'—'}</span></div><div class="exam-meta-row"><span class="exam-meta-label">💰 Fee</span><span class="exam-meta-val">₹${e.fee||'—'}</span></div></div><div style="display:flex;justify-content:space-between;align-items:center"><span class="badge badge-green">Open</span><button class="btn btn-primary" style="font-size:12px;padding:7px 14px" onclick="showPage('s-register',document.querySelector('[onclick*=s-register]'),'student')">Register →</button></div></div>`).join('');
-    const sel=document.getElementById('registerExamSelect');
-    exams.forEach(e=>{const o=document.createElement('option');o.value=e.exam_id;o.textContent=e.exam_name;sel.appendChild(o)});
-    document.getElementById('allExamsTableBody').innerHTML=`<table style="width:100%"><thead><tr><th>Exam</th><th>Date</th><th>Fee</th><th>Status</th><th></th></tr></thead><tbody>`+exams.map(e=>`<tr><td><strong>${e.exam_name}</strong></td><td>${e.exam_date||'—'}</td><td>₹${e.fee||'—'}</td><td><span class="badge badge-green">Open</span></td><td><button class="btn btn-success" style="padding:5px 12px;font-size:11px">Register</button></td></tr>`).join('')+'</tbody></table>';
-  }catch(e){console.error(e)}
+ try{
+ const res=await fetch('/api/student/exams');const exams=await res.json();
+ const grid=document.getElementById('availableExamsGrid');
+ if(!exams.length){grid.innerHTML='<p style="color:var(--muted)">No exams available.</p>';return}
+ grid.innerHTML=exams.map(e=>`<div class="exam-card"><div class="exam-card-title">${e.exam_name}</div><div class="exam-card-code">${e.exam_type||'Exam'}</div><div class="exam-card-meta"><div class="exam-meta-row"><span class="exam-meta-label">📅 Exam Date</span><span class="exam-meta-val">${e.exam_date||'—'}</span></div><div class="exam-meta-row"><span class="exam-meta-label">⏰ Last Date</span><span class="exam-meta-val">${e.last_date||'—'}</span></div><div class="exam-meta-row"><span class="exam-meta-label">💰 Fee</span><span class="exam-meta-val">₹${e.fee||'—'}</span></div></div><div style="display:flex;justify-content:space-between;align-items:center"><span class="badge badge-green">Open</span><button class="btn btn-primary" style="font-size:12px;padding:7px 14px" onclick="showPage('s-register',document.querySelector('[onclick*=s-register]'),'student')">Register →</button></div></div>`).join('');
+ const sel=document.getElementById('registerExamSelect');
+ exams.forEach(e=>{const o=document.createElement('option');o.value=e.exam_id;o.textContent=e.exam_name;sel.appendChild(o)});
+ document.getElementById('allExamsTableBody').innerHTML=`<table style="width:100%"><thead><tr><th>Exam</th><th>Date</th><th>Fee</th><th>Status</th><th></th></tr></thead><tbody>`+exams.map(e=>`<tr><td><strong>${e.exam_name}</strong></td><td>${e.exam_date||'—'}</td><td>₹${e.fee||'—'}</td><td><span class="badge badge-green">Open</span></td><td><button class="btn btn-success" style="padding:5px 12px;font-size:11px">Register</button></td></tr>`).join('')+'</tbody></table>';
+ }catch(e){console.error(e)}
 }
 let selectedSubjects=[];
 async function loadSubjectsForExam(){
-  const id=document.getElementById('registerExamSelect').value,c=document.getElementById('subjectsContainer');
-  if(!id){c.innerHTML='';return}
-  try{
-    const subs=await(await fetch(`/api/student/exams/${id}/subjects`)).json();
-    selectedSubjects=[];
-    c.innerHTML=`<p style="font-size:13px;color:var(--muted);margin-bottom:14px">Click to select subjects for this exam.</p><div class="subject-grid">`+subs.map(s=>`<div class="subject-chip" onclick="toggleSubject(this,${s.subject_id})">${s.subject_name}</div>`).join('')+'</div>';
-  }catch(e){c.innerHTML='<p style="color:var(--muted)">Could not load subjects.</p>'}
+ const id=document.getElementById('registerExamSelect').value,c=document.getElementById('subjectsContainer');
+ if(!id){c.innerHTML='';return}
+ try{
+ const subs=await(await fetch(`/api/student/exams/${id}/subjects`)).json();
+ selectedSubjects=[];
+ c.innerHTML=`<p style="font-size:13px;color:var(--muted);margin-bottom:14px">Click to select subjects for this exam.</p><div class="subject-grid">`+subs.map(s=>`<div class="subject-chip" onclick="toggleSubject(this,${s.subject_id})">${s.subject_name}</div>`).join('')+'</div>';
+ }catch(e){c.innerHTML='<p style="color:var(--muted)">Could not load subjects.</p>'}
 }
 function toggleSubject(el,id){el.classList.toggle('selected');selectedSubjects=el.classList.contains('selected')?[...selectedSubjects,id]:selectedSubjects.filter(s=>s!==id)}
 async function submitRegistration(){
-  const id=document.getElementById('registerExamSelect').value;
-  if(!id){alert('Please select an exam');return}if(!selectedSubjects.length){alert('Please select at least one subject');return}
-  try{
-    const d=await(await fetch('/api/student/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({exam_id:id,subject_ids:selectedSubjects})})).json();
-    if(d.success){alert('Registration successful!');showPage('s-my-exams',null,'student');loadMyRegistrations()}else alert(d.message||'Registration failed');
-  }catch(e){alert('Error: '+e.message)}
+ const id=document.getElementById('registerExamSelect').value;
+ if(!id){alert('Please select an exam');return}if(!selectedSubjects.length){alert('Please select at least one subject');return}
+ try{
+ const d=await(await fetch('/api/student/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({exam_id:id,subject_ids:selectedSubjects})})).json();
+ if(d.success){alert('Registration successful!');showPage('s-my-exams',null,'student');loadMyRegistrations()}else alert(d.message||'Registration failed');
+ }catch(e){alert('Error: '+e.message)}
 }
 async function loadMyRegistrations(){
-  try{
-    const regs=await(await fetch('/api/student/my-registrations')).json();
-    const c=document.getElementById('myRegistrationsList');
-    if(!regs.length){c.innerHTML='<p style="padding:20px;color:var(--muted)">No registrations found.</p>';return}
-    c.innerHTML=`<table style="width:100%"><thead><tr><th>Exam</th><th>Subjects</th><th>Fee</th><th>Status</th></tr></thead><tbody>`+regs.map(r=>`<tr><td><strong>${r.exam_name}</strong></td><td>${r.subject_count} subjects</td><td>₹${r.total_fee}</td><td><span class="badge ${r.admin_status==='Approved'?'badge-green':'badge-yellow'}">${r.admin_status}</span></td></tr>`).join('')+'</tbody></table>';
-  }catch(e){console.error(e)}
+ try{
+ const regs=await(await fetch('/api/student/my-registrations')).json();
+ const c=document.getElementById('myRegistrationsList');
+ if(!regs.length){c.innerHTML='<p style="padding:20px;color:var(--muted)">No registrations found.</p>';return}
+ c.innerHTML=`<table style="width:100%"><thead><tr><th>Exam</th><th>Subjects</th><th>Fee</th><th>Status</th></tr></thead><tbody>`+regs.map(r=>`<tr><td><strong>${r.exam_name}</strong></td><td>${r.subject_count} subjects</td><td>₹${r.total_fee}</td><td><span class="badge ${r.admin_status==='Approved'?'badge-green':'badge-yellow'}">${r.admin_status}</span></td></tr>`).join('')+'</tbody></table>';
+ }catch(e){console.error(e)}
 }
 async function loadHallTickets(){
-  try{
-    const tickets=await(await fetch('/api/student/hall-tickets')).json();
-    const c=document.getElementById('hallTicketList');
-    if(!tickets.length){c.innerHTML='<div class="ticket-wrap"><p style="color:var(--muted);text-align:center;padding:20px">No hall tickets issued yet.</p></div>';return}
-    c.innerHTML=tickets.map(t=>`<div class="ticket-wrap" style="margin-bottom:16px"><div class="ticket-header"><div><div class="ticket-brand"><span>EXAM</span>PORTAL</div><div class="ticket-issued">Issued by ExamPortal Admin · College ID Required</div></div><div style="text-align:right"><div style="font-size:18px;font-weight:800;color:var(--accent)">${t.exam_name}</div></div></div><div class="ticket-fields"><div><div class="ticket-label">Roll Number</div><div class="ticket-value">${t.roll_number}</div></div><div><div class="ticket-label">Exam Center</div><div class="ticket-value">${t.center_name}</div></div><div><div class="ticket-label">City</div><div class="ticket-value">${t.city}</div></div><div><div class="ticket-label">Status</div><div class="ticket-value"><span class="badge badge-green">Issued</span></div></div></div></div>`).join('');
-  }catch(e){console.error(e)}
+ try{
+ const tickets=await(await fetch('/api/student/hall-tickets')).json();
+ const c=document.getElementById('hallTicketList');
+ if(!tickets.length){c.innerHTML='<div class="ticket-wrap"><p style="color:var(--muted);text-align:center;padding:20px">No hall tickets issued yet.</p></div>';return}
+ c.innerHTML=tickets.map(t=>`<div class="ticket-wrap" style="margin-bottom:16px"><div class="ticket-header"><div><div class="ticket-brand"><span>EXAM</span>PORTAL</div><div class="ticket-issued">Issued by ExamPortal Admin · College ID Required</div></div><div style="text-align:right"><div style="font-size:18px;font-weight:800;color:var(--accent)">${t.exam_name}</div></div></div><div class="ticket-fields"><div><div class="ticket-label">Roll Number</div><div class="ticket-value">${t.roll_number}</div></div><div><div class="ticket-label">Exam Center</div><div class="ticket-value">${t.center_name}</div></div><div><div class="ticket-label">City</div><div class="ticket-value">${t.city}</div></div><div><div class="ticket-label">Status</div><div class="ticket-value"><span class="badge badge-green">Issued</span></div></div></div></div>`).join('');
+ }catch(e){console.error(e)}
 }
 async function loadExamSchedule(){
-  try{
-    const sc=await(await fetch('/api/student/schedule')).json();
-    const c=document.getElementById('scheduleList'),tb=document.getElementById('scheduleDatesTable');
-    if(!sc.length){c.innerHTML='<p style="color:var(--muted);text-align:center;padding:20px">No schedule available.</p>';tb.innerHTML='<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:20px">No schedule available.</td></tr>';return}
-    c.innerHTML='<div class="schedule-list">'+sc.map(s=>{const d=new Date(s.event_date);return`<div class="schedule-item"><div class="schedule-date"><div class="schedule-day">${d.getDate()}</div><div class="schedule-month">${d.toLocaleString('default',{month:'short'})}</div></div><div class="schedule-info"><div class="schedule-exam">${s.exam_name}</div><div class="schedule-details">${s.event_name}</div></div><span class="badge badge-blue">Scheduled</span></div>`}).join('')+'</div>';
-    tb.innerHTML=sc.map(s=>{const d=new Date(s.event_date);return`<tr><td>${s.event_name}</td><td>${s.exam_name}</td><td>${d.toLocaleDateString()}</td><td><span class="badge badge-grey">Upcoming</span></td></tr>`}).join('');
-  }catch(e){console.error(e)}
+ try{
+ const sc=await(await fetch('/api/student/schedule')).json();
+ const c=document.getElementById('scheduleList'),tb=document.getElementById('scheduleDatesTable');
+ if(!sc.length){c.innerHTML='<p style="color:var(--muted);text-align:center;padding:20px">No schedule available.</p>';tb.innerHTML='<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:20px">No schedule available.</td></tr>';return}
+ c.innerHTML='<div class="schedule-list">'+sc.map(s=>{const d=new Date(s.event_date);return`<div class="schedule-item"><div class="schedule-date"><div class="schedule-day">${d.getDate()}</div><div class="schedule-month">${d.toLocaleString('default',{month:'short'})}</div></div><div class="schedule-info"><div class="schedule-exam">${s.exam_name}</div><div class="schedule-details">${s.event_name}</div></div><span class="badge badge-blue">Scheduled</span></div>`}).join('')+'</div>';
+ tb.innerHTML=sc.map(s=>{const d=new Date(s.event_date);return`<tr><td>${s.event_name}</td><td>${s.exam_name}</td><td>${d.toLocaleDateString()}</td><td><span class="badge badge-grey">Upcoming</span></td></tr>`}).join('');
+ }catch(e){console.error(e)}
 }
-
 // ═══════════════════════════════════════
 // ADMIN API
 // ═══════════════════════════════════════
 async function loadAdminDashboard(){
-  try{
-    const regs=await(await fetch('/api/admin/registrations')).json();
-    const pending=regs.filter(r=>r.admin_status==='Pending').length;
-    document.getElementById('adminPendingApprovals').innerText=pending;
-    const pb=document.getElementById('pendingBadge');if(pb)pb.textContent=pending;
-    const c=document.getElementById('adminRecentRegs');
-    if(!regs.length){c.innerHTML='<p style="padding:20px;color:var(--muted)">No registrations yet.</p>';return}
-    c.innerHTML=`<table style="width:100%"><thead><tr><th>Student</th><th>Exam</th><th>Subjects</th><th>Applied</th><th>Status</th><th>Action</th></tr></thead><tbody>`+
-      regs.slice(0,5).map(r=>`<tr data-status="${(r.admin_status||'').toLowerCase()}"><td><strong>${r.student_name}</strong><br><small style="color:var(--muted)">${r.prn}</small></td><td>${r.exam_name}</td><td>${r.subject_count} subjects</td><td>—</td><td><span class="badge ${r.admin_status==='Approved'?'badge-green':r.admin_status==='Rejected'?'badge-red':'badge-yellow'}">${r.admin_status}</span></td><td>${r.admin_status==='Pending'?`<div class="action-row"><button class="btn btn-success" style="padding:5px 12px;font-size:12px" onclick="approveRegistration(${r.reg_id})">✓</button><button class="btn btn-danger" style="padding:5px 12px;font-size:12px" onclick="rejectRegistration(${r.reg_id})">✗</button></div>`:'<span style="color:var(--muted);font-size:12px">Processed</span>'}</td></tr>`).join('')+'</tbody></table>';
-  }catch(e){console.error(e)}
+ try{
+ const stats = await (await fetch('/api/admin/stats', {credentials:'include'})).json();
+ document.getElementById('adminTotalStudents').innerText = stats.total_students;
+ document.getElementById('adminActiveExams').innerText   = stats.active_exams;
+ document.getElementById('adminPendingApprovals').innerText = stats.pending;
+ document.getElementById('adminHallTickets').innerText   = stats.hall_tickets;
+ const pb=document.getElementById('pendingBadge');if(pb)pb.textContent=stats.pending;
+ const regs = await (await fetch('/api/admin/registrations', {credentials:'include'})).json();
+ const c = document.getElementById('adminRecentRegs');
+ if(!regs.length){
+ c.innerHTML = '<p style="padding:20px;color:var(--muted)">No registrations yet.</p>';
+ return;
+ }
+ c.innerHTML = `<table style="width:100%">
+ <thead><tr><th>Student</th><th>Exam</th><th>Subjects</th><th>Status</th></tr></thead>
+ <tbody>${regs.slice(0,5).map(r=>`
+ <tr>
+ <td>${r.student_name}</td>
+ <td>${r.exam_name}</td>
+ <td>${r.subject_count}</td>
+ <td><span class="badge ${r.admin_status==='Approved'?'badge-green':r.admin_status==='Rejected'?'badge-red':'badge-yellow'}">${r.admin_status}</span></td>
+ </tr>`).join('')}
+ </tbody></table>`;
+ }catch(e){console.error('Dashboard error:', e)}
 }
-async function loadAdminExams(){
-  try{
-    const exams=await(await fetch('/api/admin/exams')).json();
-    allAdminExams=exams;renderAdminExamTable(exams);
-    document.getElementById('adminActiveExams').innerText=exams.length;
-    const rt=document.getElementById('adminReportTable');
-    if(rt)rt.innerHTML=exams.map(e=>`<tr><td><strong>${e.exam_name}</strong></td><td>${e.total_registered}</td><td><span class="badge badge-green">${e.approved}</span></td><td><span class="badge badge-red">${e.rejected}</span></td><td><span class="badge badge-yellow">${e.pending}</span></td></tr>`).join('');
-  }catch(e){console.error(e)}
+async function loadAdminExams() {
+ try {
+ const res = await fetch('/api/admin/exams', {credentials: 'include'});
+ const exams = await res.json();
+ allAdminExams = exams;
+ renderAdminExamTable(exams);
+ const rt=document.getElementById('adminReportTable');
+ if(rt)rt.innerHTML=exams.map(e=>`<tr><td><strong>${e.exam_name}</strong></td><td>${e.total_registered}</td><td><span class="badge badge-green">${e.approved}</span></td><td><span class="badge badge-red">${e.rejected}</span></td><td><span class="badge badge-yellow">${e.pending}</span></td></tr>`).join('');
+ } catch (err) { console.error(err); }
 }
 async function loadAdminRegistrations(){
-  try{
-    const regs=await(await fetch('/api/admin/registrations')).json();
-    const tb=document.getElementById('reg-table');
-    if(!regs.length){tb.innerHTML='<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--muted)">No registrations.</td></tr>';return}
-    tb.innerHTML=regs.map(r=>`<tr data-status="${(r.admin_status||'').toLowerCase()}"><td><strong>${r.student_name}</strong></td><td>${r.prn}</td><td>${r.exam_name}</td><td>${r.subject_count} subjects</td><td>₹${r.total_fee}</td><td>—</td><td><span class="badge ${r.admin_status==='Approved'?'badge-green':r.admin_status==='Rejected'?'badge-red':'badge-yellow'}">${r.admin_status}</span></td><td>${r.admin_status==='Pending'?`<div class="action-row"><button class="btn btn-success" style="padding:5px 12px;font-size:12px" onclick="approveRegistration(${r.reg_id})">✓ Approve</button><button class="btn btn-danger" style="padding:5px 12px;font-size:12px" onclick="rejectRegistration(${r.reg_id})">✗ Reject</button></div>`:'<span style="color:var(--muted);font-size:12px">Processed</span>'}</td></tr>`).join('');
-    updateCounts();applyFilter();
-  }catch(e){console.error(e)}
+ try{
+ const regs=await(await fetch('/api/admin/registrations')).json();
+ const tb=document.getElementById('reg-table');
+ if(!regs.length){tb.innerHTML='<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--muted)">No registrations.</td></tr>';return}
+ tb.innerHTML=regs.map(r=>`<tr data-status="${(r.admin_status||'').toLowerCase()}"><td><strong>${r.student_name}</strong></td><td>${r.prn}</td><td>${r.exam_name}</td><td>${r.subject_count} subjects</td><td>₹${r.total_fee}</td><td>—</td><td><span class="badge ${r.admin_status==='Approved'?'badge-green':r.admin_status==='Rejected'?'badge-red':'badge-yellow'}">${r.admin_status}</span></td><td>${r.admin_status==='Pending'?`<div class="action-row"><button class="btn btn-success" style="padding:5px 12px;font-size:12px" onclick="approveRegistration(${r.reg_id})">✓ Approve</button><button class="btn btn-danger" style="padding:5px 12px;font-size:12px" onclick="rejectRegistration(${r.reg_id})">✗ Reject</button></div>`:'<span style="color:var(--muted);font-size:12px">Processed</span>'}</td></tr>`).join('');
+ updateCounts();applyFilter();
+ }catch(e){console.error(e)}
 }
 async function approveRegistration(id){
-  try{const d=await(await fetch(`/api/admin/registrations/${id}/approve`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({center_id:1})})).json();alert(d.success?'Registration approved!':'Error');loadAdminRegistrations();loadAdminDashboard()}catch(e){alert('Error: '+e.message)}
+ try{const d=await(await fetch(`/api/admin/registrations/${id}/approve`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({center_id:1})})).json();alert(d.success?'Registration approved!':'Error');loadAdminRegistrations();loadAdminDashboard()}catch(e){alert('Error: '+e.message)}
 }
 async function rejectRegistration(id){
-  try{const d=await(await fetch(`/api/admin/registrations/${id}/reject`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({remark:'Rejected by admin'})})).json();alert(d.success?'Registration rejected':'Error');loadAdminRegistrations();loadAdminDashboard()}catch(e){alert('Error: '+e.message)}
+ try{const d=await(await fetch(`/api/admin/registrations/${id}/reject`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({remark:'Rejected by admin'})})).json();alert(d.success?'Registration rejected':'Error');loadAdminRegistrations();loadAdminDashboard()}catch(e){alert('Error: '+e.message)}
 }
-
 // ═══════════════════════════════════════
 // CHATBOT
 // ═══════════════════════════════════════
 function toggleChat(){document.getElementById('chatbot-panel').classList.toggle('open')}
 function chatSend(){
-  const inp=document.getElementById('chat-inp');const msg=inp.value.trim();if(!msg)return;
-  const c=document.getElementById('chat-messages');
-  c.innerHTML+=`<div class="msg user">${escapeHtml(msg)}</div>`;inp.value='';
-  setTimeout(()=>{c.innerHTML+=`<div class="msg bot">Thanks for your question! Our team will assist you soon.</div>`;c.scrollTop=c.scrollHeight},500);
-  c.scrollTop=c.scrollHeight;
+ const inp=document.getElementById('chat-inp');const msg=inp.value.trim();if(!msg)return;
+ const c=document.getElementById('chat-messages');
+ c.innerHTML+=`<div class="msg user">${escapeHtml(msg)}</div>`;inp.value='';
+ setTimeout(()=>{c.innerHTML+=`<div class="msg bot">Thanks for your question! Our team will assist you soon.</div>`;c.scrollTop=c.scrollHeight},500);
+ c.scrollTop=c.scrollHeight;
 }
 function escapeHtml(s){return s.replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]))}
 </script>
