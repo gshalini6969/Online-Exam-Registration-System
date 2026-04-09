@@ -15,6 +15,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+<<<<<<< HEAD
 
 // Session configuration
 app.use(session({
@@ -26,6 +27,13 @@ app.use(session({
     maxAge: 3600000,
     httpOnly: true
   }
+=======
+app.use(session({
+  secret           : process.env.SESSION_SECRET,
+  resave           : false,
+  saveUninitialized: false,
+  cookie           : { secure: false, maxAge: 3600000 }
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 }));
 
 // Routes
@@ -39,6 +47,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'combined_page.html'));
 });
 
+<<<<<<< HEAD
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error('Server error:', err);
@@ -54,4 +63,8 @@ app.use((req, res, next) => {
 app.listen(PORT, () => {
   console.log(`✅ OERS server running at http://localhost:${PORT}`);
   console.log(`📝 Environment variables loaded: ${Object.keys(process.env).filter(k => k.includes('DB_')).join(', ')}`);
+=======
+app.listen(PORT, () => {
+  console.log(`✅ OERS server running at http://localhost:${PORT}`);
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 });

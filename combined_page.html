@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -351,7 +355,11 @@ textarea{resize:vertical;min-height:80px}
 </style>
 </head>
 <body>
+<<<<<<< HEAD
 <h1 style="color:red;">TEST CHANGE</h1>
+=======
+
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 <!-- ═══════════════════════════════════════════
   ICON SYMBOLS
 ═══════════════════════════════════════════ -->
@@ -496,6 +504,7 @@ textarea{resize:vertical;min-height:80px}
           <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-user"/></svg>
             <input type="text" id="sr_u" placeholder="Choose a username" oninput="vUser('sr_u')"/></div>
           <div class="h" id="sr_uh">4–20 chars, letters/numbers/underscore.</div></div>
+<<<<<<< HEAD
         <div class="sd"></div><div class="sc">Academic Details</div>
         <div class="fg"><label>Course</label>
           <div class="iw">
@@ -535,6 +544,8 @@ textarea{resize:vertical;min-height:80px}
             </select>
           </div>
           <div class="h" id="sr_sem_h"></div></div>
+=======
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
         <div class="sd"></div><div class="sc">Security</div>
         <div class="fg"><label>Password</label>
           <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg>
@@ -547,6 +558,7 @@ textarea{resize:vertical;min-height:80px}
             <input type="password" id="sr_c" placeholder="Re-enter your password" oninput="mtch('sr_c','sr_p')"/>
             <button class="ey" onclick="eye('sr_c')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div>
           <div class="h" id="sr_ch"></div></div>
+<<<<<<< HEAD
         <div class="sd"></div><div class="sc">Email Verification</div>
         <div class="fg" style="display:flex;gap:8px;align-items:flex-end">
           <div style="flex:1">
@@ -558,6 +570,14 @@ textarea{resize:vertical;min-height:80px}
           <button class="btn-auth bg" id="sr_send_btn" style="width:auto;padding:11px 14px;font-size:12px;margin:0 0 4px" onclick="sendOtp('sr','student')">Send OTP</button>
         </div>
         <button class="btn-auth bg" onclick="manualSignup()">Create Account</button>
+=======
+        <div class="sd"></div><div class="sc">Verification</div>
+        <div class="fg"><label>OTP</label>
+          <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-otp"/></svg>
+            <input type="text" id="sr_o" placeholder="Enter OTP (123456)" maxlength="6" oninput="vOtp('sr_o')"/></div>
+          <div class="h" id="sr_oh"></div></div>
+        <button class="btn-auth bg" onclick="ssignup()">Create Account</button>
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
         <div class="lr"><a onclick="authGo('p1')">Already have an account? Sign in →</a></div>
       </div>
 
@@ -586,6 +606,7 @@ textarea{resize:vertical;min-height:80px}
             <input type="password" id="ar_c" placeholder="Re-enter your password" oninput="mtch('ar_c','ar_p')"/>
             <button class="ey" onclick="eye('ar_c')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div>
           <div class="h" id="ar_ch"></div></div>
+<<<<<<< HEAD
         <div class="sd"></div><div class="sc">Email Verification</div>
         <div class="fg" style="display:flex;gap:8px;align-items:flex-end">
           <div style="flex:1">
@@ -596,6 +617,13 @@ textarea{resize:vertical;min-height:80px}
           </div>
           <button class="btn-auth bd" id="ar_send_btn" style="width:auto;padding:11px 14px;font-size:12px;margin:0 0 4px" onclick="sendOtp('ar','admin')">Send OTP</button>
         </div>
+=======
+        <div class="sd"></div><div class="sc">Verification</div>
+        <div class="fg"><label>OTP</label>
+          <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-otp"/></svg>
+            <input type="text" id="ar_o" placeholder="Enter OTP (123456)" maxlength="6" oninput="vOtp('ar_o')"/></div>
+          <div class="h" id="ar_oh"></div></div>
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
         <button class="btn-auth bg" onclick="asignup()">Create Admin Account</button>
         <div class="lr"><a onclick="authGo('p2')">Already have an account? Sign in →</a></div>
       </div>
@@ -1239,6 +1267,7 @@ textarea{resize:vertical;min-height:80px}
 </div>
 
 <script>
+<<<<<<< HEAD
 
 // ================= BASIC UI FUNCTIONS =================
 function authGo(id){
@@ -1519,3 +1548,223 @@ function manualSignup(){
 </script>
 </body>
 </html>
+=======
+/* ═══════════════════════════════════════════
+   AUTH LOGIC
+═══════════════════════════════════════════ */
+let currentRole = 'student';
+
+const authGo = id => {
+  document.querySelectorAll('.pg').forEach(p => p.classList.add('hide'));
+  document.getElementById(id).classList.remove('hide');
+};
+
+const eye = id => {
+  const el = document.getElementById(id);
+  el.type = el.type === 'password' ? 'text' : 'password';
+};
+
+const setH = (id, ok, msg) => {
+  document.getElementById(id).className = ok ? 'v' : 'e';
+  const h = document.getElementById(id + 'h');
+  h.textContent = msg; h.className = 'h ' + (ok ? 'v' : 'e');
+};
+
+const vEmail = id => { const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById(id).value); setH(id, ok, ok ? '✓ Valid email' : '⚠ Invalid email address'); return ok; };
+const vUser  = id => { const ok = /^[a-zA-Z0-9_]{4,20}$/.test(document.getElementById(id).value); setH(id, ok, ok ? '✓ Username valid' : '⚠ 4–20 chars, letters/numbers/underscore'); return ok; };
+const vOtp   = id => { const ok = document.getElementById(id).value === '123456'; setH(id, ok, ok ? '✓ OTP verified' : '⚠ Incorrect OTP — use 123456'); return ok; };
+const mtch = (cid, pid) => {
+  const ok = !!document.getElementById(pid).value && document.getElementById(pid).value === document.getElementById(cid).value;
+  setH(cid, ok, ok ? '✓ Passwords match' : '⚠ Passwords do not match');
+  return ok;
+};
+const str = (id, px) => {
+  const v = document.getElementById(id).value; let s = 0;
+  if (v.length >= 8) s++; if (/[A-Z]/.test(v)) s++; if (/[0-9]/.test(v)) s++; if (/[^a-zA-Z0-9]/.test(v)) s++;
+  const cls = ['','w','f','g','s'], lbl = ['Enter a password','Weak','Fair','Good','Strong'], col = ['#a0b8a0','#e74c3c','#f59e0b','#3b82f6','#1fa868'];
+  [1,2,3,4].forEach(i => { document.getElementById(px+'s'+i).className = 'sg ' + (i <= s ? cls[s] : ''); });
+  const l = document.getElementById(px+'sl'); l.textContent = v ? lbl[s] : lbl[0]; l.style.color = v ? col[s] : col[0];
+};
+const need = ids => ids.every(id => { const v = document.getElementById(id).value.trim(); if (!v) document.getElementById(id).className = 'e'; return !!v; });
+
+function enterApp(role) {
+  currentRole = role;
+  document.getElementById('auth-layer').classList.add('hidden');
+  document.getElementById('app-layer').classList.add('visible');
+  document.getElementById('chat-fab').classList.add('show');
+
+  document.getElementById('sidebar-student').style.display = role === 'student' ? '' : 'none';
+  document.getElementById('sidebar-admin').style.display   = role === 'admin'   ? '' : 'none';
+  document.getElementById('role-label').textContent = role === 'student' ? '🎓 Student Portal' : '🛡 Admin Console';
+
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  if (role === 'student') {
+    document.getElementById('page-s-dashboard').classList.add('active');
+    document.querySelector('#sidebar-student .nav-item').classList.add('active');
+    setTopbar('Dashboard', 'Welcome back, Priya');
+  } else {
+    document.getElementById('page-a-dashboard').classList.add('active');
+    document.querySelector('#sidebar-admin .nav-item').classList.add('active');
+    setTopbar('Overview', 'Admin Dashboard');
+  }
+}
+
+const slogin  = () => { if (!need(['s_u','s_p'])) return alert('Please fill in all fields.'); enterApp('student'); };
+const alogin  = () => { if (!need(['a_u','a_p'])) return alert('Please fill in all fields.'); enterApp('admin'); };
+const ssignup = () => { if (!(vEmail('sr_e') & vUser('sr_u') & mtch('sr_c','sr_p') & vOtp('sr_o'))) return alert('Please fix the errors above.'); alert('Student account created! (Demo)'); enterApp('student'); };
+const asignup = () => { if (!(vEmail('ar_e') & vUser('ar_u') & mtch('ar_c','ar_p') & vOtp('ar_o'))) return alert('Please fix the errors above.'); enterApp('admin'); };
+
+function logout() {
+  document.getElementById('app-layer').classList.remove('visible');
+  document.getElementById('auth-layer').classList.remove('hidden');
+  document.getElementById('chat-fab').classList.remove('show');
+  if (document.getElementById('chatbot-panel').classList.contains('open')) toggleChat();
+  authGo('p0');
+}
+
+
+
+/* ═══════════════════════════════════════════
+   PAGE NAVIGATION
+═══════════════════════════════════════════ */
+const pageTitles = {
+  's-dashboard':['Dashboard','Welcome back, Priya'],
+  's-available-exams':['Available Exams','Browse & register'],
+  's-register':['Register for Exam','Fill your application'],
+  's-payment':['Online Payment','Complete your fee'],
+  's-hall-ticket':['Hall Ticket','Download admit card'],
+  's-schedule':['Exam Schedule','Upcoming dates'],
+  's-my-exams':['My Registrations','Track your applications'],
+  'a-dashboard':['Overview','Admin Dashboard'],
+  'a-manage-exams':['Manage Exam Details','Configure & schedule exams'],
+  'a-registrations':['Registrations','Approve or reject student requests'],
+  'a-hall-tickets':['Hall Tickets','Issue hall tickets to approved students'],
+  'a-reports':['Reports','Analytics & exports'],
+};
+
+function setTopbar(title, sub) {
+  document.getElementById('topbar-title').innerHTML = title + ' <span class="topbar-sub">' + sub + '</span>';
+}
+
+function showPage(id, el, role) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const sidebarId = role === 'admin' ? '#sidebar-admin' : '#sidebar-student';
+  document.querySelectorAll(sidebarId + ' .nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  if (el) el.classList.add('active');
+  const t = pageTitles[id] || [id, ''];
+  setTopbar(t[0], t[1]);
+}
+
+/* ═══════════════════════════════════════════
+   PAYMENT METHOD TOGGLE
+═══════════════════════════════════════════ */
+function selectPayment(el) {
+  document.querySelectorAll('.pay-method').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('upiField').style.display =
+    el.querySelector('div:last-child').textContent.includes('UPI') ? 'block' : 'none';
+}
+
+/* ═══════════════════════════════════════════
+   REGISTRATION FILTERS
+═══════════════════════════════════════════ */
+let activeFilter = 'all', activeSearch = '';
+
+function updateCounts() {
+  const rows = document.querySelectorAll('#reg-table tr');
+  let counts = { all:0, pending:0, approved:0, rejected:0 };
+  rows.forEach(row => { const s = row.dataset.status; counts.all++; if (counts[s] !== undefined) counts[s]++; });
+  document.querySelector('.chip-count-all').textContent = counts.all;
+  document.querySelector('.chip-count-pending').textContent = counts.pending;
+  document.querySelector('.chip-count-approved').textContent = counts.approved;
+  document.querySelector('.chip-count-rejected').textContent = counts.rejected;
+}
+
+function applyFilter() {
+  const rows = document.querySelectorAll('#reg-table tr');
+  rows.forEach(row => {
+    const statusMatch = activeFilter === 'all' || row.dataset.status === activeFilter;
+    const searchMatch = activeSearch === '' || row.textContent.toLowerCase().includes(activeSearch.toLowerCase());
+    row.style.display = (statusMatch && searchMatch) ? '' : 'none';
+  });
+}
+
+function filterRegistrations(filter, chipEl) {
+  activeFilter = filter;
+  document.querySelectorAll('[data-filter]').forEach(c => c.classList.remove('active'));
+  chipEl.classList.add('active');
+  applyFilter();
+}
+
+function searchRegistrations(query) { activeSearch = query; applyFilter(); }
+
+function updateStatus(btn, status) {
+  const row = btn.closest('tr');
+  const statusCell = row.querySelector('td:nth-child(7)');
+  const actionCell = row.querySelector('td:nth-child(8)');
+  statusCell.innerHTML = status === 'Approved'
+    ? '<span class="badge badge-green">Approved</span>'
+    : '<span class="badge badge-red">Rejected</span>';
+  row.dataset.status = status.toLowerCase();
+  actionCell.innerHTML = '<span style="color:var(--muted);font-size:12px">Processed</span>';
+  updateCounts(); applyFilter();
+}
+
+/* ═══════════════════════════════════════════
+   CHATBOT
+═══════════════════════════════════════════ */
+const chatResponses = {
+  register: "To register: 1) Go to 'Register for Exam' → 2) Select exam & subjects → 3) Fill personal details → 4) Pay fee → 5) Download hall ticket.",
+  subjects: "Available subjects: CS401 - Data Structures, CS402 - DBMS, CS403 - OS, CS404 - Networks, CS405 - Software Engg, MA401 - Maths IV.",
+  payment:  "Accepted payments: UPI (GPay/PhonePe), Net Banking, Debit/Credit cards. Fee: ₹500/subject. Receipt is auto-generated.",
+  deadline: "Deadlines: Registration open Mar 15 | Last date Mar 31 | Late fine (₹200) till Apr 5 | Hall ticket Apr 10 | Exams from Apr 20.",
+  cancel:   "Cancellation allowed before last date only. Refund in 7 working days. Go to My Registrations → Select subject → Cancel.",
+  status:   "Check status: My Registrations section. Status shows: Pending / Confirmed / Cancelled. Confirmation email is also sent.",
+  document: "Required: Student ID, Enrollment Number, Fee clearance receipt, 75% attendance, passport photo (upload).",
+  default:  "I can help with: registration steps, subjects, fee payment, deadlines, cancellation, status check, or required documents. What do you need?"
+};
+
+function getChatReply(q) {
+  q = q.toLowerCase();
+  if (q.match(/register|registration/)) return chatResponses.register;
+  if (q.match(/subject|course/))        return chatResponses.subjects;
+  if (q.match(/pay|fee|payment/))       return chatResponses.payment;
+  if (q.match(/deadline|date|when/))    return chatResponses.deadline;
+  if (q.match(/cancel/))                return chatResponses.cancel;
+  if (q.match(/status|check/))          return chatResponses.status;
+  if (q.match(/document|need|require/)) return chatResponses.document;
+  return chatResponses.default;
+}
+
+function chatSend() {
+  const inp = document.getElementById('chat-inp');
+  const msgs = document.getElementById('chat-messages');
+  const text = inp.value.trim();
+  if (!text) return;
+  msgs.innerHTML += `<div class="msg user">${text}</div>`;
+  inp.value = '';
+  setTimeout(() => {
+    msgs.innerHTML += `<div class="msg bot">${getChatReply(text)}</div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 380);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+let chatOpen = false;
+function toggleChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('chatbot-panel').classList.toggle('open', chatOpen);
+  document.getElementById('chat-fab').textContent = chatOpen ? '×' : '🤖';
+}
+
+/* ═══════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  updateCounts();
+});
+</script>
+</body>
+</html>
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663

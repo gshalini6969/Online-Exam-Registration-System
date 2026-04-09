@@ -42,6 +42,13 @@
 </div>
 
 <script>
+<<<<<<< HEAD
+=======
+// Unique session ID for this browser tab
+const sessionId = 'session-' + Math.random().toString(36).substr(2, 9);
+const history = [];
+
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 async function send() {
   const inp = document.getElementById('inp');
   const chat = document.getElementById('chat');
@@ -55,25 +62,47 @@ async function send() {
 
   // Show typing indicator
   const typingId = 'typing-' + Date.now();
+<<<<<<< HEAD
   chat.innerHTML += `<div class="msg bot" id="${typingId}">⏳ Typing...</div>`;
+=======
+  chat.innerHTML += `<div class="msg bot" id="${typingId}">⏳ Thinking...</div>`;
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
   chat.scrollTop = chat.scrollHeight;
 
   try {
     const res = await fetch('/api/chatbot/ask', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+<<<<<<< HEAD
       body: JSON.stringify({ message: text })
     });
     const data = await res.json();
 
     // Replace typing indicator with real reply
     document.getElementById(typingId).innerHTML = data.reply.replace(/\n/g, '<br>');
+=======
+      body: JSON.stringify({ message: text, sessionId })
+    });
+
+    const data = await res.json();
+    const formatted = data.reply.replace(/\n/g, '<br>');
+    document.getElementById(typingId).innerHTML = formatted;
+
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
   } catch {
     document.getElementById(typingId).innerHTML = '⚠️ Connection error. Please try again.';
   }
 
   chat.scrollTop = chat.scrollHeight;
 }
+<<<<<<< HEAD
+=======
+
+function quickSend(text) {
+  document.getElementById('inp').value = text;
+  send();
+}
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 </script>
 </body>
 </html>

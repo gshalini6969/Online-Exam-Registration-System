@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,9 +64,14 @@ body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);min-height:100
 .fg{margin-bottom:13px}
 .fg label{display:block;font-size:12px;font-weight:700;color:#2a4030;margin-bottom:5px}
 .iw{position:relative}
+<<<<<<< HEAD
 .iw input,.iw select{width:100%;padding:11px 34px 11px 36px;border:1.5px solid #ddeae0;border-radius:9px;font-family:inherit;font-size:13.5px;color:#1a3020;background:#f7fbf8;outline:none;transition:.2s}
 .iw select{appearance:none;cursor:pointer}
 .iw input:focus,.iw select:focus{border-color:#2ec27e;background:#fff;box-shadow:0 0 0 3px rgba(46,194,126,.1)}
+=======
+.iw input{width:100%;padding:11px 34px 11px 36px;border:1.5px solid #ddeae0;border-radius:9px;font-family:inherit;font-size:13.5px;color:#1a3020;background:#f7fbf8;outline:none;transition:.2s}
+.iw input:focus{border-color:#2ec27e;background:#fff;box-shadow:0 0 0 3px rgba(46,194,126,.1)}
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 .iw input.v{border-color:#2ec27e}.iw input.e{border-color:#e74c3c;box-shadow:0 0 0 3px rgba(231,76,60,.08)}
 .ic{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:#a0b8a8;pointer-events:none;transition:.2s}
 .iw:focus-within .ic{color:#2ec27e}
@@ -100,6 +109,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);min-height:100
 .cp{font-size:11px;color:#a0b8a0;text-align:center;margin-top:20px}
 
 /* ═══════════════════════════════════════════
+<<<<<<< HEAD
    APP LAYER (condensed - keep existing styles)
 ═══════════════════════════════════════════ */
 #app-layer{display:none;background:var(--bg);min-height:100vh;flex-direction:column}
@@ -109,6 +119,41 @@ body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);min-height:100
 #logout-btn:hover{background:rgba(230,57,70,.08);color:var(--danger);border-color:rgba(230,57,70,.3)}
 #app-body{display:flex;flex:1;min-height:0}
 .sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:sticky;top:58px;height:calc(100vh - 58px);overflow-y:auto;flex-shrink:0;box-shadow:2px 0 12px rgba(45,106,79,.06)}
+=======
+   APP LAYER
+═══════════════════════════════════════════ */
+#app-layer{
+  display:none;background:var(--bg);min-height:100vh;
+  flex-direction:column;
+}
+#app-layer.visible{display:flex}
+
+/* ── top app bar (role switcher) ── */
+#app-topbar{
+  background:var(--surface);border-bottom:1px solid var(--border);
+  padding:10px 20px;display:flex;align-items:center;gap:12px;
+  position:sticky;top:0;z-index:200;
+}
+
+#logout-btn{
+  margin-left:auto;padding:7px 16px;border-radius:9px;border:1px solid var(--border);
+  background:transparent;font-family:inherit;font-size:12px;font-weight:600;
+  cursor:pointer;color:var(--muted);transition:all .2s;
+}
+#logout-btn:hover{background:rgba(230,57,70,.08);color:var(--danger);border-color:rgba(230,57,70,.3)}
+
+/* ── body layout ── */
+#app-body{display:flex;flex:1;min-height:0}
+
+/* ═══════════════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════════════ */
+.sidebar{
+  width:var(--sidebar-w);background:var(--surface);border-right:1px solid var(--border);
+  display:flex;flex-direction:column;position:sticky;top:58px;height:calc(100vh - 58px);
+  overflow-y:auto;flex-shrink:0;box-shadow:2px 0 12px rgba(45,106,79,.06);
+}
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 .logo{padding:22px 20px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
 .logo-icon{width:36px;height:36px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:16px}
 .logo-text{font-size:17px;font-weight:800;letter-spacing:-.4px}
@@ -128,53 +173,148 @@ body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);min-height:100
 .user-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;flex-shrink:0}
 .user-name{font-size:13px;font-weight:600}
 .user-id{font-size:11px;color:var(--muted)}
+<<<<<<< HEAD
+=======
+
+/* ═══════════════════════════════════════════
+   MAIN CONTENT
+═══════════════════════════════════════════ */
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 .main{flex:1;display:flex;flex-direction:column;min-width:0;overflow-y:auto}
 .topbar{padding:18px 30px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px;background:var(--surface);position:sticky;top:0;z-index:50}
 .topbar-title{font-size:20px;font-weight:800;flex:1;letter-spacing:-.4px}
 .topbar-sub{font-size:13px;color:var(--muted);font-weight:400;margin-left:6px}
 .content{padding:28px 30px}
+<<<<<<< HEAD
 .page{display:none}
 .page.active{display:block;animation:fadeIn .25s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+=======
+
+/* page transition */
+.page{display:none}
+.page.active{display:block;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* ═══════════════════════════════════════════
+   SHARED COMPONENTS
+═══════════════════════════════════════════ */
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 .btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;border:none;font-family:inherit;transition:all .2s}
 .btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent2)}
 .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}.btn-outline:hover{background:var(--surface2)}
 .btn-success{background:rgba(45,106,79,.12);color:var(--accent);border:1px solid rgba(45,106,79,.3)}.btn-success:hover{background:rgba(45,106,79,.2)}
 .btn-warn{background:rgba(233,168,0,.12);color:var(--warn);border:1px solid rgba(233,168,0,.3)}
 .btn-danger{background:rgba(230,57,70,.1);color:var(--danger);border:1px solid rgba(230,57,70,.25)}.btn-danger:hover{background:rgba(230,57,70,.2)}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:22px}
 .card-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
 .card-title{font-size:14px;font-weight:700;flex:1}
 .card-body{padding:20px}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 .badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
 .badge-green{background:rgba(45,106,79,.12);color:var(--accent)}
 .badge-yellow{background:rgba(233,168,0,.12);color:var(--warn)}
 .badge-red{background:rgba(230,57,70,.12);color:var(--danger)}
 .badge-blue{background:rgba(64,145,108,.15);color:var(--accent2)}
 .badge-grey{background:rgba(107,143,117,.12);color:var(--muted)}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 table{width:100%;border-collapse:collapse}
 th{padding:11px 18px;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;text-align:left;background:var(--surface2);border-bottom:1px solid var(--border);font-weight:600}
 td{padding:13px 18px;font-size:13px;border-bottom:1px solid var(--border)}
 tr:last-child td{border-bottom:none}
 tr:hover td{background:rgba(45,106,79,.02)}
+<<<<<<< HEAD
+=======
+
+.section-intro{margin-bottom:22px}
+.section-intro h2{font-size:24px;font-weight:800;margin-bottom:3px;letter-spacing:-.4px}
+.section-intro p{color:var(--muted);font-size:14px}
+
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
 .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;transition:all .2s;cursor:default}
 .stat-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(45,106,79,.08)}
 .stat-icon{font-size:22px;margin-bottom:10px}
 .stat-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;font-weight:600}
 .stat-value{font-size:28px;font-weight:800;letter-spacing:-.5px}
+<<<<<<< HEAD
+=======
+.stat-sub{font-size:12px;color:var(--muted);margin-top:3px}
+.stat-delta{font-size:12px;margin-top:4px}
+.stat-delta.up{color:var(--accent)}.stat-delta.down{color:var(--danger)}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:600}
+input,select,textarea{background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:10px 13px;font-size:13.5px;font-family:inherit;transition:border-color .2s;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);background:#fff}
+textarea{resize:vertical;min-height:80px}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.action-row{display:flex;gap:8px}
+
+.search-bar{display:flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:8px 13px;min-width:210px}
+.search-bar input{border:none;background:transparent;padding:0;font-size:13px;width:100%;color:var(--text);outline:none}
+
+.alert{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:12px;margin-bottom:16px;font-size:13px}
+.alert-warn{background:rgba(233,168,0,.1);border:1px solid rgba(233,168,0,.25);color:#7a5800}
+.alert-green{background:rgba(45,106,79,.1);border:1px solid rgba(45,106,79,.2);color:var(--accent)}
+
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 .welcome-banner{background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);border-radius:16px;padding:24px 28px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;color:#fff;position:relative;overflow:hidden}
 .welcome-banner::after{content:'🎓';position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:64px;opacity:.2}
 .welcome-name{font-size:22px;font-weight:800;letter-spacing:-.4px;margin-bottom:4px}
 .welcome-sub{font-size:13px;opacity:.85}
 .welcome-prn{font-size:11px;opacity:.7;margin-top:6px;letter-spacing:1px;text-transform:uppercase}
+<<<<<<< HEAD
 .exam-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
 .exam-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
 .exam-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+=======
+
+/* exam cards */
+.exam-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.exam-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.exam-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
+.exam-card.blue::before{background:var(--accent2)}.exam-card.warn::before{background:var(--warn)}
+.exam-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 6px 20px rgba(45,106,79,.1)}
+.exam-card-title{font-size:15px;font-weight:700;margin-bottom:4px}
+.exam-card-code{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;font-weight:600}
+.exam-card-meta{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.exam-meta-row{display:flex;justify-content:space-between;font-size:12px}
+.exam-meta-label{color:var(--muted)}.exam-meta-val{font-weight:600}
+
+/* subjects */
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 .subject-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
 .subject-chip{padding:8px 16px;border-radius:20px;font-size:13px;font-weight:500;border:1.5px solid var(--border);cursor:pointer;transition:all .2s;background:var(--surface2);color:var(--muted);user-select:none}
 .subject-chip:hover{border-color:var(--accent);color:var(--accent)}
 .subject-chip.selected{background:var(--accent-light);border-color:var(--accent);color:var(--accent);font-weight:600}
+<<<<<<< HEAD
+=======
+
+/* payment */
+.payment-summary{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:18px}
+.payment-row{display:flex;justify-content:space-between;font-size:13px;padding:5px 0}
+.payment-row.total{border-top:1px solid var(--border);margin-top:8px;padding-top:12px;font-weight:700;font-size:15px}
+.payment-methods{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.pay-method{border:2px solid var(--border);border-radius:12px;padding:14px;text-align:center;cursor:pointer;transition:all .2s;font-size:13px;font-weight:500}
+.pay-method:hover{border-color:var(--accent)}.pay-method.selected{border-color:var(--accent);background:var(--accent-light);color:var(--accent)}
+.pay-method-icon{font-size:24px;margin-bottom:6px}
+
+/* hall ticket */
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 .ticket-wrap{background:var(--surface2);border:2px dashed var(--border);border-radius:14px;padding:24px}
 .ticket-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
 .ticket-brand{font-size:20px;font-weight:800;color:var(--accent);letter-spacing:-.4px}
@@ -184,6 +324,7 @@ tr:hover td{background:rgba(45,106,79,.02)}
 .ticket-value{font-size:13.5px;font-weight:600}
 .barcode{background:white;border-radius:6px;padding:8px;display:flex;gap:2px;height:56px;align-items:stretch;border:1px solid var(--border)}
 .bar{background:var(--text);width:3px}.bar.thin{width:1px}
+<<<<<<< HEAD
 .alert{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:12px;margin-bottom:16px;font-size:13px}
 .alert-warn{background:rgba(233,168,0,.1);border:1px solid rgba(233,168,0,.25);color:#7a5800}
 .alert-green{background:rgba(45,106,79,.1);border:1px solid rgba(45,106,79,.2);color:var(--accent)}
@@ -197,12 +338,31 @@ tr:hover td{background:rgba(45,106,79,.02)}
 .schedule-time{text-align:right;font-size:13px;font-weight:600;color:var(--accent);background:var(--accent-light);border-radius:8px;padding:6px 12px}
 .progress-bar-wrap{background:var(--surface2);border-radius:20px;height:8px;overflow:hidden}
 .progress-bar{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .6s ease}
+=======
+
+/* schedule */
+.schedule-list{display:flex;flex-direction:column;gap:12px}
+.schedule-item{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px;transition:all .2s}
+.schedule-item:hover{border-color:var(--accent);box-shadow:0 2px 12px rgba(45,106,79,.06)}
+.schedule-date{text-align:center;min-width:52px;background:var(--accent-light);border-radius:10px;padding:8px 10px}
+.schedule-day{font-size:22px;font-weight:800;color:var(--accent);line-height:1}
+.schedule-month{font-size:11px;color:var(--accent2);font-weight:600;text-transform:uppercase}
+.schedule-info{flex:1}.schedule-exam{font-size:14px;font-weight:700;margin-bottom:2px}.schedule-details{font-size:12px;color:var(--muted)}
+.schedule-time{text-align:right;font-size:13px;font-weight:600;color:var(--accent);background:var(--accent-light);border-radius:8px;padding:6px 12px}
+
+/* progress */
+.progress-bar-wrap{background:var(--surface2);border-radius:20px;height:8px;overflow:hidden}
+.progress-bar{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .6s ease}
+
+/* steps */
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 .steps{display:flex;align-items:center;gap:0;margin-bottom:24px}
 .step{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--muted)}
 .step-num{width:28px;height:28px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;background:var(--surface);flex-shrink:0}
 .step.done .step-num{background:var(--accent);border-color:var(--accent);color:#fff}
 .step.active .step-num{border-color:var(--accent);color:var(--accent)}.step.active{color:var(--accent)}
 .step-line{width:40px;height:2px;background:var(--border);margin:0 6px;flex-shrink:0}.step-line.done{background:var(--accent)}
+<<<<<<< HEAD
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .form-group{display:flex;flex-direction:column;gap:6px}
 .form-group.full{grid-column:1/-1}
@@ -215,10 +375,20 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);background:#f
 .filter-row{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
 .filter-chip{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border);color:var(--muted);transition:all .2s}
 .filter-chip.active,.filter-chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(45,106,79,.1)}
+=======
+
+/* filter chips */
+.filter-row{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.filter-chip{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border);color:var(--muted);transition:all .2s}
+.filter-chip.active,.filter-chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(45,106,79,.1)}
+
+/* report cards */
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 .report-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
 .report-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
 .report-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
 .report-card.green::before{background:var(--accent)}.report-card.blue::before{background:var(--accent2)}.report-card.yellow::before{background:var(--warn)}
+<<<<<<< HEAD
 .notif-dot{width:8px;height:8px;background:var(--danger);border-radius:50%;position:absolute;top:8px;right:8px}
 .search-bar{display:flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:8px 13px;min-width:210px}
 .search-bar input{border:none;background:transparent;padding:0;font-size:13px;width:100%;color:var(--text);outline:none}
@@ -228,14 +398,55 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);background:#f
 #chat-fab.show{display:flex;align-items:center;justify-content:center}
 #chatbot-panel{position:fixed;bottom:92px;right:28px;z-index:499;width:340px;height:480px;border-radius:18px;background:#c8ddd0;box-shadow:0 12px 48px rgba(0,50,20,.22);display:flex;flex-direction:column;overflow:hidden;transform:scale(.92) translateY(12px);opacity:0;pointer-events:none;transition:all .25s cubic-bezier(.34,1.2,.64,1)}
 #chatbot-panel.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
+=======
+.report-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 20px rgba(45,106,79,.1)}
+.report-icon{font-size:28px;margin-bottom:12px}
+.report-name{font-weight:700;font-size:15px;margin-bottom:4px}
+.report-desc{font-size:13px;color:var(--muted);margin-bottom:16px}
+
+/* notif dot */
+.notif-dot{width:8px;height:8px;background:var(--danger);border-radius:50%;position:absolute;top:8px;right:8px}
+
+/* ═══════════════════════════════════════════
+   CHATBOT WIDGET
+═══════════════════════════════════════════ */
+#chat-fab{
+  position:fixed;bottom:28px;right:28px;z-index:500;
+  width:52px;height:52px;border-radius:50%;border:none;
+  background:var(--accent);color:#fff;font-size:22px;cursor:pointer;
+  box-shadow:0 4px 20px rgba(45,106,79,.4);transition:all .2s;
+  display:none;
+}
+#chat-fab:hover{background:var(--accent2);transform:scale(1.07)}
+#chat-fab.show{display:flex;align-items:center;justify-content:center}
+
+#chatbot-panel{
+  position:fixed;bottom:92px;right:28px;z-index:499;
+  width:340px;height:480px;border-radius:18px;
+  background:#c8ddd0;box-shadow:0 12px 48px rgba(0,50,20,.22);
+  display:flex;flex-direction:column;overflow:hidden;
+  transform:scale(.92) translateY(12px);opacity:0;pointer-events:none;
+  transition:all .25s cubic-bezier(.34,1.2,.64,1);
+}
+#chatbot-panel.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
+
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 .chat-header{background:#dff0e3;border-bottom:1px solid #b5d4bc;padding:14px 16px;display:flex;align-items:center;gap:9px}
 .chat-dot{width:9px;height:9px;background:#4caf7d;border-radius:50%}
 .chat-title{font-size:14px;color:#4caf7d;font-weight:700;flex:1}
 .chat-close{background:none;border:none;cursor:pointer;font-size:18px;color:#7aaa8a;line-height:1}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 #chat-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
 .msg{max-width:78%;padding:9px 13px;border-radius:12px;font-size:13px;line-height:1.6}
 .msg.bot{background:#b5d4bc;border:1px solid #eaf7ed;border-top-left-radius:3px;align-self:flex-start;color:#1a2e22}
 .msg.user{background:#4caf7d;border:none;border-top-right-radius:3px;align-self:flex-end;color:#fff}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 .chat-input-row{display:flex;gap:7px;padding:12px;background:#dff0e3;border-top:1px solid #b5d4bc}
 .chat-input-row input{flex:1;background:#f8fdf9;border:1px solid #b5d4bc;border-radius:8px;padding:9px 13px;color:#1a2e22;font-size:13px;outline:none;font-family:inherit}
 .chat-input-row input:focus{border-color:#4caf7d}
@@ -245,6 +456,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);background:#f
 </head>
 <body>
 
+<<<<<<< HEAD
 <!-- ICON SYMBOLS -->
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
   <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
@@ -254,6 +466,19 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);background:#f
   <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
   <symbol id="i-stu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
   <symbol id="i-adm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+=======
+<!-- ═══════════════════════════════════════════
+  ICON SYMBOLS
+═══════════════════════════════════════════ -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+  <symbol id="i-otp"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01M8 12h.01M16 12h.01"/></symbol>
+  <symbol id="i-eye"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-stu"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
+  <symbol id="i-adm"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
 </svg>
 
 <!-- ═══════════════════════════════════════════
@@ -261,6 +486,10 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);background:#f
 ═══════════════════════════════════════════ -->
 <div id="auth-layer">
   <div class="shell">
+<<<<<<< HEAD
+=======
+    <!-- LEFT PANEL -->
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
     <div class="L">
       <svg class="il" viewBox="0 0 280 238" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="138" cy="112" r="96" fill="#c2e2c8" opacity=".52"/>
@@ -312,9 +541,15 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);background:#f
       </svg>
       <div class="Lt">Online Exam<br>Registration System</div>
       <div class="Ls">A seamless portal for exam registration &amp; management.</div>
+<<<<<<< HEAD
       <div class="dots"><div class="d a"></div><div class="d"></div><div class="d"></div></div>
     </div>
 
+=======
+    </div>
+
+    <!-- RIGHT PANEL -->
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
     <div class="R">
       <!-- PAGE 0: LANDING -->
       <div id="p0" class="pg">
@@ -379,6 +614,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);background:#f
         <div class="sc">Account Info</div>
         <div class="fg"><label>Email Address</label>
           <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-mail"/></svg>
+<<<<<<< HEAD
             <input type="email" id="sr_e" placeholder="you@example.com"/></div>
           <div class="h" id="sr_eh"></div></div>
         <div class="fg"><label>Username</label>
@@ -423,11 +659,24 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);background:#f
         <div class="fg"><label>Password</label>
           <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg>
             <input type="password" id="sr_p" placeholder="Create a strong password" oninput="updatePasswordStrength('sr_p','sr_')"/>
+=======
+            <input type="email" id="sr_e" placeholder="you@example.com" oninput="vEmail('sr_e')"/></div>
+          <div class="h" id="sr_eh"></div></div>
+        <div class="fg"><label>Username</label>
+          <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-user"/></svg>
+            <input type="text" id="sr_u" placeholder="Choose a username" oninput="vUser('sr_u')"/></div>
+          <div class="h" id="sr_uh">4–20 chars, letters/numbers/underscore.</div></div>
+        <div class="sd"></div><div class="sc">Security</div>
+        <div class="fg"><label>Password</label>
+          <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg>
+            <input type="password" id="sr_p" placeholder="Create a strong password" oninput="str('sr_p','sr_')"/>
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
             <button class="ey" onclick="eye('sr_p')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div>
           <div class="sb"><div class="sg" id="sr_s1"></div><div class="sg" id="sr_s2"></div><div class="sg" id="sr_s3"></div><div class="sg" id="sr_s4"></div></div>
           <div class="sl" id="sr_sl">Enter a password</div></div>
         <div class="fg"><label>Confirm Password</label>
           <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg>
+<<<<<<< HEAD
             <input type="password" id="sr_c" placeholder="Re-enter your password" oninput="checkPasswordMatch('sr_c','sr_p','sr_ch')"/>
             <button class="ey" onclick="eye('sr_c')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div>
           <div class="h" id="sr_ch"></div></div>
@@ -442,6 +691,17 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);background:#f
           <button class="btn-auth bg" id="sr_send_btn" style="width:auto;padding:11px 14px;font-size:12px;margin:0 0 4px" onclick="sendStudentOtp()">Send OTP</button>
         </div>
         <button class="btn-auth bg" id="studentSignupBtn">Create Account</button>
+=======
+            <input type="password" id="sr_c" placeholder="Re-enter your password" oninput="mtch('sr_c','sr_p')"/>
+            <button class="ey" onclick="eye('sr_c')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div>
+          <div class="h" id="sr_ch"></div></div>
+        <div class="sd"></div><div class="sc">Verification</div>
+        <div class="fg"><label>OTP</label>
+          <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-otp"/></svg>
+            <input type="number" id="sr_o" placeholder="Enter OTP" maxlength="6" oninput="vOtp('sr_o')"/></div>
+          <div class="h" id="sr_oh"></div></div>
+        <button class="btn-auth bg" onclick="ssignup()">Create Account</button>
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
         <div class="lr"><a onclick="authGo('p1')">Already have an account? Sign in →</a></div>
       </div>
 
@@ -452,21 +712,34 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);background:#f
         <div class="sc">Account Info</div>
         <div class="fg"><label>Email Address</label>
           <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-mail"/></svg>
+<<<<<<< HEAD
             <input type="email" id="ar_e" placeholder="admin@institution.edu"/></div>
           <div class="h" id="ar_eh"></div></div>
         <div class="fg"><label>Username</label>
           <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-user"/></svg>
             <input type="text" id="ar_u" placeholder="Choose a username"/></div>
+=======
+            <input type="email" id="ar_e" placeholder="admin@institution.edu" oninput="vEmail('ar_e')"/></div>
+          <div class="h" id="ar_eh"></div></div>
+        <div class="fg"><label>Username</label>
+          <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-user"/></svg>
+            <input type="text" id="ar_u" placeholder="Choose a username" oninput="vUser('ar_u')"/></div>
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
           <div class="h" id="ar_uh">4–20 chars, letters/numbers/underscore.</div></div>
         <div class="sd"></div><div class="sc">Security</div>
         <div class="fg"><label>Password</label>
           <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg>
+<<<<<<< HEAD
             <input type="password" id="ar_p" placeholder="Create a strong password" oninput="updatePasswordStrength('ar_p','ar_')"/>
+=======
+            <input type="password" id="ar_p" placeholder="Create a strong password" oninput="str('ar_p','ar_')"/>
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
             <button class="ey" onclick="eye('ar_p')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div>
           <div class="sb"><div class="sg" id="ar_s1"></div><div class="sg" id="ar_s2"></div><div class="sg" id="ar_s3"></div><div class="sg" id="ar_s4"></div></div>
           <div class="sl" id="ar_sl">Enter a password</div></div>
         <div class="fg"><label>Confirm Password</label>
           <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-lock"/></svg>
+<<<<<<< HEAD
             <input type="password" id="ar_c" placeholder="Re-enter your password" oninput="checkPasswordMatch('ar_c','ar_p','ar_ch')"/>
             <button class="ey" onclick="eye('ar_c')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div>
           <div class="h" id="ar_ch"></div></div>
@@ -491,6 +764,29 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);background:#f
   APP LAYER (condensed version with essential pages)
 ═══════════════════════════════════════════ -->
 <div id="app-layer">
+=======
+            <input type="password" id="ar_c" placeholder="Re-enter your password" oninput="mtch('ar_c','ar_p')"/>
+            <button class="ey" onclick="eye('ar_c')"><svg width="14" height="14"><use href="#i-eye"/></svg></button></div>
+          <div class="h" id="ar_ch"></div></div>
+        <div class="sd"></div><div class="sc">Verification</div>
+        <div class="fg"><label>OTP</label>
+          <div class="iw"><svg class="ic" width="15" height="15"><use href="#i-otp"/></svg>
+            <input type="number" id="ar_o" placeholder="Enter OTP" maxlength="6" oninput="vOtp('ar_o')"/></div>
+          <div class="h" id="ar_oh"></div></div>
+        <button class="btn-auth bg" onclick="asignup()">Create Admin Account</button>
+        <div class="lr"><a onclick="authGo('p2')">Already have an account? Sign in →</a></div>
+      </div>
+    </div><!-- /R -->
+  </div><!-- /shell -->
+</div><!-- /auth-layer -->
+
+<!-- ═══════════════════════════════════════════
+  APP LAYER
+═══════════════════════════════════════════ -->
+<div id="app-layer">
+
+  <!-- TOP BAR -->
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
   <div id="app-topbar">
     <div class="logo-icon" style="width:32px;height:32px;font-size:14px">E</div>
     <span style="font-size:15px;font-weight:800;letter-spacing:-.3px">ExamPortal</span>
@@ -498,6 +794,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);background:#f
     <span id="role-label" style="font-size:12px;font-weight:600;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:5px 13px;border-radius:20px"></span>
     <button id="logout-btn" onclick="logout()">↩ Logout</button>
   </div>
+<<<<<<< HEAD
   <div id="app-body">
     <aside class="sidebar" id="sidebar-student">
       <div class="logo"><div class="logo-icon">M</div><div><div class="logo-text">MASTERY <span>HUB</span></div><div class="logo-sub">Student Portal</div></div></div>
@@ -1081,3 +1378,905 @@ function escapeHtml(str){ return str.replace(/[&<>]/g, function(m){ if(m === '&'
 </script>
 </body>
 </html>
+=======
+
+  <div id="app-body">
+
+    <!-- ══════════════ STUDENT SIDEBAR ══════════════ -->
+    <aside class="sidebar" id="sidebar-student">
+      <div class="logo">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">MASTERY <span>HUB</span></div>
+          <div class="logo-sub">Student Portal</div>
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Overview</div>
+        <div class="nav-item active" onclick="showPage('s-dashboard',this,'student')">
+          <span class="nav-icon">⬡</span> Dashboard
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Exams</div>
+        <div class="nav-item" onclick="showPage('s-available-exams',this,'student')">
+          <span class="nav-icon">📋</span> View Available Exams
+        </div>
+        <div class="nav-item" onclick="showPage('s-register',this,'student')">
+          <span class="nav-icon">✏️</span> Register for Exam
+          <span class="nav-badge warn">New</span>
+        </div>
+        <div class="nav-item" onclick="showPage('s-payment',this,'student')">
+          <span class="nav-icon">💳</span> Online Payment
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">My Records</div>
+        <div class="nav-item" onclick="showPage('s-hall-ticket',this,'student')">
+          <span class="nav-icon">🎫</span> Hall Ticket
+          <span class="nav-badge">1</span>
+        </div>
+        <div class="nav-item" onclick="showPage('s-schedule',this,'student')">
+          <span class="nav-icon">📅</span> Exam Schedule
+        </div>
+        <div class="nav-item" onclick="showPage('s-my-exams',this,'student')">
+          <span class="nav-icon">📊</span> My Registrations
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Support</div>
+        <div class="nav-item" onclick="toggleChat()">
+          <span class="nav-icon">🤖</span> ExamBot Chat
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <div class="user-card">
+          <div class="user-avatar">P</div>
+          <div><div class="user-name">Priya Sharma</div><div class="user-id">PRN: 2024001</div></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ══════════════ ADMIN SIDEBAR ══════════════ -->
+    <aside class="sidebar" id="sidebar-admin" style="display:none">
+      <div class="logo">
+        <div class="logo-icon">E</div>
+        <div>
+          <div class="logo-text">Exam<span>Portal</span></div>
+          <div class="logo-sub">Admin Console</div>
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Dashboard</div>
+        <div class="nav-item active" onclick="showPage('a-dashboard',this,'admin')">
+          <span class="nav-icon">⬡</span> Overview
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Exam Management</div>
+        <div class="nav-item" onclick="showPage('a-manage-exams',this,'admin')">
+          <span class="nav-icon">📋</span> Manage Exam Details
+        </div>
+        <div class="nav-item" onclick="showPage('a-registrations',this,'admin')">
+          <span class="nav-icon">✅</span> Approve / Reject Registrations
+          <span class="nav-badge warn">12</span>
+        </div>
+        <div class="nav-item" onclick="showPage('a-hall-tickets',this,'admin')">
+          <span class="nav-icon">🎫</span> Generate Hall Tickets
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Analytics</div>
+        <div class="nav-item" onclick="showPage('a-reports',this,'admin')">
+          <span class="nav-icon">📊</span> Generate Reports
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <div class="user-card">
+          <div class="user-avatar">A</div>
+          <div><div class="user-name">Administrator</div><div class="user-id">Super Admin</div></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ══════════════ MAIN CONTENT AREA ══════════════ -->
+    <main class="main">
+      <div class="topbar">
+        <div class="topbar-title" id="topbar-title">Dashboard <span class="topbar-sub" id="topbar-sub">Welcome back, Priya</span></div>
+        <div class="search-bar">
+          <span style="color:var(--muted)">🔍</span>
+          <input type="text" placeholder="Search exams...">
+        </div>
+        <button class="btn btn-outline" style="font-size:12px;position:relative">
+          🔔 Alerts <span class="notif-dot"></span>
+        </button>
+      </div>
+
+      <div class="content">
+
+        <!-- ████ STUDENT PAGES ████ -->
+
+        <!-- S-DASHBOARD -->
+        <div class="page active" id="page-s-dashboard">
+          <div class="welcome-banner">
+            <div>
+              <div class="welcome-name">Good morning, Priya! 👋</div>
+              <div class="welcome-sub">You have 1 upcoming exam and 1 pending payment.</div>
+              <div class="welcome-prn">PRN: 2024001 &nbsp;|&nbsp; Batch: 2024–25</div>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-icon">📋</div><div class="stat-label">Registered Exams</div><div class="stat-value" style="color:var(--accent)">2</div><div class="stat-sub">Active registrations</div></div>
+            <div class="stat-card"><div class="stat-icon">⏳</div><div class="stat-label">Pending Payment</div><div class="stat-value" style="color:var(--warn)">1</div><div class="stat-sub">Complete to confirm</div></div>
+            <div class="stat-card"><div class="stat-icon">🎫</div><div class="stat-label">Hall Tickets</div><div class="stat-value" style="color:var(--accent2)">1</div><div class="stat-sub">Ready to download</div></div>
+            <div class="stat-card"><div class="stat-icon">📅</div><div class="stat-label">Days to Exam</div><div class="stat-value" style="color:var(--text)">19</div><div class="stat-sub">GATE 2026 — Apr 8</div></div>
+          </div>
+          <div class="alert alert-warn"><span>⚠️</span><div><strong>Action Required:</strong> Payment pending for JEE Mains 2026. Complete by Mar 25 to confirm your registration.</div></div>
+          <div class="two-col">
+            <div class="card">
+              <div class="card-header"><span class="card-title">My Registrations</span><button class="btn btn-outline" onclick="showPage('s-my-exams',document.querySelector('[onclick*=s-my-exams]'),'student')" style="font-size:12px;padding:6px 12px">View All</button></div>
+              <div class="card-body" style="padding:0">
+                <table><thead><tr><th>Exam</th><th>Status</th><th>Fee</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>GATE 2026</strong><br><span style="font-size:11px;color:var(--muted)">Apr 8, 2026 · CSE</span></td><td><span class="badge badge-green">Approved</span></td><td style="color:var(--accent);font-weight:600">₹1,500</td></tr>
+                  <tr><td><strong>JEE Mains 2026</strong><br><span style="font-size:11px;color:var(--muted)">Apr 2, 2026 · PCM</span></td><td><span class="badge badge-yellow">Pending</span></td><td style="color:var(--warn);font-weight:600">₹500 due</td></tr>
+                </tbody></table>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header"><span class="card-title">Upcoming Schedule</span></div>
+              <div class="card-body" style="padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+                <div class="schedule-item" style="padding:12px 14px">
+                  <div class="schedule-date"><div class="schedule-day">08</div><div class="schedule-month">Apr</div></div>
+                  <div class="schedule-info"><div class="schedule-exam">GATE 2026 — CSE</div><div class="schedule-details">Room 201, Block A · Amaravati</div></div>
+                  <div class="schedule-time">9:00 AM</div>
+                </div>
+                <div class="schedule-item" style="padding:12px 14px;border-color:var(--warn)">
+                  <div class="schedule-date" style="background:rgba(233,168,0,.12)"><div class="schedule-day" style="color:var(--warn)">02</div><div class="schedule-month" style="color:var(--warn)">Apr</div></div>
+                  <div class="schedule-info"><div class="schedule-exam">JEE Mains 2026 — PCM</div><div class="schedule-details">Payment pending · Hyderabad</div></div>
+                  <div class="schedule-time" style="background:rgba(233,168,0,.12);color:var(--warn)">10:00 AM</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">Profile Completion</span><span style="font-size:13px;font-weight:700;color:var(--accent)">75%</span></div>
+            <div class="card-body">
+              <div class="progress-bar-wrap" style="margin-bottom:12px"><div class="progress-bar" style="width:75%"></div></div>
+              <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <span class="badge badge-green">✓ Personal Info</span>
+                <span class="badge badge-green">✓ Academic Details</span>
+                <span class="badge badge-green">✓ Photo Uploaded</span>
+                <span class="badge badge-yellow">⚠ ID Proof Pending</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- S-AVAILABLE EXAMS -->
+        <div class="page" id="page-s-available-exams">
+          <div class="section-intro"><h2>Available Exams</h2><p>Browse and register for upcoming competitive exams.</p></div>
+          <div class="exam-grid">
+            <div class="exam-card">
+              <div class="exam-card-title">GATE 2026</div><div class="exam-card-code">GATE26 · Graduate Aptitude Test</div>
+              <div class="exam-card-meta">
+                <div class="exam-meta-row"><span class="exam-meta-label">📅 Exam Date</span><span class="exam-meta-val">Apr 8, 2026</span></div>
+                <div class="exam-meta-row"><span class="exam-meta-label">📝 Last Date</span><span class="exam-meta-val">Mar 25, 2026</span></div>
+                <div class="exam-meta-row"><span class="exam-meta-label">💰 Fee</span><span class="exam-meta-val">₹1,500</span></div>
+                <div class="exam-meta-row"><span class="exam-meta-label">🖥 Mode</span><span class="exam-meta-val">Online</span></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center"><span class="badge badge-green">Open</span><button class="btn btn-primary" style="font-size:12px;padding:7px 14px" onclick="showPage('s-register',document.querySelector('[onclick*=s-register]'),'student')">Register →</button></div>
+            </div>
+            <div class="exam-card blue">
+              <div class="exam-card-title">JEE Mains 2026</div><div class="exam-card-code">JEE26 · Joint Entrance Examination</div>
+              <div class="exam-card-meta">
+                <div class="exam-meta-row"><span class="exam-meta-label">📅 Exam Date</span><span class="exam-meta-val">Apr 2, 2026</span></div>
+                <div class="exam-meta-row"><span class="exam-meta-label">📝 Last Date</span><span class="exam-meta-val">Mar 20, 2026</span></div>
+                <div class="exam-meta-row"><span class="exam-meta-label">💰 Fee</span><span class="exam-meta-val">₹500</span></div>
+                <div class="exam-meta-row"><span class="exam-meta-label">🖥 Mode</span><span class="exam-meta-val">Online</span></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center"><span class="badge badge-yellow">Closing Soon</span><button class="btn btn-primary" style="font-size:12px;padding:7px 14px">Register →</button></div>
+            </div>
+            <div class="exam-card warn">
+              <div class="exam-card-title">UPSC Prelims 2026</div><div class="exam-card-code">UPSC26 · Civil Services Preliminary</div>
+              <div class="exam-card-meta">
+                <div class="exam-meta-row"><span class="exam-meta-label">📅 Exam Date</span><span class="exam-meta-val">May 25, 2026</span></div>
+                <div class="exam-meta-row"><span class="exam-meta-label">📝 Last Date</span><span class="exam-meta-val">Apr 10, 2026</span></div>
+                <div class="exam-meta-row"><span class="exam-meta-label">💰 Fee</span><span class="exam-meta-val">₹100</span></div>
+                <div class="exam-meta-row"><span class="exam-meta-label">🖥 Mode</span><span class="exam-meta-val">Offline</span></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center"><span class="badge badge-blue">Open</span><button class="btn btn-primary" style="font-size:12px;padding:7px 14px">Register →</button></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">All Exams</span><div class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search..."></div></div>
+            <div class="card-body" style="padding:0">
+              <table><thead><tr><th>Exam</th><th>Code</th><th>Date</th><th>Mode</th><th>Fee</th><th>Deadline</th><th>Status</th><th></th></tr></thead>
+              <tbody>
+                <tr><td><strong>GATE 2026</strong></td><td>GATE26</td><td>Apr 8, 2026</td><td><span class="badge badge-blue">Online</span></td><td>₹1,500</td><td>Mar 25</td><td><span class="badge badge-green">Open</span></td><td><button class="btn btn-success" style="padding:5px 12px;font-size:11px">Register</button></td></tr>
+                <tr><td><strong>JEE Mains 2026</strong></td><td>JEE26</td><td>Apr 2, 2026</td><td><span class="badge badge-blue">Online</span></td><td>₹500</td><td>Mar 20</td><td><span class="badge badge-yellow">Closing</span></td><td><button class="btn btn-success" style="padding:5px 12px;font-size:11px">Register</button></td></tr>
+                <tr><td><strong>UPSC Prelims</strong></td><td>UPSC26</td><td>May 25, 2026</td><td><span class="badge badge-grey">Offline</span></td><td>₹100</td><td>Apr 10</td><td><span class="badge badge-green">Open</span></td><td><button class="btn btn-success" style="padding:5px 12px;font-size:11px">Register</button></td></tr>
+                <tr><td><strong>NEET 2026</strong></td><td>NEET26</td><td>Jun 1, 2026</td><td><span class="badge badge-grey">Offline</span></td><td>₹1,700</td><td>Apr 30</td><td><span class="badge badge-green">Open</span></td><td><button class="btn btn-success" style="padding:5px 12px;font-size:11px">Register</button></td></tr>
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+
+        <!-- S-REGISTER -->
+        <div class="page" id="page-s-register">
+          <div class="section-intro"><h2>Register for Exam</h2><p>Fill in the details and select your subjects to apply.</p></div>
+          <div class="steps">
+            <div class="step done"><div class="step-num">✓</div> Exam Selection</div>
+            <div class="step-line done"></div>
+            <div class="step active"><div class="step-num">2</div> Subject Selection</div>
+            <div class="step-line"></div>
+            <div class="step"><div class="step-num">3</div> Review</div>
+            <div class="step-line"></div>
+            <div class="step"><div class="step-num">4</div> Payment</div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">Exam &amp; Personal Details</span></div>
+            <div class="card-body">
+              <div class="form-grid">
+                <div class="form-group"><label>Select Exam</label><select><option>GATE 2026</option><option>JEE Mains 2026</option><option>UPSC Prelims</option></select></div>
+                <div class="form-group"><label>Full Name</label><input type="text" value="Priya Sharma"></div>
+                <div class="form-group"><label>PRN / Roll Number</label><input type="text" value="2024001"></div>
+                <div class="form-group"><label>Date of Birth</label><input type="date"></div>
+                <div class="form-group"><label>Email</label><input type="email" value="priya@student.edu"></div>
+                <div class="form-group"><label>Mobile</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+                <div class="form-group full"><label>Address</label><textarea placeholder="Enter your correspondence address"></textarea></div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">Select Subjects</span></div>
+            <div class="card-body">
+              <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Click to select one or more subjects for GATE 2026.</p>
+              <div class="subject-grid">
+                <div class="subject-chip selected" onclick="this.classList.toggle('selected')">Computer Science (CSE)</div>
+                <div class="subject-chip" onclick="this.classList.toggle('selected')">Electronics &amp; Comm (ECE)</div>
+                <div class="subject-chip" onclick="this.classList.toggle('selected')">Mechanical Eng (ME)</div>
+                <div class="subject-chip" onclick="this.classList.toggle('selected')">Civil Engineering (CE)</div>
+                <div class="subject-chip" onclick="this.classList.toggle('selected')">Electrical Eng (EE)</div>
+                <div class="subject-chip" onclick="this.classList.toggle('selected')">Mathematics (MA)</div>
+                <div class="subject-chip" onclick="this.classList.toggle('selected')">Physics (PH)</div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px">
+            <button class="btn btn-primary" onclick="showPage('s-payment',document.querySelector('[onclick*=s-payment]'),'student')">Continue to Payment →</button>
+            <button class="btn btn-outline">Save as Draft</button>
+          </div>
+        </div>
+
+        <!-- S-PAYMENT -->
+        <div class="page" id="page-s-payment">
+          <div class="section-intro"><h2>Online Payment</h2><p>Complete your fee payment to confirm the registration.</p></div>
+          <div class="two-col">
+            <div>
+              <div class="card">
+                <div class="card-header"><span class="card-title">Payment Summary</span></div>
+                <div class="card-body">
+                  <div class="payment-summary">
+                    <div class="payment-row"><span>GATE 2026 — Exam Fee</span><span>₹1,500</span></div>
+                    <div class="payment-row"><span>Processing Fee</span><span>₹30</span></div>
+                    <div class="payment-row"><span>GST (18%)</span><span>₹275</span></div>
+                    <div class="payment-row total"><span>Total Payable</span><span style="color:var(--accent)">₹1,805</span></div>
+                  </div>
+                  <div style="font-size:12px;color:var(--muted);margin-top:4px">🔒 Secured by Razorpay · SSL Encrypted</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header"><span class="card-title">Registration Details</span></div>
+                <div class="card-body" style="display:flex;flex-direction:column;gap:8px">
+                  <div class="payment-row"><span style="color:var(--muted)">Student</span><span style="font-weight:600">Priya Sharma</span></div>
+                  <div class="payment-row"><span style="color:var(--muted)">PRN</span><span style="font-weight:600">2024001</span></div>
+                  <div class="payment-row"><span style="color:var(--muted)">Exam</span><span style="font-weight:600">GATE 2026</span></div>
+                  <div class="payment-row"><span style="color:var(--muted)">Subject</span><span style="font-weight:600">CSE</span></div>
+                  <div class="payment-row"><span style="color:var(--muted)">Center</span><span style="font-weight:600">Amaravati, AP</span></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="card">
+                <div class="card-header"><span class="card-title">Select Payment Method</span></div>
+                <div class="card-body">
+                  <div class="payment-methods">
+                    <div class="pay-method selected" onclick="selectPayment(this)"><div class="pay-method-icon">🏦</div><div>Net Banking</div></div>
+                    <div class="pay-method" onclick="selectPayment(this)"><div class="pay-method-icon">💳</div><div>Debit / Credit</div></div>
+                    <div class="pay-method" onclick="selectPayment(this)"><div class="pay-method-icon">📱</div><div>UPI</div></div>
+                  </div>
+                  <div id="upiField" style="display:none;margin-bottom:16px">
+                    <div class="form-group"><label>UPI ID</label><input type="text" placeholder="yourname@upi"></div>
+                  </div>
+                  <div class="form-grid" style="margin-bottom:16px">
+                    <div class="form-group"><label>Bank Name</label><select><option>State Bank of India</option><option>HDFC Bank</option><option>ICICI Bank</option><option>Axis Bank</option></select></div>
+                    <div class="form-group"><label>Account Type</label><select><option>Savings</option><option>Current</option></select></div>
+                  </div>
+                  <div class="alert alert-green" style="margin-bottom:16px"><span>✓</span> Your details are verified. Click below to proceed to bank.</div>
+                  <button class="btn btn-primary" style="width:100%;justify-content:center;padding:13px">🔒 Pay ₹1,805 Securely</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- S-HALL TICKET -->
+        <div class="page" id="page-s-hall-ticket">
+          <div class="section-intro"><h2>Hall Ticket</h2><p>Download your admit card for approved exams.</p></div>
+          <div class="alert alert-green" style="margin-bottom:20px"><span>✓</span> Your hall ticket for <strong>GATE 2026</strong> is ready. Carry a printed copy and a valid photo ID to the exam center.</div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">GATE 2026 — Admit Card</span><button class="btn btn-primary" style="font-size:12px">⬇ Download PDF</button><button class="btn btn-outline" style="font-size:12px">🖨 Print</button></div>
+            <div class="card-body">
+              <div class="ticket-wrap">
+                <div class="ticket-header">
+                  <div><div class="ticket-brand"><span>MASTERY</span> HUB</div><div class="ticket-issued">Issued by Mastery Hub Admin · Valid ID Required</div></div>
+                  <div style="text-align:right"><div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Admit Card</div><div style="font-size:18px;font-weight:800;color:var(--accent)">GATE 2026</div></div>
+                </div>
+                <div style="display:flex;gap:24px">
+                  <div style="flex:1">
+                    <div class="ticket-fields">
+                      <div><div class="ticket-label">Student Name</div><div class="ticket-value">Priya Sharma</div></div>
+                      <div><div class="ticket-label">Roll Number</div><div class="ticket-value">GATE26-CSE-0042</div></div>
+                      <div><div class="ticket-label">PRN</div><div class="ticket-value">2024001</div></div>
+                      <div><div class="ticket-label">Subject</div><div class="ticket-value">Computer Science</div></div>
+                      <div><div class="ticket-label">Exam Date</div><div class="ticket-value">Apr 8, 2026</div></div>
+                      <div><div class="ticket-label">Reporting Time</div><div class="ticket-value">8:30 AM</div></div>
+                      <div><div class="ticket-label">Exam Center</div><div class="ticket-value">Room 201, Block A</div></div>
+                      <div><div class="ticket-label">Center Address</div><div class="ticket-value">Amaravati, AP</div></div>
+                    </div>
+                  </div>
+                  <div style="width:110px;display:flex;flex-direction:column;align-items:center;gap:10px">
+                    <div style="width:80px;height:80px;background:var(--surface2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:30px;border:1px solid var(--border)">👤</div>
+                    <div class="barcode"><div class="bar"></div><div class="bar thin"></div><div class="bar"></div><div class="bar thin"></div><div class="bar thin"></div><div class="bar"></div><div class="bar thin"></div><div class="bar"></div><div class="bar"></div><div class="bar thin"></div><div class="bar"></div></div>
+                    <div style="font-size:9px;color:var(--muted);text-align:center">GATE26CSE0042</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">All Hall Tickets</span></div>
+            <div class="card-body" style="padding:0">
+              <table><thead><tr><th>Exam</th><th>Roll No.</th><th>Exam Date</th><th>Center</th><th>Issued On</th><th>Status</th><th></th></tr></thead>
+              <tbody>
+                <tr><td><strong>GATE 2026</strong></td><td>GATE26-CSE-0042</td><td>Apr 8, 2026</td><td>Amaravati</td><td>Mar 17</td><td><span class="badge badge-green">Issued</span></td><td><button class="btn btn-outline" style="padding:5px 12px;font-size:11px">⬇ Download</button></td></tr>
+                <tr><td><strong>JEE Mains 2026</strong></td><td>—</td><td>Apr 2, 2026</td><td>Hyderabad</td><td>—</td><td><span class="badge badge-yellow">Pending Payment</span></td><td><button class="btn btn-warn" style="padding:5px 12px;font-size:11px">Pay Now</button></td></tr>
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+
+        <!-- S-SCHEDULE -->
+        <div class="page" id="page-s-schedule">
+          <div class="section-intro"><h2>Exam Schedule</h2><p>Your upcoming exams and important dates at a glance.</p></div>
+          <div class="card" style="margin-bottom:20px">
+            <div class="card-header"><span class="card-title">Upcoming Exams</span></div>
+            <div class="card-body">
+              <div class="schedule-list">
+                <div class="schedule-item">
+                  <div class="schedule-date"><div class="schedule-day">02</div><div class="schedule-month">Apr</div></div>
+                  <div class="schedule-info"><div class="schedule-exam">JEE Mains 2026 — PCM</div><div class="schedule-details">10:00 AM – 1:00 PM · Hall No. TBD · Hyderabad</div></div>
+                  <span class="badge badge-yellow">Payment Pending</span>
+                </div>
+                <div class="schedule-item" style="border-color:var(--accent)">
+                  <div class="schedule-date"><div class="schedule-day">08</div><div class="schedule-month">Apr</div></div>
+                  <div class="schedule-info"><div class="schedule-exam">GATE 2026 — Computer Science</div><div class="schedule-details">9:00 AM – 12:00 PM · Room 201, Block A · Amaravati</div></div>
+                  <span class="badge badge-green">Confirmed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">Important Dates</span></div>
+            <div class="card-body" style="padding:0">
+              <table><thead><tr><th>Event</th><th>Exam</th><th>Date</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Registration Deadline</td><td>JEE Mains 2026</td><td>Mar 20, 2026</td><td><span class="badge badge-red">Urgent</span></td></tr>
+                <tr><td>Payment Deadline</td><td>JEE Mains 2026</td><td>Mar 25, 2026</td><td><span class="badge badge-yellow">Pending</span></td></tr>
+                <tr><td>Hall Ticket Release</td><td>JEE Mains 2026</td><td>Mar 30, 2026</td><td><span class="badge badge-grey">Upcoming</span></td></tr>
+                <tr><td>Exam Day</td><td>JEE Mains 2026</td><td>Apr 2, 2026</td><td><span class="badge badge-grey">Upcoming</span></td></tr>
+                <tr><td>Hall Ticket</td><td>GATE 2026</td><td>Mar 17, 2026</td><td><span class="badge badge-green">Done</span></td></tr>
+                <tr><td>Exam Day</td><td>GATE 2026</td><td>Apr 8, 2026</td><td><span class="badge badge-blue">Confirmed</span></td></tr>
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+
+        <!-- S-MY REGISTRATIONS -->
+        <div class="page" id="page-s-my-exams">
+          <div class="section-intro"><h2>My Registrations</h2><p>Track all your exam applications and their statuses.</p></div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">Registration History</span><div class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search..."></div></div>
+            <div class="card-body" style="padding:0">
+              <table><thead><tr><th>Exam</th><th>Subject</th><th>Applied On</th><th>Fee</th><th>Payment</th><th>Admin Status</th><th>Hall Ticket</th></tr></thead>
+              <tbody>
+                <tr><td><strong>GATE 2026</strong><br><span style="font-size:11px;color:var(--muted)">Apr 8, 2026</span></td><td>CSE</td><td>Mar 10</td><td>₹1,500</td><td><span class="badge badge-green">✓ Paid</span></td><td><span class="badge badge-green">Approved</span></td><td><button class="btn btn-success" style="padding:5px 12px;font-size:11px">⬇ Download</button></td></tr>
+                <tr><td><strong>JEE Mains 2026</strong><br><span style="font-size:11px;color:var(--muted)">Apr 2, 2026</span></td><td>PCM</td><td>Mar 14</td><td>₹500</td><td><span class="badge badge-yellow">Pending</span></td><td><span class="badge badge-yellow">Awaiting Payment</span></td><td><button class="btn btn-warn" style="padding:5px 12px;font-size:11px">Pay Now</button></td></tr>
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ████ ADMIN PAGES ████ -->
+
+        <!-- A-DASHBOARD -->
+        <div class="page" id="page-a-dashboard">
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-label">Total Students</div><div class="stat-value" style="color:var(--accent2)">1,284</div><div class="stat-delta up">↑ 8% this month</div></div>
+            <div class="stat-card"><div class="stat-label">Active Exams</div><div class="stat-value" style="color:var(--accent)">7</div><div class="stat-delta up">↑ 2 new added</div></div>
+            <div class="stat-card"><div class="stat-label">Pending Approvals</div><div class="stat-value" style="color:var(--warn)">12</div><div class="stat-delta down">⚠ Needs attention</div></div>
+            <div class="stat-card"><div class="stat-label">Hall Tickets Issued</div><div class="stat-value">946</div><div class="stat-delta up">↑ 73.7% issued</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">Recent Registrations</span><button class="btn btn-outline" onclick="showPage('a-registrations',document.querySelector('[onclick*=a-registrations]'),'admin')">View All</button></div>
+            <div class="card-body" style="padding:0">
+              <table><thead><tr><th>Student Name</th><th>Exam</th><th>Subjects</th><th>Applied</th><th>Status</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Priya Sharma</strong><br><small style="color:var(--muted)">PRN: 2024001</small></td><td>GATE 2026</td><td>CSE</td><td>Mar 15</td><td><span class="badge badge-yellow">⏳ Pending</span></td><td class="action-row"><button class="btn btn-success" style="padding:5px 12px;font-size:12px">✓</button><button class="btn btn-danger" style="padding:5px 12px;font-size:12px">✗</button></td></tr>
+                <tr><td><strong>Ravi Kumar</strong><br><small style="color:var(--muted)">PRN: 2024002</small></td><td>JEE Mains</td><td>PCM</td><td>Mar 14</td><td><span class="badge badge-green">✓ Approved</span></td><td><span style="color:var(--muted);font-size:12px">Processed</span></td></tr>
+                <tr><td><strong>Ananya Reddy</strong><br><small style="color:var(--muted)">PRN: 2024003</small></td><td>UPSC Prelims</td><td>GS I, GS II</td><td>Mar 13</td><td><span class="badge badge-yellow">⏳ Pending</span></td><td class="action-row"><button class="btn btn-success" style="padding:5px 12px;font-size:12px">✓</button><button class="btn btn-danger" style="padding:5px 12px;font-size:12px">✗</button></td></tr>
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+
+        <!-- A-MANAGE EXAMS -->
+        <div class="page" id="page-a-manage-exams">
+          <div class="section-intro"><h2>Manage Exam Details</h2><p>Create, edit, and configure all exam schedules and metadata.</p></div>
+          <div class="card" style="margin-bottom:24px">
+            <div class="card-header"><span class="card-title">Add New Exam</span></div>
+            <div class="card-body" style="padding:24px">
+              <div class="form-grid">
+                <div class="form-group"><label>Exam Name</label><input type="text" placeholder="e.g. GATE 2026"></div>
+                <div class="form-group"><label>Exam Code</label><input type="text" placeholder="e.g. GATE26"></div>
+                <div class="form-group"><label>Exam Date</label><input type="date"></div>
+                <div class="form-group"><label>Last Date to Register</label><input type="date"></div>
+                <div class="form-group"><label>Exam Mode</label><select><option>Online</option><option>Offline</option><option>Hybrid</option></select></div>
+                <div class="form-group"><label>Exam Fee (₹)</label><input type="number" placeholder="500"></div>
+                <div class="form-group full"><label>Description</label><textarea placeholder="Describe eligibility, pattern, etc."></textarea></div>
+                <div class="form-group"><label>Available Subjects</label><input type="text" placeholder="CSE, ECE, ME (comma separated)"></div>
+                <div class="form-group"><label>Exam Center</label><input type="text" placeholder="e.g. Amaravati, Hyderabad"></div>
+              </div>
+              <div style="margin-top:20px;display:flex;gap:12px"><button class="btn btn-primary">💾 Save Exam</button><button class="btn btn-outline">Clear</button></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">All Exams</span><div class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search exams..."></div></div>
+            <div class="card-body" style="padding:0">
+              <table><thead><tr><th>Exam</th><th>Code</th><th>Date</th><th>Mode</th><th>Registrations</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody>
+                <tr><td><strong>GATE 2026</strong></td><td>GATE26</td><td>Feb 8, 2026</td><td><span class="badge badge-blue">Online</span></td><td>342</td><td><span class="badge badge-green">Active</span></td><td class="action-row"><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">Edit</button><button class="btn btn-danger" style="padding:5px 12px;font-size:12px">Delete</button></td></tr>
+                <tr><td><strong>JEE Mains 2026</strong></td><td>JEE26</td><td>Apr 2, 2026</td><td><span class="badge badge-blue">Online</span></td><td>589</td><td><span class="badge badge-green">Active</span></td><td class="action-row"><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">Edit</button><button class="btn btn-danger" style="padding:5px 12px;font-size:12px">Delete</button></td></tr>
+                <tr><td><strong>UPSC Prelims</strong></td><td>UPSC26</td><td>May 25, 2026</td><td><span class="badge badge-yellow">Offline</span></td><td>211</td><td><span class="badge badge-yellow">Draft</span></td><td class="action-row"><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">Edit</button><button class="btn btn-danger" style="padding:5px 12px;font-size:12px">Delete</button></td></tr>
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+
+        <!-- A-REGISTRATIONS -->
+        <div class="page" id="page-a-registrations">
+          <div class="section-intro"><h2>Approve / Reject Registrations</h2><p>Review and process student exam registration requests.</p></div>
+          <div class="filter-row">
+            <span class="filter-chip active" data-filter="all" onclick="filterRegistrations('all',this)">All (<span class="chip-count-all">5</span>)</span>
+            <span class="filter-chip" data-filter="pending" onclick="filterRegistrations('pending',this)">Pending (<span class="chip-count-pending">0</span>)</span>
+            <span class="filter-chip" data-filter="approved" onclick="filterRegistrations('approved',this)">Approved (<span class="chip-count-approved">0</span>)</span>
+            <span class="filter-chip" data-filter="rejected" onclick="filterRegistrations('rejected',this)">Rejected (<span class="chip-count-rejected">0</span>)</span>
+            <div style="margin-left:auto" class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search student..." oninput="searchRegistrations(this.value)"></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">Registration Requests</span><button class="btn btn-success" style="font-size:12px">✓ Approve All Pending</button></div>
+            <div class="card-body" style="padding:0">
+              <table><thead><tr><th>Student</th><th>PRN</th><th>Exam</th><th>Subjects</th><th>Fee Paid</th><th>Applied On</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="reg-table">
+                <tr data-status="pending"><td><strong>Priya Sharma</strong></td><td>2024001</td><td>GATE 2026</td><td>CSE</td><td><span class="badge badge-green">✓ Paid</span></td><td>Mar 15</td><td><span class="badge badge-yellow">Pending</span></td><td class="action-row"><button class="btn btn-success" style="padding:5px 12px;font-size:12px" onclick="updateStatus(this,'Approved')">✓ Approve</button><button class="btn btn-danger" style="padding:5px 12px;font-size:12px" onclick="updateStatus(this,'Rejected')">✗ Reject</button></td></tr>
+                <tr data-status="pending"><td><strong>Ananya Reddy</strong></td><td>2024003</td><td>UPSC Prelims</td><td>GS I, GS II</td><td><span class="badge badge-green">✓ Paid</span></td><td>Mar 13</td><td><span class="badge badge-yellow">Pending</span></td><td class="action-row"><button class="btn btn-success" style="padding:5px 12px;font-size:12px" onclick="updateStatus(this,'Approved')">✓ Approve</button><button class="btn btn-danger" style="padding:5px 12px;font-size:12px" onclick="updateStatus(this,'Rejected')">✗ Reject</button></td></tr>
+                <tr data-status="pending"><td><strong>Mohit Verma</strong></td><td>2024007</td><td>JEE Mains</td><td>PCM</td><td><span class="badge badge-red">✗ Unpaid</span></td><td>Mar 12</td><td><span class="badge badge-yellow">Pending</span></td><td class="action-row"><button class="btn btn-success" style="padding:5px 12px;font-size:12px" onclick="updateStatus(this,'Approved')">✓ Approve</button><button class="btn btn-danger" style="padding:5px 12px;font-size:12px" onclick="updateStatus(this,'Rejected')">✗ Reject</button></td></tr>
+                <tr data-status="approved"><td><strong>Ravi Kumar</strong></td><td>2024002</td><td>JEE Mains</td><td>PCM</td><td><span class="badge badge-green">✓ Paid</span></td><td>Mar 14</td><td><span class="badge badge-green">Approved</span></td><td><span style="color:var(--muted);font-size:12px">Processed</span></td></tr>
+                <tr data-status="rejected"><td><strong>Kiran Mehta</strong></td><td>2024009</td><td>GATE 2026</td><td>ECE</td><td><span class="badge badge-red">✗ Unpaid</span></td><td>Mar 11</td><td><span class="badge badge-red">Rejected</span></td><td><span style="color:var(--muted);font-size:12px">Processed</span></td></tr>
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+
+        <!-- A-HALL TICKETS -->
+        <div class="page" id="page-a-hall-tickets">
+          <div class="section-intro"><h2>Generate Hall Tickets</h2><p>Issue and manage hall tickets for approved students.</p></div>
+          <div style="display:flex;gap:16px;margin-bottom:24px">
+            <div class="card" style="flex:1;margin-bottom:0">
+              <div class="card-header"><span class="card-title">Generate Bulk Hall Tickets</span></div>
+              <div class="card-body" style="padding:22px">
+                <div class="form-grid" style="margin-bottom:16px">
+                  <div class="form-group"><label>Select Exam</label><select><option>GATE 2026</option><option>JEE Mains 2026</option><option>UPSC Prelims</option></select></div>
+                  <div class="form-group"><label>Filter by Subject</label><select><option>All Subjects</option><option>CSE</option><option>ECE</option><option>ME</option></select></div>
+                </div>
+                <div style="background:var(--surface2);border-radius:10px;padding:16px;margin-bottom:16px;font-size:13px;color:var(--muted)"><strong style="color:var(--text)">342 approved students</strong> eligible for hall ticket generation for GATE 2026.</div>
+                <button class="btn btn-primary">🎫 Generate All Hall Tickets</button>
+              </div>
+            </div>
+            <div class="card" style="flex:1;margin-bottom:0">
+              <div class="card-header"><span class="card-title">Single Student</span></div>
+              <div class="card-body" style="padding:22px">
+                <div class="form-group" style="margin-bottom:14px"><label>Student PRN / Roll No.</label><input type="text" placeholder="Enter PRN"></div>
+                <div class="form-group" style="margin-bottom:16px"><label>Exam</label><select><option>GATE 2026</option><option>JEE Mains</option></select></div>
+                <button class="btn btn-outline">🔍 Lookup &amp; Generate</button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">Hall Ticket Preview</span><button class="btn btn-primary" style="font-size:12px">⬇ Download PDF</button></div>
+            <div class="card-body" style="padding:24px">
+              <div class="ticket-wrap">
+                <div style="font-size:18px;font-weight:800;margin-bottom:4px;color:var(--accent)">GATE 2026 — Hall Ticket</div>
+                <div style="font-size:12px;color:var(--muted);margin-bottom:20px">Issued by ExamPortal Admin • Valid ID Required at Center</div>
+                <div style="display:flex;gap:24px">
+                  <div style="flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+                    <div><div class="ticket-label">Student Name</div><div class="ticket-value">Priya Sharma</div></div>
+                    <div><div class="ticket-label">Roll Number</div><div class="ticket-value">GATE26-CSE-0042</div></div>
+                    <div><div class="ticket-label">PRN</div><div class="ticket-value">2024001</div></div>
+                    <div><div class="ticket-label">Exam Date</div><div class="ticket-value">Apr 8, 2026</div></div>
+                    <div><div class="ticket-label">Reporting Time</div><div class="ticket-value">9:00 AM</div></div>
+                    <div><div class="ticket-label">Subject</div><div class="ticket-value">Computer Science</div></div>
+                    <div><div class="ticket-label">Exam Center</div><div class="ticket-value">Room 201, Block A</div></div>
+                    <div><div class="ticket-label">Center Address</div><div class="ticket-value">Amaravati, AP</div></div>
+                    <div><div class="ticket-label">Duration</div><div class="ticket-value">3 Hours</div></div>
+                  </div>
+                  <div style="width:100px;display:flex;flex-direction:column;align-items:center;gap:10px">
+                    <div style="width:80px;height:80px;background:var(--surface);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:30px;border:1px solid var(--border)">👤</div>
+                    <div class="barcode"><div class="bar"></div><div class="bar thin"></div><div class="bar"></div><div class="bar thin"></div><div class="bar thin"></div><div class="bar"></div><div class="bar thin"></div><div class="bar"></div><div class="bar"></div><div class="bar thin"></div><div class="bar"></div></div>
+                    <div style="font-size:9px;color:var(--muted);text-align:center">GATE26CSE0042</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">Issued Hall Tickets</span><div class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search student..."></div></div>
+            <div class="card-body" style="padding:0">
+              <table><thead><tr><th>Student</th><th>Roll No.</th><th>Exam</th><th>Center</th><th>Issued On</th><th>Status</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Priya Sharma</strong></td><td>GATE26-CSE-0042</td><td>GATE 2026</td><td>Amaravati</td><td>Mar 17</td><td><span class="badge badge-green">Issued</span></td><td><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">⬇ Download</button></td></tr>
+                <tr><td><strong>Ravi Kumar</strong></td><td>JEE26-PCM-0013</td><td>JEE Mains</td><td>Hyderabad</td><td>Mar 16</td><td><span class="badge badge-green">Issued</span></td><td><button class="btn btn-outline" style="padding:5px 12px;font-size:12px">⬇ Download</button></td></tr>
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+
+        <!-- A-REPORTS -->
+        <div class="page" id="page-a-reports">
+          <div class="section-intro"><h2>Generate Reports</h2><p>Export detailed analytics and summaries for all exam activities.</p></div>
+          <div class="report-grid" style="margin-bottom:28px">
+            <div class="report-card green"><div class="report-icon">📊</div><div class="report-name">Registration Report</div><div class="report-desc">Total registrations, subject-wise breakdown, approval stats.</div><button class="btn btn-success" style="font-size:12px">Generate → Export</button></div>
+            <div class="report-card blue"><div class="report-icon">💰</div><div class="report-name">Payment Report</div><div class="report-desc">Fee collected, pending dues, payment gateway summary.</div><button class="btn btn-outline" style="font-size:12px;border-color:var(--accent2);color:var(--accent2)">Generate → Export</button></div>
+            <div class="report-card yellow"><div class="report-icon">🎫</div><div class="report-name">Hall Ticket Report</div><div class="report-desc">Issued vs pending hall tickets per exam and center.</div><button class="btn btn-outline" style="font-size:12px;border-color:var(--warn);color:var(--warn)">Generate → Export</button></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">Custom Report Builder</span><button class="btn btn-primary" style="font-size:12px">⬇ Export CSV</button></div>
+            <div class="card-body" style="padding:22px">
+              <div class="form-grid">
+                <div class="form-group"><label>Report Type</label><select><option>Registration Summary</option><option>Payment Summary</option><option>Student-wise</option><option>Exam-wise</option></select></div>
+                <div class="form-group"><label>Exam Filter</label><select><option>All Exams</option><option>GATE 2026</option><option>JEE Mains</option><option>UPSC Prelims</option></select></div>
+                <div class="form-group"><label>Date From</label><input type="date"></div>
+                <div class="form-group"><label>Date To</label><input type="date"></div>
+              </div>
+              <div style="margin-top:16px;display:flex;gap:12px"><button class="btn btn-primary">📊 Preview Report</button><button class="btn btn-outline">⬇ Export PDF</button><button class="btn btn-outline">⬇ Export Excel</button></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">Report Preview — Registration Summary</span></div>
+            <div class="card-body" style="padding:0">
+              <table><thead><tr><th>Exam</th><th>Total Registered</th><th>Approved</th><th>Rejected</th><th>Pending</th><th>Fee Collected</th></tr></thead>
+              <tbody>
+                <tr><td><strong>GATE 2026</strong></td><td>342</td><td><span class="badge badge-green">318</span></td><td><span class="badge badge-red">8</span></td><td><span class="badge badge-yellow">16</span></td><td>₹1,59,000</td></tr>
+                <tr><td><strong>JEE Mains 2026</strong></td><td>589</td><td><span class="badge badge-green">531</span></td><td><span class="badge badge-red">21</span></td><td><span class="badge badge-yellow">37</span></td><td>₹2,94,500</td></tr>
+                <tr><td><strong>UPSC Prelims</strong></td><td>211</td><td><span class="badge badge-green">194</span></td><td><span class="badge badge-red">5</span></td><td><span class="badge badge-yellow">12</span></td><td>₹1,05,500</td></tr>
+                <tr style="font-weight:700"><td>TOTAL</td><td>1,142</td><td><span class="badge badge-green">1,043</span></td><td><span class="badge badge-red">34</span></td><td><span class="badge badge-yellow">65</span></td><td>₹5,59,000</td></tr>
+              </tbody></table>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /content -->
+    </main>
+  </div><!-- /app-body -->
+</div><!-- /app-layer -->
+
+<!-- ═══════════════════════════════════════════
+  CHATBOT WIDGET
+═══════════════════════════════════════════ -->
+<button id="chat-fab" onclick="toggleChat()" title="ExamBot">🤖</button>
+
+<div id="chatbot-panel">
+  <div class="chat-header">
+    <div class="chat-dot"></div>
+    <div class="chat-title">🎓 ExamBot — Exam Registration Assistant</div>
+    <button class="chat-close" onclick="toggleChat()">×</button>
+  </div>
+  <div id="chat-messages">
+    <div class="msg bot">👋 Hi! I'm <b>ExamBot</b>. Ask me about exam registration, subjects, fees, deadlines, or documents!</div>
+  </div>
+  <div class="chat-input-row">
+    <input id="chat-inp" type="text" placeholder="Type your question..." onkeydown="if(event.key==='Enter')chatSend()"/>
+    <button onclick="chatSend()">Send</button>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   AUTH LOGIC
+═══════════════════════════════════════════ */
+let currentRole = 'student';
+
+const authGo = id => {
+  document.querySelectorAll('.pg').forEach(p => p.classList.add('hide'));
+  document.getElementById(id).classList.remove('hide');
+};
+
+const eye = id => {
+  const el = document.getElementById(id);
+  el.type = el.type === 'password' ? 'text' : 'password';
+};
+
+const setH = (id, ok, msg) => {
+  document.getElementById(id).className = ok ? 'v' : 'e';
+  const h = document.getElementById(id + 'h');
+  h.textContent = msg; h.className = 'h ' + (ok ? 'v' : 'e');
+};
+
+const vEmail = id => { const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById(id).value); setH(id, ok, ok ? '✓ Valid email' : '⚠ Invalid email address'); return ok; };
+const vUser  = id => { const ok = /^[a-zA-Z0-9_]{4,20}$/.test(document.getElementById(id).value); setH(id, ok, ok ? '✓ Username valid' : '⚠ 4–20 chars, letters/numbers/underscore'); return ok; };
+const vOtp   = id => { const ok = document.getElementById(id).value === '123456'; setH(id, ok, ok ? '✓ OTP verified' : '⚠ Incorrect OTP'); return ok; };
+const mtch = (cid, pid) => {
+  const ok = !!document.getElementById(pid).value && document.getElementById(pid).value === document.getElementById(cid).value;
+  setH(cid, ok, ok ? '✓ Passwords match' : '⚠ Passwords do not match');
+  return ok;
+};
+const str = (id, px) => {
+  const v = document.getElementById(id).value; let s = 0;
+  if (v.length >= 8) s++; if (/[A-Z]/.test(v)) s++; if (/[0-9]/.test(v)) s++; if (/[^a-zA-Z0-9]/.test(v)) s++;
+  const cls = ['','w','f','g','s'], lbl = ['Enter a password','Weak','Fair','Good','Strong'], col = ['#a0b8a0','#e74c3c','#f59e0b','#3b82f6','#1fa868'];
+  [1,2,3,4].forEach(i => { document.getElementById(px+'s'+i).className = 'sg ' + (i <= s ? cls[s] : ''); });
+  const l = document.getElementById(px+'sl'); l.textContent = v ? lbl[s] : lbl[0]; l.style.color = v ? col[s] : col[0];
+};
+const need = ids => ids.every(id => { const v = document.getElementById(id).value.trim(); if (!v) document.getElementById(id).className = 'e'; return !!v; });
+
+function enterApp(role) {
+  currentRole = role;
+  document.getElementById('auth-layer').classList.add('hidden');
+  document.getElementById('app-layer').classList.add('visible');
+  document.getElementById('chat-fab').classList.add('show');
+
+  document.getElementById('sidebar-student').style.display = role === 'student' ? '' : 'none';
+  document.getElementById('sidebar-admin').style.display   = role === 'admin'   ? '' : 'none';
+  document.getElementById('role-label').textContent = role === 'student' ? '🎓 Student Portal' : '🛡 Admin Console';
+
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  if (role === 'student') {
+    document.getElementById('page-s-dashboard').classList.add('active');
+    document.querySelector('#sidebar-student .nav-item').classList.add('active');
+    setTopbar('Dashboard', 'Welcome back, Priya');
+  } else {
+    document.getElementById('page-a-dashboard').classList.add('active');
+    document.querySelector('#sidebar-admin .nav-item').classList.add('active');
+    setTopbar('Overview', 'Admin Dashboard');
+  }
+}
+
+const slogin = async () => {
+  if (!need(['s_u','s_p'])) return alert('Please fill in all fields.');
+  const res  = await fetch('/api/auth/login/student', {
+    method : 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body   : JSON.stringify({
+      username: document.getElementById('s_u').value,
+      password: document.getElementById('s_p').value
+    })
+  });
+  const data = await res.json();
+  if (data.success) enterApp('student');
+  else alert(data.message);
+};
+
+const alogin = async () => {
+  if (!need(['a_u','a_p'])) return alert('Please fill in all fields.');
+  const res  = await fetch('/api/auth/login/admin', {
+    method : 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body   : JSON.stringify({
+      username: document.getElementById('a_u').value,
+      password: document.getElementById('a_p').value
+    })
+  });
+  const data = await res.json();
+  if (data.success) enterApp('admin');
+  else alert(data.message);
+};
+
+const ssignup = async () => {
+  if (!(vEmail('sr_e') & vUser('sr_u') & mtch('sr_c','sr_p') & vOtp('sr_o')))
+    return alert('Please fix the errors above.');
+  const res  = await fetch('/api/auth/signup/student', {
+    method : 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body   : JSON.stringify({
+      email   : document.getElementById('sr_e').value,
+      username: document.getElementById('sr_u').value,
+      password: document.getElementById('sr_p').value
+    })
+  });
+  const data = await res.json();
+  if (data.success) { alert('Account created!'); go('p1'); }
+  else alert(data.message);
+};
+
+const asignup = async () => {
+  if (!(vEmail('ar_e') & vUser('ar_u') & mtch('ar_c','ar_p') & vOtp('ar_o')))
+    return alert('Please fix the errors above.');
+  const res  = await fetch('/api/auth/signup/admin', {
+    method : 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body   : JSON.stringify({
+      email   : document.getElementById('ar_e').value,
+      username: document.getElementById('ar_u').value,
+      password: document.getElementById('ar_p').value
+    })
+  });
+  const data = await res.json();
+  if (data.success) { alert('Admin account created!'); go('p2'); }
+  else alert(data.message);
+};
+
+function logout() {
+  document.getElementById('app-layer').classList.remove('visible');
+  document.getElementById('auth-layer').classList.remove('hidden');
+  document.getElementById('chat-fab').classList.remove('show');
+  if (document.getElementById('chatbot-panel').classList.contains('open')) toggleChat();
+  authGo('p0');
+}
+
+
+
+/* ═══════════════════════════════════════════
+   PAGE NAVIGATION
+═══════════════════════════════════════════ */
+const pageTitles = {
+  's-dashboard':['Dashboard','Welcome back, Priya'],
+  's-available-exams':['Available Exams','Browse & register'],
+  's-register':['Register for Exam','Fill your application'],
+  's-payment':['Online Payment','Complete your fee'],
+  's-hall-ticket':['Hall Ticket','Download admit card'],
+  's-schedule':['Exam Schedule','Upcoming dates'],
+  's-my-exams':['My Registrations','Track your applications'],
+  'a-dashboard':['Overview','Admin Dashboard'],
+  'a-manage-exams':['Manage Exam Details','Configure & schedule exams'],
+  'a-registrations':['Registrations','Approve or reject student requests'],
+  'a-hall-tickets':['Hall Tickets','Issue hall tickets to approved students'],
+  'a-reports':['Reports','Analytics & exports'],
+};
+
+function setTopbar(title, sub) {
+  document.getElementById('topbar-title').innerHTML = title + ' <span class="topbar-sub">' + sub + '</span>';
+}
+
+function showPage(id, el, role) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const sidebarId = role === 'admin' ? '#sidebar-admin' : '#sidebar-student';
+  document.querySelectorAll(sidebarId + ' .nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  if (el) el.classList.add('active');
+  const t = pageTitles[id] || [id, ''];
+  setTopbar(t[0], t[1]);
+}
+
+/* ═══════════════════════════════════════════
+   PAYMENT METHOD TOGGLE
+═══════════════════════════════════════════ */
+function selectPayment(el) {
+  document.querySelectorAll('.pay-method').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('upiField').style.display =
+    el.querySelector('div:last-child').textContent.includes('UPI') ? 'block' : 'none';
+}
+
+/* ═══════════════════════════════════════════
+   REGISTRATION FILTERS
+═══════════════════════════════════════════ */
+let activeFilter = 'all', activeSearch = '';
+
+function updateCounts() {
+  const rows = document.querySelectorAll('#reg-table tr');
+  let counts = { all:0, pending:0, approved:0, rejected:0 };
+  rows.forEach(row => { const s = row.dataset.status; counts.all++; if (counts[s] !== undefined) counts[s]++; });
+  document.querySelector('.chip-count-all').textContent = counts.all;
+  document.querySelector('.chip-count-pending').textContent = counts.pending;
+  document.querySelector('.chip-count-approved').textContent = counts.approved;
+  document.querySelector('.chip-count-rejected').textContent = counts.rejected;
+}
+
+function applyFilter() {
+  const rows = document.querySelectorAll('#reg-table tr');
+  rows.forEach(row => {
+    const statusMatch = activeFilter === 'all' || row.dataset.status === activeFilter;
+    const searchMatch = activeSearch === '' || row.textContent.toLowerCase().includes(activeSearch.toLowerCase());
+    row.style.display = (statusMatch && searchMatch) ? '' : 'none';
+  });
+}
+
+function filterRegistrations(filter, chipEl) {
+  activeFilter = filter;
+  document.querySelectorAll('[data-filter]').forEach(c => c.classList.remove('active'));
+  chipEl.classList.add('active');
+  applyFilter();
+}
+
+function searchRegistrations(query) { activeSearch = query; applyFilter(); }
+
+function updateStatus(btn, status) {
+  const row = btn.closest('tr');
+  const statusCell = row.querySelector('td:nth-child(7)');
+  const actionCell = row.querySelector('td:nth-child(8)');
+  statusCell.innerHTML = status === 'Approved'
+    ? '<span class="badge badge-green">Approved</span>'
+    : '<span class="badge badge-red">Rejected</span>';
+  row.dataset.status = status.toLowerCase();
+  actionCell.innerHTML = '<span style="color:var(--muted);font-size:12px">Processed</span>';
+  updateCounts(); applyFilter();
+}
+
+/* ═══════════════════════════════════════════
+   CHATBOT
+═══════════════════════════════════════════ */
+const chatResponses = {
+  register: "To register: 1) Go to 'Register for Exam' → 2) Select exam & subjects → 3) Fill personal details → 4) Pay fee → 5) Download hall ticket.",
+  subjects: "Available subjects: CS401 - Data Structures, CS402 - DBMS, CS403 - OS, CS404 - Networks, CS405 - Software Engg, MA401 - Maths IV.",
+  payment:  "Accepted payments: UPI (GPay/PhonePe), Net Banking, Debit/Credit cards. Fee: ₹500/subject. Receipt is auto-generated.",
+  deadline: "Deadlines: Registration open Mar 15 | Last date Mar 31 | Late fine (₹200) till Apr 5 | Hall ticket Apr 10 | Exams from Apr 20.",
+  cancel:   "Cancellation allowed before last date only. Refund in 7 working days. Go to My Registrations → Select subject → Cancel.",
+  status:   "Check status: My Registrations section. Status shows: Pending / Confirmed / Cancelled. Confirmation email is also sent.",
+  document: "Required: Student ID, Enrollment Number, Fee clearance receipt, 75% attendance, passport photo (upload).",
+  default:  "I can help with: registration steps, subjects, fee payment, deadlines, cancellation, status check, or required documents. What do you need?"
+};
+
+function getChatReply(q) {
+  q = q.toLowerCase();
+  if (q.match(/register|registration/)) return chatResponses.register;
+  if (q.match(/subject|course/))        return chatResponses.subjects;
+  if (q.match(/pay|fee|payment/))       return chatResponses.payment;
+  if (q.match(/deadline|date|when/))    return chatResponses.deadline;
+  if (q.match(/cancel/))                return chatResponses.cancel;
+  if (q.match(/status|check/))          return chatResponses.status;
+  if (q.match(/document|need|require/)) return chatResponses.document;
+  return chatResponses.default;
+}
+
+function chatSend() {
+  const inp = document.getElementById('chat-inp');
+  const msgs = document.getElementById('chat-messages');
+  const text = inp.value.trim();
+  if (!text) return;
+  msgs.innerHTML += `<div class="msg user">${text}</div>`;
+  inp.value = '';
+  setTimeout(() => {
+    msgs.innerHTML += `<div class="msg bot">${getChatReply(text)}</div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 380);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+let chatOpen = false;
+function toggleChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('chatbot-panel').classList.toggle('open', chatOpen);
+  document.getElementById('chat-fab').textContent = chatOpen ? '×' : '🤖';
+}
+
+/* ═══════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  updateCounts();
+});
+</script>
+</body>
+</html>
+>>>>>>> 2964563196274385a9786c7e453a884b53b6e663
