@@ -846,116 +846,40 @@ router.post('/registrations/:regId/reject', requireAdmin, async (req, res) => {
 //  EXAMS
 // ══════════════════════════════════════════════════════════════════════════════
 
-// // GET /api/admin/exams  — returns exam list with registration counts
-// router.get('/exams', requireAdmin, async (req, res) => {
-//   try {
-//     const [rows] = await db.execute(
-//       `SELECT e.exam_id,
-//               e.exam_name,
-//               e.exam_code,
-//               e.exam_date,
-//               e.reg_deadline,
-//               e.fee_per_subject,
-//               e.mode,
-//               e.status,
-//               COUNT(r.reg_id)                              AS total_registered,
-//               SUM(r.admin_status = 'Approved')             AS approved,
-//               SUM(r.admin_status = 'Rejected')             AS rejected,
-//               SUM(r.admin_status = 'Pending')              AS pending,
-//               SUM(CASE WHEN p.status = 'Completed'
-//                        THEN p.amount ELSE 0 END)           AS fee_collected
-//        FROM exams e
-//        LEFT JOIN registrations r ON e.exam_id = r.exam_id
-//        LEFT JOIN payments p      ON r.reg_id  = p.reg_id
-//        GROUP BY e.exam_id
-//        ORDER BY e.exam_date DESC`
-//     );
-//     res.json(rows);
-//   } catch (err) {
-//     console.error('GET /exams error:', err);
-//     res.status(500).json({ success: false, message: err.message });
-//   }
-// });
+// GET /api/admin/exams  — returns exam list with registration counts
+router.get('/exams', requireAdmin, async (req, res) => {
+  try {
+    const [rows] = await db.execute(
+      `SELECT e.exam_id,
+              e.exam_name,
+              e.exam_code,
+              e.exam_date,
+              e.reg_deadline,
+              e.fee_per_subject,
+              e.mode,
+              e.status,
+              COUNT(r.reg_id)                              AS total_registered,
+              SUM(r.admin_status = 'Approved')             AS approved,
+              SUM(r.admin_status = 'Rejected')             AS rejected,
+              SUM(r.admin_status = 'Pending')              AS pending,
+              SUM(CASE WHEN p.status = 'Completed'
+                       THEN p.amount ELSE 0 END)           AS fee_collected
+       FROM exams e
+       LEFT JOIN registrations r ON e.exam_id = r.exam_id
+       LEFT JOIN payments p      ON r.reg_id  = p.reg_id
+       GROUP BY e.exam_id
+       ORDER BY e.exam_date DESC`
+    );
+    res.json(rows);
+  } catch (err) {
+    console.error('GET /exams error:', err);
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
 
-// // POST /api/admin/exams  — add a new exam
-// router.post('/exams', requireAdmin, async (req, res) => {
-//   const {
-//     exam_name, exam_code, exam_date, last_date,
-//     exam_mode, fee, description, subjects, center
-//   } = req.body;
-
-//   if (!exam_name || !exam_code || !exam_date || !last_date || !fee)
-//     return res.status(400).json({ success: false, message: 'Name, code, dates and fee are required.' });
-
-//   try {
-//     // Insert exam
-//     const [result] = await db.execute(
-//       `INSERT INTO exams
-//          (exam_name, exam_code, exam_date, mode, fee_per_subject,
-//           reg_open_date, reg_deadline, status, created_by)
-//        VALUES (?, ?, ?, ?, ?, CURDATE(), ?, 'Open', ?)`,
-//       [exam_name, exam_code, exam_date,
-//        exam_mode || 'Offline', parseFloat(fee) || 500,
-//        last_date, req.session.user.id]
-//     );
-
-//     const newExamId = result.insertId;
-
-//     // If subjects provided, create them and link to exam
-//     if (subjects && subjects.trim()) {
-//       const subjectList = subjects.split(',').map(s => s.trim()).filter(Boolean);
-//       for (const subName of subjectList) {
-//         const subCode = subName.replace(/\s+/g, '_').toUpperCase().substring(0, 20);
-//         try {
-//           // Insert subject if not exists
-//           await db.execute(
-//             `INSERT IGNORE INTO subjects (subject_code, subject_name, department)
-//              VALUES (?, ?, 'General')`,
-//             [subCode, subName]
-//           );
-//           // Get the subject_id
-//           const [[sub]] = await db.execute(
-//             'SELECT subject_id FROM subjects WHERE subject_code = ?',
-//             [subCode]
-//           );
-//           if (sub) {
-//             await db.execute(
-//               'INSERT IGNORE INTO exam_subjects (exam_id, subject_id) VALUES (?, ?)',
-//               [newExamId, sub.subject_id]
-//             );
-//           }
-//         } catch (subErr) {
-//           console.warn('Subject insert warning:', subErr.message);
-//         }
-//       }
-//     }
-
-//     // Add default exam schedule events
-//     const scheduleEvents = [
-//       ['Registration Opens',   new Date().toISOString().split('T')[0], 'Upcoming'],
-//       ['Registration Deadline', last_date, 'Upcoming'],
-//       ['Examination Begins',    exam_date, 'Upcoming'],
-//     ];
-//     for (const [name, date, status] of scheduleEvents) {
-//       await db.execute(
-//         `INSERT INTO exam_schedule (exam_id, event_name, event_date, event_status)
-//          VALUES (?, ?, ?, ?)`,
-//         [newExamId, name, date, status]
-//       );
-//     }
-
-//     res.json({ success: true, message: 'Exam created!', exam_id: newExamId });
-//   } catch (err) {
-//     console.error('POST /exams error:', err);
-//     if (err.code === 'ER_DUP_ENTRY')
-//       return res.status(400).json({ success: false, message: 'Exam code already exists.' });
-//     res.status(500).json({ success: false, message: err.message });
-//   }
-// });
-
-// POST /api/admin/exams — add a new exam
+// POST /api/admin/exams  — add a new exam
 router.post('/exams', requireAdmin, async (req, res) => {
-  let {
+  const {
     exam_name, exam_code, exam_date, last_date,
     exam_mode, fee, description, subjects, center
   } = req.body;
@@ -963,67 +887,33 @@ router.post('/exams', requireAdmin, async (req, res) => {
   if (!exam_name || !exam_code || !exam_date || !last_date || !fee)
     return res.status(400).json({ success: false, message: 'Name, code, dates and fee are required.' });
 
-  // ── FIX 1: Normalise date format ──────────────────────────────────────────
-  // Browser may send DD-MM-YYYY (Indian locale) or YYYY-MM-DD.
-  // MySQL needs YYYY-MM-DD strictly.
-  function toMysqlDate(d) {
-    if (!d) return null;
-    // Already YYYY-MM-DD
-    if (/^\d{4}-\d{2}-\d{2}$/.test(d)) return d;
-    // DD-MM-YYYY  →  YYYY-MM-DD
-    if (/^\d{2}-\d{2}-\d{4}$/.test(d)) {
-      const [dd, mm, yyyy] = d.split('-');
-      return `${yyyy}-${mm}-${dd}`;
-    }
-    // DD/MM/YYYY  →  YYYY-MM-DD
-    if (/^\d{2}\/\d{2}\/\d{4}$/.test(d)) {
-      const [dd, mm, yyyy] = d.split('/');
-      return `${yyyy}-${mm}-${dd}`;
-    }
-    return d; // fallback — let MySQL reject it with a clear error
-  }
-
-  exam_date = toMysqlDate(exam_date);
-  last_date = toMysqlDate(last_date);
-
-  if (!exam_date || !last_date)
-    return res.status(400).json({ success: false, message: 'Invalid date format. Please re-select dates.' });
-
-  // ── FIX 2: Safely resolve admin id ────────────────────────────────────────
-  const adminId = req.session.user.id ?? req.session.user.admin_id ?? null;
-
-  // ── FIX 3: Coerce fee to number, default 500 ──────────────────────────────
-  const parsedFee = parseFloat(fee) || 500;
-
   try {
+    // Insert exam
     const [result] = await db.execute(
       `INSERT INTO exams
-        (exam_name, exam_code, exam_date, mode, fee_per_subject,
-         reg_open_date, reg_deadline, status, created_by)
+         (exam_name, exam_code, exam_date, mode, fee_per_subject,
+          reg_open_date, reg_deadline, status, created_by)
        VALUES (?, ?, ?, ?, ?, CURDATE(), ?, 'Open', ?)`,
-      [
-        exam_name,
-        exam_code,
-        exam_date,
-        exam_mode || 'Offline',
-        parsedFee,
-        last_date,
-        adminId          // null is safe; undefined causes the crash
-      ]
+      [exam_name, exam_code, exam_date,
+       exam_mode || 'Offline', parseFloat(fee) || 500,
+       last_date, req.session.user.id]
     );
+
     const newExamId = result.insertId;
 
-    // Link subjects if provided
+    // If subjects provided, create them and link to exam
     if (subjects && subjects.trim()) {
       const subjectList = subjects.split(',').map(s => s.trim()).filter(Boolean);
       for (const subName of subjectList) {
         const subCode = subName.replace(/\s+/g, '_').toUpperCase().substring(0, 20);
         try {
+          // Insert subject if not exists
           await db.execute(
             `INSERT IGNORE INTO subjects (subject_code, subject_name, department)
              VALUES (?, ?, 'General')`,
             [subCode, subName]
           );
+          // Get the subject_id
           const [[sub]] = await db.execute(
             'SELECT subject_id FROM subjects WHERE subject_code = ?',
             [subCode]
@@ -1040,11 +930,11 @@ router.post('/exams', requireAdmin, async (req, res) => {
       }
     }
 
-    // Add default schedule events
+    // Add default exam schedule events
     const scheduleEvents = [
-      ['Registration Opens',  new Date().toISOString().split('T')[0], 'Upcoming'],
-      ['Registration Deadline', last_date,  'Upcoming'],
-      ['Examination Begins',    exam_date,  'Upcoming'],
+      ['Registration Opens',   new Date().toISOString().split('T')[0], 'Upcoming'],
+      ['Registration Deadline', last_date, 'Upcoming'],
+      ['Examination Begins',    exam_date, 'Upcoming'],
     ];
     for (const [name, date, status] of scheduleEvents) {
       await db.execute(
@@ -1055,7 +945,6 @@ router.post('/exams', requireAdmin, async (req, res) => {
     }
 
     res.json({ success: true, message: 'Exam created!', exam_id: newExamId });
-
   } catch (err) {
     console.error('POST /exams error:', err);
     if (err.code === 'ER_DUP_ENTRY')
@@ -1063,6 +952,117 @@ router.post('/exams', requireAdmin, async (req, res) => {
     res.status(500).json({ success: false, message: err.message });
   }
 });
+
+// // POST /api/admin/exams — add a new exam
+// router.post('/exams', requireAdmin, async (req, res) => {
+//   let {
+//     exam_name, exam_code, exam_date, last_date,
+//     exam_mode, fee, description, subjects, center
+//   } = req.body;
+
+//   if (!exam_name || !exam_code || !exam_date || !last_date || !fee)
+//     return res.status(400).json({ success: false, message: 'Name, code, dates and fee are required.' });
+
+//   // ── FIX 1: Normalise date format ──────────────────────────────────────────
+//   // Browser may send DD-MM-YYYY (Indian locale) or YYYY-MM-DD.
+//   // MySQL needs YYYY-MM-DD strictly.
+//   function toMysqlDate(d) {
+//     if (!d) return null;
+//     // Already YYYY-MM-DD
+//     if (/^\d{4}-\d{2}-\d{2}$/.test(d)) return d;
+//     // DD-MM-YYYY  →  YYYY-MM-DD
+//     if (/^\d{2}-\d{2}-\d{4}$/.test(d)) {
+//       const [dd, mm, yyyy] = d.split('-');
+//       return `${yyyy}-${mm}-${dd}`;
+//     }
+//     // DD/MM/YYYY  →  YYYY-MM-DD
+//     if (/^\d{2}\/\d{2}\/\d{4}$/.test(d)) {
+//       const [dd, mm, yyyy] = d.split('/');
+//       return `${yyyy}-${mm}-${dd}`;
+//     }
+//     return d; // fallback — let MySQL reject it with a clear error
+//   }
+
+//   exam_date = toMysqlDate(exam_date);
+//   last_date = toMysqlDate(last_date);
+
+//   if (!exam_date || !last_date)
+//     return res.status(400).json({ success: false, message: 'Invalid date format. Please re-select dates.' });
+
+//   // ── FIX 2: Safely resolve admin id ────────────────────────────────────────
+//   const adminId = req.session.user.id ?? req.session.user.admin_id ?? null;
+
+//   // ── FIX 3: Coerce fee to number, default 500 ──────────────────────────────
+//   const parsedFee = parseFloat(fee) || 500;
+
+//   try {
+//     const [result] = await db.execute(
+//       `INSERT INTO exams
+//         (exam_name, exam_code, exam_date, mode, fee_per_subject,
+//          reg_open_date, reg_deadline, status, created_by)
+//        VALUES (?, ?, ?, ?, ?, CURDATE(), ?, 'Open', ?)`,
+//       [
+//         exam_name,
+//         exam_code,
+//         exam_date,
+//         exam_mode || 'Offline',
+//         parsedFee,
+//         last_date,
+//         adminId          // null is safe; undefined causes the crash
+//       ]
+//     );
+//     const newExamId = result.insertId;
+
+//     // Link subjects if provided
+//     if (subjects && subjects.trim()) {
+//       const subjectList = subjects.split(',').map(s => s.trim()).filter(Boolean);
+//       for (const subName of subjectList) {
+//         const subCode = subName.replace(/\s+/g, '_').toUpperCase().substring(0, 20);
+//         try {
+//           await db.execute(
+//             `INSERT IGNORE INTO subjects (subject_code, subject_name, department)
+//              VALUES (?, ?, 'General')`,
+//             [subCode, subName]
+//           );
+//           const [[sub]] = await db.execute(
+//             'SELECT subject_id FROM subjects WHERE subject_code = ?',
+//             [subCode]
+//           );
+//           if (sub) {
+//             await db.execute(
+//               'INSERT IGNORE INTO exam_subjects (exam_id, subject_id) VALUES (?, ?)',
+//               [newExamId, sub.subject_id]
+//             );
+//           }
+//         } catch (subErr) {
+//           console.warn('Subject insert warning:', subErr.message);
+//         }
+//       }
+//     }
+
+//     // Add default schedule events
+//     const scheduleEvents = [
+//       ['Registration Opens',  new Date().toISOString().split('T')[0], 'Upcoming'],
+//       ['Registration Deadline', last_date,  'Upcoming'],
+//       ['Examination Begins',    exam_date,  'Upcoming'],
+//     ];
+//     for (const [name, date, status] of scheduleEvents) {
+//       await db.execute(
+//         `INSERT INTO exam_schedule (exam_id, event_name, event_date, event_status)
+//          VALUES (?, ?, ?, ?)`,
+//         [newExamId, name, date, status]
+//       );
+//     }
+
+//     res.json({ success: true, message: 'Exam created!', exam_id: newExamId });
+
+//   } catch (err) {
+//     console.error('POST /exams error:', err);
+//     if (err.code === 'ER_DUP_ENTRY')
+//       return res.status(400).json({ success: false, message: 'Exam code already exists.' });
+//     res.status(500).json({ success: false, message: err.message });
+//   }
+// });
 
 // ══════════════════════════════════════════════════════════════════════════════
 //  HALL TICKETS
