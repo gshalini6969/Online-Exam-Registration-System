@@ -1,31 +1,34 @@
 -- ============================================================
 --  Online Exam Registration System — MySQL Database
---  File   : oers_db.sql
---  Author : Generated for OERS Project
---  Year   : 2026
+--  File   : oers_db.sql (UPDATED)
 -- ============================================================
+
 -- ============================================================
--- 1. STUDENTS
+-- 1. STUDENTS (ADDED course, branch, semester)
 -- ============================================================
 CREATE TABLE students (
   student_id    INT           AUTO_INCREMENT PRIMARY KEY,
   full_name     VARCHAR(100)  NOT NULL,
   username      VARCHAR(50)   NOT NULL UNIQUE,
   email         VARCHAR(120)  NOT NULL UNIQUE,
-  password_hash VARCHAR(255)  NOT NULL,          -- store bcrypt hash, never plain text
-  prn           VARCHAR(30)   UNIQUE,            -- Permanent Registration Number
+  password_hash VARCHAR(255)  NOT NULL,
+  prn           VARCHAR(30)   UNIQUE,
   phone         VARCHAR(15),
   date_of_birth DATE,
   gender        ENUM('Male','Female','Other'),
   address       TEXT,
-  photo_url     VARCHAR(255),                    -- passport photo path
+  photo_url     VARCHAR(255),
+  -- NEW COLUMNS FOR COURSE FILTERING
+  course        VARCHAR(50)   NOT NULL DEFAULT 'Btech',   -- e.g. 'Btech', 'Mtech'
+  branch        VARCHAR(50)   NOT NULL DEFAULT 'CSE',     -- e.g. 'CSE', 'ECE'
+  semester      VARCHAR(10)   NOT NULL DEFAULT '1',
   is_active     TINYINT(1)    DEFAULT 1,
   created_at    DATETIME      DEFAULT CURRENT_TIMESTAMP,
   updated_at    DATETIME      DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- ============================================================
--- 2. ADMINS
+-- 2. ADMINS (unchanged)
 -- ============================================================
 CREATE TABLE admins (
   admin_id      INT           AUTO_INCREMENT PRIMARY KEY,
@@ -39,7 +42,7 @@ CREATE TABLE admins (
 );
 
 -- ============================================================
--- 3. OTP VERIFICATION
+-- 3. OTP VERIFICATION (unchanged)
 -- ============================================================
 CREATE TABLE otp_verifications (
   otp_id      INT           AUTO_INCREMENT PRIMARY KEY,
@@ -52,7 +55,7 @@ CREATE TABLE otp_verifications (
 );
 
 -- ============================================================
--- 4. EXAM CENTERS
+-- 4. EXAM CENTERS (unchanged)
 -- ============================================================
 CREATE TABLE exam_centers (
   center_id   INT           AUTO_INCREMENT PRIMARY KEY,
@@ -63,12 +66,12 @@ CREATE TABLE exam_centers (
 );
 
 -- ============================================================
--- 5. EXAMS
+-- 5. EXAMS (unchanged)
 -- ============================================================
 CREATE TABLE exams (
   exam_id         INT           AUTO_INCREMENT PRIMARY KEY,
   exam_name       VARCHAR(150)  NOT NULL,
-  exam_code       VARCHAR(20)   NOT NULL UNIQUE,   -- e.g. CS-APR-2026
+  exam_code       VARCHAR(20)   NOT NULL UNIQUE,
   exam_date       DATE          NOT NULL,
   start_time      TIME,
   end_time        TIME,
@@ -81,25 +84,25 @@ CREATE TABLE exams (
   hall_ticket_date DATE,
   center_id       INT,
   status          ENUM('Upcoming','Open','Closed','Completed') DEFAULT 'Upcoming',
-  created_by      INT,                              -- FK → admins.admin_id
+  created_by      INT,
   created_at      DATETIME      DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (center_id)  REFERENCES exam_centers(center_id) ON DELETE SET NULL,
   FOREIGN KEY (created_by) REFERENCES admins(admin_id)        ON DELETE SET NULL
 );
 
 -- ============================================================
--- 6. SUBJECTS
+-- 6. SUBJECTS (unchanged)
 -- ============================================================
 CREATE TABLE subjects (
   subject_id   INT          AUTO_INCREMENT PRIMARY KEY,
-  subject_code VARCHAR(20)  NOT NULL UNIQUE,   -- e.g. CS401
-  subject_name VARCHAR(120) NOT NULL,          -- e.g. Data Structures
+  subject_code VARCHAR(20)  NOT NULL UNIQUE,
+  subject_name VARCHAR(120) NOT NULL,
   department   VARCHAR(80),
   credits      TINYINT      DEFAULT 3
 );
 
 -- ============================================================
--- 7. EXAM–SUBJECT MAPPING  (which subjects belong to which exam)
+-- 7. EXAM–SUBJECT MAPPING (unchanged)
 -- ============================================================
 CREATE TABLE exam_subjects (
   es_id      INT  AUTO_INCREMENT PRIMARY KEY,
@@ -111,7 +114,7 @@ CREATE TABLE exam_subjects (
 );
 
 -- ============================================================
--- 8. REGISTRATIONS  (one row per student per exam)
+-- 8. REGISTRATIONS (unchanged)
 -- ============================================================
 CREATE TABLE registrations (
   reg_id        INT           AUTO_INCREMENT PRIMARY KEY,
@@ -121,7 +124,7 @@ CREATE TABLE registrations (
   total_fee     DECIMAL(10,2) NOT NULL DEFAULT 0.00,
   admin_status  ENUM('Pending','Approved','Rejected') DEFAULT 'Pending',
   admin_remark  VARCHAR(255),
-  reviewed_by   INT,                            -- FK → admins.admin_id
+  reviewed_by   INT,
   reviewed_at   DATETIME,
   UNIQUE KEY uq_student_exam (student_id, exam_id),
   FOREIGN KEY (student_id)  REFERENCES students(student_id) ON DELETE CASCADE,
@@ -130,7 +133,7 @@ CREATE TABLE registrations (
 );
 
 -- ============================================================
--- 9. REGISTRATION SUBJECTS  (which subjects chosen per registration)
+-- 9. REGISTRATION SUBJECTS (unchanged)
 -- ============================================================
 CREATE TABLE registration_subjects (
   rs_id       INT  AUTO_INCREMENT PRIMARY KEY,
@@ -142,11 +145,11 @@ CREATE TABLE registration_subjects (
 );
 
 -- ============================================================
--- 10. PAYMENTS
+-- 10. PAYMENTS (unchanged)
 -- ============================================================
 CREATE TABLE payments (
   payment_id     INT           AUTO_INCREMENT PRIMARY KEY,
-  reg_id         INT           NOT NULL UNIQUE,     -- one payment record per registration
+  reg_id         INT           NOT NULL UNIQUE,
   amount         DECIMAL(10,2) NOT NULL,
   method         ENUM('UPI','Net Banking','Debit Card','Credit Card','Cash') DEFAULT 'UPI',
   transaction_id VARCHAR(80)   UNIQUE,
@@ -157,7 +160,7 @@ CREATE TABLE payments (
 );
 
 -- ============================================================
--- 11. HALL TICKETS
+-- 11. HALL TICKETS (unchanged)
 -- ============================================================
 CREATE TABLE hall_tickets (
   ticket_id   INT           AUTO_INCREMENT PRIMARY KEY,
@@ -166,7 +169,7 @@ CREATE TABLE hall_tickets (
   center_id   INT,
   seat_number VARCHAR(10),
   issued_on   DATETIME      DEFAULT CURRENT_TIMESTAMP,
-  issued_by   INT,                             -- FK → admins.admin_id
+  issued_by   INT,
   status      ENUM('Issued','Cancelled','Expired') DEFAULT 'Issued',
   FOREIGN KEY (reg_id)    REFERENCES registrations(reg_id)    ON DELETE CASCADE,
   FOREIGN KEY (center_id) REFERENCES exam_centers(center_id)  ON DELETE SET NULL,
@@ -174,32 +177,44 @@ CREATE TABLE hall_tickets (
 );
 
 -- ============================================================
--- 12. EXAM SCHEDULE  (timeline events shown to students)
+-- 12. EXAM SCHEDULE (unchanged)
 -- ============================================================
 CREATE TABLE exam_schedule (
   schedule_id  INT          AUTO_INCREMENT PRIMARY KEY,
   exam_id      INT          NOT NULL,
-  event_name   VARCHAR(120) NOT NULL,   -- e.g. "Registration Opens", "Hall Ticket Release"
+  event_name   VARCHAR(120) NOT NULL,
   event_date   DATE         NOT NULL,
   event_status ENUM('Upcoming','Today','Completed') DEFAULT 'Upcoming',
   FOREIGN KEY (exam_id) REFERENCES exams(exam_id) ON DELETE CASCADE
 );
 
 -- ============================================================
--- 13. AUDIT LOG  (track important admin actions)
+-- 13. AUDIT LOG (unchanged)
 -- ============================================================
 CREATE TABLE audit_log (
   log_id     INT           AUTO_INCREMENT PRIMARY KEY,
   admin_id   INT,
-  action     VARCHAR(120)  NOT NULL,   -- e.g. "Approved registration #24"
-  target     VARCHAR(80),              -- e.g. "registration", "exam"
+  action     VARCHAR(120)  NOT NULL,
+  target     VARCHAR(80),
   target_id  INT,
   logged_at  DATETIME      DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (admin_id) REFERENCES admins(admin_id) ON DELETE SET NULL
 );
 
 -- ============================================================
--- ██  INDEXES for faster queries  ██
+-- 14. NEW: EXAM COURSE MAP (for filtering by student's course & semester)
+-- ============================================================
+CREATE TABLE exam_course_map (
+  map_id    INT AUTO_INCREMENT PRIMARY KEY,
+  exam_id   INT NOT NULL,
+  course    VARCHAR(50) NOT NULL,   -- e.g. 'Btech', 'Mtech'
+  semester  VARCHAR(10) NOT NULL,   -- e.g. '1', '2', ... '8'
+  UNIQUE KEY uq_exam_course_sem (exam_id, course, semester),
+  FOREIGN KEY (exam_id) REFERENCES exams(exam_id) ON DELETE CASCADE
+);
+
+-- ============================================================
+-- INDEXES (unchanged)
 -- ============================================================
 CREATE INDEX idx_reg_student  ON registrations(student_id);
 CREATE INDEX idx_reg_exam     ON registrations(exam_id);
@@ -209,7 +224,7 @@ CREATE INDEX idx_ht_reg       ON hall_tickets(reg_id);
 CREATE INDEX idx_otp_email    ON otp_verifications(email);
 
 -- ============================================================
--- ██  SAMPLE DATA  ██
+-- SAMPLE DATA (UPDATED with course/branch/semester)
 -- ============================================================
 
 -- Exam Centers
@@ -227,9 +242,9 @@ INSERT INTO subjects (subject_code, subject_name, department, credits) VALUES
 ('CS405', 'Software Engineering',    'Computer Science', 3),
 ('MA401', 'Mathematics IV',          'Mathematics',      4);
 
--- Admin account  (password shown as plain text here — hash before inserting in production)
+-- Admin account (use bcrypt hash in production)
 INSERT INTO admins (full_name, username, email, password_hash, role) VALUES
-('System Administrator', 'admin', 'admin@oers.edu.in', 'hashed_password_here', 'super_admin');
+('System Administrator', 'admin', 'admin@oers.edu.in', '$2a$10$dummyhashforadmin123', 'super_admin');
 
 -- Exam
 INSERT INTO exams
@@ -241,6 +256,11 @@ VALUES
    '2026-04-20', '10:00:00', '13:00:00', 'Offline',
    500.00, 200.00, '2026-03-15', '2026-03-31',
    '2026-04-05', '2026-04-10', 1, 'Open', 1);
+
+-- Map exam to courses and semesters (so only Btech/CSE students in semester 3-4 see it)
+INSERT INTO exam_course_map (exam_id, course, semester) VALUES
+(1, 'Btech', '3'),
+(1, 'Btech', '4');
 
 -- Link all subjects to the exam
 INSERT INTO exam_subjects (exam_id, subject_id)
@@ -254,13 +274,13 @@ INSERT INTO exam_schedule (exam_id, event_name, event_date, event_status) VALUES
 (1, 'Hall Ticket Release',   '2026-04-10', 'Upcoming'),
 (1, 'Examination Begins',    '2026-04-20', 'Upcoming');
 
--- Sample student  (password stored as hash in real use)
-INSERT INTO students (full_name, username, email, password_hash, prn, phone) VALUES
-('Shalini Reddy', 'shalini_r', 'shalini@example.com', 'hashed_password_here', 'PRN2024CS001', '9876543210');
+-- Sample student (with course, branch, semester)
+INSERT INTO students (full_name, username, email, password_hash, prn, phone, course, branch, semester) VALUES
+('Shalini Reddy', 'shalini_r', 'shalini@example.com', '$2a$10$dummyhashstudent123', 'PRN2024CS001', '9876543210', 'Btech', 'CSE', '4');
 
 -- Sample registration (student 1 registers for exam 1)
 INSERT INTO registrations (student_id, exam_id, total_fee, admin_status) VALUES
-(1, 1, 2000.00, 'Pending');   -- 4 subjects × ₹500
+(1, 1, 2000.00, 'Pending');
 
 -- Student picked 4 subjects
 INSERT INTO registration_subjects (reg_id, subject_id) VALUES
@@ -271,10 +291,9 @@ INSERT INTO payments (reg_id, amount, method, transaction_id, status, paid_at, r
 (1, 2000.00, 'UPI', 'TXN20260319ABC001', 'Completed', NOW(), 'RCPT-2026-001');
 
 -- ============================================================
--- ██  USEFUL VIEWS  ██
+-- VIEWS (unchanged)
 -- ============================================================
 
--- V1: Full registration summary for admins
 CREATE VIEW vw_registration_summary AS
 SELECT
   r.reg_id,
@@ -294,7 +313,6 @@ JOIN registration_subjects rs ON r.reg_id = rs.reg_id
 LEFT JOIN payments p  ON r.reg_id      = p.reg_id
 GROUP BY r.reg_id;
 
--- V2: Hall ticket view
 CREATE VIEW vw_hall_tickets AS
 SELECT
   ht.ticket_id,
@@ -316,7 +334,6 @@ JOIN students      s  ON r.student_id = s.student_id
 JOIN exams         e  ON r.exam_id    = e.exam_id
 LEFT JOIN exam_centers ec ON ht.center_id = ec.center_id;
 
--- V3: Admin report — exam statistics
 CREATE VIEW vw_exam_report AS
 SELECT
   e.exam_id,
@@ -333,12 +350,11 @@ LEFT JOIN payments      p ON r.reg_id  = p.reg_id
 GROUP BY e.exam_id;
 
 -- ============================================================
--- ██  STORED PROCEDURES  ██
+-- STORED PROCEDURES (unchanged)
 -- ============================================================
 
 DELIMITER $$
 
--- SP1: Approve a registration and auto-generate a hall ticket
 CREATE PROCEDURE sp_approve_registration(
   IN  p_reg_id     INT,
   IN  p_admin_id   INT,
@@ -349,30 +365,25 @@ BEGIN
   DECLARE v_exam_id INT;
   DECLARE v_count   INT;
 
-  -- Mark registration as Approved
   UPDATE registrations
   SET admin_status = 'Approved',
       reviewed_by  = p_admin_id,
       reviewed_at  = NOW()
   WHERE reg_id = p_reg_id;
 
-  -- Generate unique roll number: ROLL-<exam_id>-<reg_id>
   SELECT exam_id INTO v_exam_id FROM registrations WHERE reg_id = p_reg_id;
   SET p_roll_no = CONCAT('ROLL-', v_exam_id, '-', LPAD(p_reg_id, 4, '0'));
 
-  -- Insert hall ticket if not already issued
   SELECT COUNT(*) INTO v_count FROM hall_tickets WHERE reg_id = p_reg_id;
   IF v_count = 0 THEN
     INSERT INTO hall_tickets (reg_id, roll_number, center_id, issued_by)
     VALUES (p_reg_id, p_roll_no, p_center_id, p_admin_id);
   END IF;
 
-  -- Log the action
   INSERT INTO audit_log (admin_id, action, target, target_id)
   VALUES (p_admin_id, CONCAT('Approved registration and issued hall ticket ', p_roll_no), 'registration', p_reg_id);
 END$$
 
--- SP2: Student — register for an exam (takes a comma-style, call once per subject)
 CREATE PROCEDURE sp_register_student(
   IN p_student_id INT,
   IN p_exam_id    INT,
@@ -390,12 +401,10 @@ BEGIN
   INTO   v_fee, v_late_fine, v_deadline, v_late_date
   FROM   exams WHERE exam_id = p_exam_id;
 
-  -- Apply late fine if applicable
   IF CURDATE() > v_deadline THEN
     SET v_added_fee = v_late_fine;
   END IF;
 
-  -- Create registration row if not yet exists
   INSERT IGNORE INTO registrations (student_id, exam_id, total_fee)
   VALUES (p_student_id, p_exam_id, 0);
 
@@ -403,11 +412,9 @@ BEGIN
   FROM   registrations
   WHERE  student_id = p_student_id AND exam_id = p_exam_id;
 
-  -- Add subject
   INSERT IGNORE INTO registration_subjects (reg_id, subject_id)
   VALUES (v_reg_id, p_subject_id);
 
-  -- Recalculate total fee
   UPDATE registrations
   SET total_fee = (
     SELECT COUNT(*) * v_fee + v_added_fee
@@ -418,7 +425,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-
--- ============================================================
--- END OF SCRIPT
--- ============================================================
