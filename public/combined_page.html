@@ -461,7 +461,7 @@ textarea{resize:vertical;min-height:80px}
  </div>
  <div class="nav-section">
  <div class="nav-label">Support</div>
- <div class="nav-item" onclick="toggleChat()"><span class="nav-icon">💬</span> ExamBot Chat</div>
+ <div class="nav-item" onclick="toggleChat()"><span class="nav-icon">🤖</span> ExamBot Chat</div>
  </div>
  <div class="sidebar-footer">
  <div class="user-card">
@@ -498,7 +498,7 @@ textarea{resize:vertical;min-height:80px}
  <div class="topbar">
  <div class="topbar-title" id="topbar-title">Dashboard <span class="topbar-sub">Welcome back</span></div>
  <div class="search-bar"><span style="color:var(--muted)">🔍</span><input type="text" placeholder="Search exams..."></div>
- <button class="btn btn-outline" style="font-size:12px;position:relative">🔔 Alerts <span class="notif-dot"></span></button>
+ <!-- <button class="btn btn-outline" style="font-size:12px;position:relative">🔔 Alerts <span class="notif-dot"></span></button> -->
  </div>
  <div class="content">
  <!-- S-DASHBOARD -->
@@ -706,11 +706,11 @@ textarea{resize:vertical;min-height:80px}
  <!-- A-REPORTS -->
  <div class="page" id="page-a-reports">
  <div class="section-intro"><h2>Generate Reports</h2><p>Export detailed analytics and summaries for all exam activities.</p></div>
- <div class="report-grid">
+ <!-- <div class="report-grid">
  <div class="report-card green"><div class="report-icon">📊</div><div class="report-name">Registration Report</div><div class="report-desc">Total registrations, subject-wise breakdown, approval stats.</div><button class="btn btn-success" style="font-size:12px">Generate → Export</button></div>
  <div class="report-card blue"><div class="report-icon">💰</div><div class="report-name">Payment Report</div><div class="report-desc">Fee collected, pending dues, payment gateway summary.</div><button class="btn btn-outline" style="font-size:12px;border-color:var(--accent2);color:var(--accent2)">Generate → Export</button></div>
  <div class="report-card yellow"><div class="report-icon">🎫</div><div class="report-name">Hall Ticket Report</div><div class="report-desc">Issued vs pending hall tickets per exam and center.</div><button class="btn btn-outline" style="font-size:12px;border-color:var(--warn);color:var(--warn)">Generate → Export</button></div>
- </div>
+ </div> -->
  <div class="card"><div class="card-header"><span class="card-title">Report Preview — Registration Summary</span><button class="btn btn-primary" style="font-size:12px">⬇ Export CSV</button></div><div class="card-body" style="padding:0"><table><thead><tr><th>Exam</th><th>Total Registered</th><th>Approved</th><th>Rejected</th><th>Pending</th></tr></thead><tbody id="adminReportTable"><tr><td colspan="5" style="text-align:center;padding:20px;color:var(--muted)">Loading report data...</td></tr></tbody></table></div></div>
  </div>
  </div><!-- /.content -->
@@ -718,7 +718,7 @@ textarea{resize:vertical;min-height:80px}
  </div>
 </div>
 <!-- CHATBOT -->
-<button id="chat-fab" onclick="toggleChat()" title="ExamBot">💬</button>
+<button id="chat-fab" onclick="toggleChat()" title="ExamBot">🤖</button>
 <div id="chatbot-panel">
  <div class="chat-header">
  <div class="chat-dot"></div>
