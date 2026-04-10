@@ -77,6 +77,7 @@ const path    = require('path');
 const authRoutes    = require('./routes/auth');
 const studentRoutes = require('./routes/student');
 const adminRoutes   = require('./routes/admin');
+const chatbotRoutes = require('./routes/chatbot');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -109,6 +110,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/auth',    authRoutes);
 app.use('/api/student', studentRoutes);
 app.use('/api/admin',   adminRoutes);
+app.use('/api/chatbot', chatbotRoutes);
 
 // ─── FRONTEND ─────────────────────────────────────────────────────────────────
 app.get('/', (req, res) => {

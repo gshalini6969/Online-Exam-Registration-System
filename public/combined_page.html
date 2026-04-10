@@ -1247,12 +1247,39 @@ async function rejectRegistration(id){
 // CHATBOT
 // ═══════════════════════════════════════
 function toggleChat(){document.getElementById('chatbot-panel').classList.toggle('open')}
-function chatSend(){
- const inp=document.getElementById('chat-inp');const msg=inp.value.trim();if(!msg)return;
- const c=document.getElementById('chat-messages');
- c.innerHTML+=`<div class="msg user">${escapeHtml(msg)}</div>`;inp.value='';
- setTimeout(()=>{c.innerHTML+=`<div class="msg bot">Thanks for your question! Our team will assist you soon.</div>`;c.scrollTop=c.scrollHeight},500);
- c.scrollTop=c.scrollHeight;
+async function chatSend() {
+  const inp = document.getElementById('chat-inp');
+  const msg = inp.value.trim();
+  if (!msg) return;
+
+  const c = document.getElementById('chat-messages');
+
+  // show user message
+  c.innerHTML += `<div class="msg user">${escapeHtml(msg)}</div>`;
+  inp.value = '';
+
+  // loading message
+  const loadingId = 'loading-' + Date.now();
+  c.innerHTML += `<div class="msg bot" id="${loadingId}">Typing...</div>`;
+  c.scrollTop = c.scrollHeight;
+
+  try {
+    const res = await fetch('/api/chatbot/ask', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: msg })
+    });
+
+    const data = await res.json();
+
+    document.getElementById(loadingId).innerText = data.reply;
+
+  } catch (err) {
+    document.getElementById(loadingId).innerText =
+      "⚠️ Error connecting to chatbot.";
+  }
+
+  c.scrollTop = c.scrollHeight;
 }
 function escapeHtml(s){return s.replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]))}
 </script>
